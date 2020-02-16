@@ -28,8 +28,15 @@ map <Down> <NOP>
 map <Left> <NOP>
 map <Right> <NOP>
 
-" forgiving exit
+" quick normal mode
+inoremap jk <Esc>
+
+" quick-quit
 :ca Q q
+:ca Q! q!
+
+" quick help
+:ca htab :tab h 
 
 " 2x scrolling
 nnoremap <C-e> 2<C-e>
