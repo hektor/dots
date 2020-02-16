@@ -1,10 +1,43 @@
-" keybindings
+" General config
+" ______________________________ 
+"
+set encoding=utf-8
+set laststatus=2
+set nowrap
+set smarttab
+set backspace=indent,eol,start
+set ttyfast
+set timeout timeoutlen=1000 ttimeoutlen=50
+set clipboard=unnamed "use p to paste clipboard
+set history=1000
+set undolevels=1000
+set nobackup
+set nowritebackup
+set noswapfile
+set viminfo='20,\"100 "max 100 lines in registers
+set visualbell
+set noerrorbells
+set nomodeline
+
+" Keybindings
+" ______________________________
+"
+" no arrow keys
 map <Up> <NOP>
 map <Down> <NOP>
 map <Left> <NOP>
 map <Right> <NOP>
 
-" plugins
+" forgiving exit
+:ca Q q
+
+" 2x scrolling
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+" Plugins
+" ______________________________ 
+
 call plug#begin()
 Plug 'arcticicestudio/nord-vim'
 Plug 'scrooloose/nerdtree'
@@ -16,9 +49,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
-
-" theme
-colorscheme nord
 
 " NERDTree
 let g:NERDTreeShowHidden = 1
@@ -37,3 +67,9 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
+
+" Theme
+" ______________________________  
+
+colorscheme nord
+
