@@ -15,3 +15,11 @@
 - NERDTree
 - FZF
 - coc
+- javascript, typescript & react
+  - typescript-vim
+  - vim-jsx-pretty
+  - vim-jsx-typescript
+
+## themes
+
+- nord
