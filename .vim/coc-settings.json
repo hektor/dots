@@ -1,4 +1,19 @@
 {
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "typescript.tsx"
+  ],
+  
+  "prettier.eslintIntegration": true,
+  "prettier.semi": false,
+  "prettier.tabWidth": 2,
+  "prettier.singleQuote": true,
+  "prettier.arrowParens": "avoid",
+
   "coc.preferences.colorSupport": true,
   "coc.preferences.formatOnInsertLeave": true,
   "coc.preferences.formatOnTypeFiletypes": [
@@ -11,13 +26,6 @@
     "json",
     "Markdown",
     "css"
-  ],
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "typescript.tsx"
   ],
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
