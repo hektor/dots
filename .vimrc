@@ -33,6 +33,7 @@ set noswapfile
 set viminfo='20,\"100 "max 100 lines in registers
 
 set cmdheight=2
+set novisualbell
 
 " sudo save
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
@@ -67,14 +68,15 @@ inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
   \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <c-space> coc#refresh()
+" use @ instead of space
+inoremap <silent><expr> <c-@> coc#refresh()
 
 if has('patch8.1.1068')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
