@@ -23,3 +23,7 @@
 ## themes
 
 - nord
+
+## scripts
+
+- [] display toggle script
