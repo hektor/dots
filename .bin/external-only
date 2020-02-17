@@ -1,0 +1,2 @@
+xrandr --output eDP1 --off
+xrandr --output HDMI1 --mode 3840x2160 --primary
