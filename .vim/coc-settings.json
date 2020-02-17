@@ -1,5 +1,36 @@
 {
-	  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "typescript.tsx"],
-	    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
-	      "coc.preferences.diagnostic.virtualText": true,
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.formatOnInsertLeave": true,
+  "coc.preferences.formatOnTypeFiletypes": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "typescript.tsx",
+    "html",
+    "json",
+    "Markdown",
+    "css"
+  ],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "typescript.tsx"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "typescript.tsx",
+    "html",
+    "json",
+    "Markdown",
+    "css"
+  ],
+  "diagnostic.errorSign": "x",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?"
 }
