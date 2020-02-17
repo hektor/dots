@@ -26,4 +26,4 @@
 
 ## scripts
 
-- [] display toggle script
+[] display toggle script
