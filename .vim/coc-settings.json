@@ -16,6 +16,7 @@
 
   "coc.preferences.colorSupport": true,
   "coc.preferences.formatOnInsertLeave": true,
+  "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnTypeFiletypes": [
     "javascript",
     "typescript",
@@ -40,5 +41,6 @@
   ],
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
-  "diagnostic.infoSign": "?"
+  "diagnostic.infoSign": "?",
+  "suggest.autoTrigger": "trigger"
 }
