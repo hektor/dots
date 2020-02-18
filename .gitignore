@@ -14,9 +14,12 @@ Thumbs.db
 # WebStorm
 .idea/
 
-# vi
-*~
-
 # General
 log/
 *.log
+
+# Temp files
+*.swp
+*.swo
+*~
+
