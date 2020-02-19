@@ -42,5 +42,7 @@
   "diagnostic.errorSign": "x",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
-  "suggest.autoTrigger": "trigger"
+  "suggest.autoTrigger": "trigger",
+
+  "emmet.includeLanguages": { "javascript": "javascriptreact" }
 }

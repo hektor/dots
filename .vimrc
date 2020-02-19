@@ -151,7 +151,8 @@ let g:coc_global_extensions = [
   \'coc-json',
   \'coc-prettier',
   \'coc-svelte',
-  \'coc-tsserver'
+  \'coc-tsserver',
+  \'coc-emmet'
   \]
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
