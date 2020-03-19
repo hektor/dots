@@ -2,6 +2,9 @@
 " General config
 " ______________________________ 
 
+set nocompatible
+filetype plugin indent on
+
 set encoding=utf-8
 set hidden
 set ttyfast
@@ -12,12 +15,14 @@ set history=500
 set shortmess+=c
 set signcolumn=yes
 set nowrap
-set smarttab
+set relativenumber
+set number
 set signcolumn=yes
-set clipboard=unnamed "use p to paste clipboard
+set clipboard=unnamedplus "use p to paste clipboard
 
+" indentation
 set backspace=indent,eol,start
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent
 set ignorecase smartcase incsearch hlsearch
 set emoji
 
@@ -35,26 +40,19 @@ set viminfo='20,\"100 "max 100 lines in registers
 set cmdheight=2
 set novisualbell
 
-" sudo save
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
-
-"
-" Filetypes
-" ______________________________
-
-filetype plugin indent on
-
 "
 " Keybindings
 " ______________________________
 
+" leader key
+
+let mapleader = " "
+
+" hard mode
 map <Up> <NOP>
 map <Down> <NOP>
 map <Left> <NOP>
 map <Right> <NOP>
-
-" quick normal mode
-inoremap jk <Esc>
 
 " quick-quit
 :ca Q q
@@ -104,10 +102,10 @@ endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-nmap <leader>rn <Plug>(coc-rename)
+"nmap <leader>rn <Plug>(coc-rename)
 
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -115,19 +113,19 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+"xmap <leader>a  <Plug>(coc-codeaction-selected)
+"nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>qf  <Plug>(coc-fix-current)
+"nmap <leader>ac  <Plug>(coc-codeaction)
+"nmap <leader>qf  <Plug>(coc-fix-current)
 
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
+"xmap if <Plug>(coc-funcobj-i)
+"xmap af <Plug>(coc-funcobj-a)
+"omap if <Plug>(coc-funcobj-i)
+"omap af <Plug>(coc-funcobj-a)
 
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
+"nmap <silent> <TAB> <Plug>(coc-range-select)
+"xmap <silent> <TAB> <Plug>(coc-range-select)
 
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -135,14 +133,14 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 let g:coc_global_extensions = [
   \'coc-css',
@@ -172,6 +170,9 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'supercollider/scvim'
+Plug 'tidalcycles/vim-tidal'
+Plug 'preservim/nerdcommenter'
 call plug#end()
 
 " NERDTree
@@ -180,9 +181,28 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 
+" NERDCommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let NERDAltDelims_haskell = 1
+let g:NERDCustomDelimiters = { 'tidal': { 'left': '{-','right': '-}' } }
+let g:NERDCustomDelimiters = { 'tidal': { 'left': '--','right': '' } }
+let g:NERDCommentEmptyLines = 1
+
 " FZF - use silversearcher-ag to respect .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let g:ag_working_path_mode="r"
 let g:vim_jsx_pretty_colorful_config = 1
+
+" FZF ignore
+set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip
+
+" SuperCollider
+au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
+au Filetype supercollider packadd scvim
+
+" tidalvim
+let g:tidal_flash_duration = 50
 
 " plugin keybindings
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
@@ -199,4 +219,6 @@ let g:fzf_action = {
 
 colorscheme nord
 set t_Co=256
-
+if &t_Co == 8 && $TERM !~# '^Eterm'
+  set t_Co=16
+endif
