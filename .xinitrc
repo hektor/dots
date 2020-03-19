@@ -30,11 +30,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# ______________________________
+
+# disable bell
+xset -b
+
 #exec dwm
 # execute dwm in a loop
 while true; do
    /usr/local/bin/dwm 2> /dev/null
 done
 
-# disable bell
-xset -b
+# adjust typematic delay & rate
+xset r rate 200 30
