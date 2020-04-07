@@ -1,0 +1,20 @@
+alias bashrc="vim ~/.bashrc"
+alias aliasrc="vim ~/.aliasrc"
+
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+
+alias l='ls -lh'
+alias la='ls -lha'
+
+alias lgrep='l . | grep'
+alias lagrep='la . | grep'
+
+alias vi='vim'
+alias py='python'
+alias cfg='/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h'
+alias now='date "+%I:%M %a %d %b"'
+alias brt='xbacklight -set'
+alias bat='cat /sys/class/power_supply/BAT0/capacity'
+
+
