@@ -1,24 +1,26 @@
-# Global gitignore
+# global gitignore
 # ______________________________
 
-# Node
-npm-debug.log
-node_modules
-
-# Mac
-.DS_Store
-
-# Windows
-Thumbs.db
-
-# WebStorm
+# general
 .idea/
-
-# General
 log/
 *.log
 
-# Temp files
+# node
+npm-debug.log
+node_modules
+
+# python
+*.pyc
+
+# folder view
+.DS_Store
+Desktop.ini
+
+# thumbnail cache
+Thumbs.db
+
+# temp files
 *.swp
 *.swo
 *~
