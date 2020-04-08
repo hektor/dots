@@ -4,7 +4,8 @@ alias aliasrc="vim ~/.aliasrc"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 
-alias l='ls -lh'
+alias l='ls -1'
+alias ll='ls -lh'
 alias la='ls -lha'
 
 alias lgrep='l . | grep'
