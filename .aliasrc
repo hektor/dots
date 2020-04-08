@@ -14,7 +14,7 @@ alias vi='vim'
 alias py='python'
 alias cfg='/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h'
 alias now='date "+%I:%M %a %d %b"'
-alias brt='xbacklight -set'
+alias lm='xbacklight -set'
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
 
 

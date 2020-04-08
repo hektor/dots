@@ -9,9 +9,6 @@ PS1='\u@\h \W\$ '
 # nvm
 source /usr/share/nvm/init-nvm.sh
 
-# auto cd on path
-shopt -s autocd
-
 # history
 export HISTCONTROL=ignoreboth
 
