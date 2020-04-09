@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+capacityStatus=$(cat /sys/class/power_supply/BAT0/capacity)
+chargingStatus=$(cat /sys/class/power_supply/AC/online)
+
+if [ "$chargingStatus" == "1" ]; then
+  printf "Battery is ${GREEN}charging${NC}.\n"
+elif [ "$chargingStatus" == "0" ]; then
+  printf "Battery is ${RED}discharging${NC}.\n"
+fi
+
+printf "$capacityStatus%% \n"
