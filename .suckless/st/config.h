@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Iosevka:pixelsize=24:antialias=true:autohint:true";
-static int borderpx = 16;
+static char *font = "Iosevka:pixelsize=20:antialias=true:autohint:true";
+static int borderpx = 8;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -85,24 +85,24 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#3b4252", /* black   */
+	"#000000", /* black   */
 	"#bf616a", /* red     */
 	"#a3be8c", /* green   */
 	"#ebcb8b", /* yellow  */
 	"#81a1c1", /* blue    */
 	"#b48ead", /* magenta */
 	"#88c0d0", /* cyan    */
-	"#e5e9f0", /* white   */
+	"#ffffff", /* white   */
 
 	/* 8 bright colors */
-	"#4c566a", /* black   */
+	"#111111", /* black   */
 	"#bf616a", /* red     */
 	"#a3be8c", /* green   */
 	"#ebcb8b", /* yellow  */
 	"#81a1c1", /* blue    */
 	"#b48ead", /* magenta */
 	"#8fbcbb", /* cyan    */
-	"#eceff4", /* white   */
+	"#eeeeee", /* white   */
 
 	[255] = 0,
 
