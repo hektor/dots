@@ -18,4 +18,5 @@ alias now='date "+%I:%M %a %d %b"'
 alias lm='xbacklight -set'
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
 
-
+alias spotify='ncspot'
+alias weather='curl wttr.in'
