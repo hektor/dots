@@ -13,17 +13,16 @@ set timeout timeoutlen=1000 ttimeoutlen=50
 set undolevels=500
 set history=500
 set shortmess+=c
-set signcolumn=yes
+" set signcolumn=yes
 set nowrap
-set relativenumber
-set number
-set signcolumn=yes
+set nu rnu " hybrid line numbers 
 set clipboard=unnamedplus "use p to paste clipboard
 
 " indentation
 set backspace=indent,eol,start
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent
-set ignorecase smartcase incsearch hlsearch
+
+set incsearch ignorecase smartcase hlsearch
+set autoindent tabstop=2 softtabstop=2 shiftwidth=2 expandtab 
 set emoji
 
 " no backups
@@ -44,8 +43,13 @@ set novisualbell
 " Keybindings
 " ______________________________
 
-" leader key
+" split navigation
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
 
+" leader key
 let mapleader = " "
 
 " hard mode
@@ -161,7 +165,6 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'arcticicestudio/nord-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
@@ -217,8 +220,5 @@ let g:fzf_action = {
 " Theme
 " ______________________________  
 
-colorscheme nord
-set t_Co=256
-if &t_Co == 8 && $TERM !~# '^Eterm'
-  set t_Co=16
-endif
+colorscheme darkness
+
