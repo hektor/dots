@@ -26,3 +26,7 @@ export HISTCONTROL=ignoreboth
 
 # source fuzzy finder 
 source /usr/share/fzf/*.bash
+
+# vim-style keybindings
+set -o vi
+bind '"jj":"\e"'
