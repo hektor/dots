@@ -4,13 +4,25 @@
 # load aliases dynamically
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
+# prompt
+bold=$(tput bold)
+reset=$(tput sgr0)
 
-# PS1='\u@\h \W\$ '
-PS1='\W \u $ '
+get_branch_name() {
+  git symbolic-ref --quiet --short HEAD 2>/dev/null \
+    || git rev-parse --short HEAD 2>/dev/null \
+    || echo 'some branch'
+}
 
-# nvm
-source /usr/share/nvm/init-nvm.sh
+get_git_info() {
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+  echo -e "- ${1}$(get_branch_name)"
+}
+
+PS1='\[\033[38;5;244m\]\[${bold}\]$(get_git_info && echo "\n")\[${reset}\]\u \W $ '
 
 # history
 export HISTCONTROL=ignoreboth
 
+# source fuzzy finder 
+source /usr/share/fzf/*.bash
