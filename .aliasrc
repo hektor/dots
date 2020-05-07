@@ -19,10 +19,14 @@ alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo p
 alias vi='vim'
 alias py='python'
 alias cfg='/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h'
-alias now='date "+%I:%M %a %d %b"'
+
+alias tmuxl='tmux list-sessions'
+alias tmuxs='tmux new-session -s'
+alias tmuxk='tmux kill-session -t'
+
 alias lm='xbacklight -set'
 alias bat='cat /sys/class/power_supply/BAT0/capacity'
-
+alias now='date "+%I:%M %a %d %b"'
 alias spot='ncspot'
 alias todo='todoist'
 alias weather='curl wttr.in'
