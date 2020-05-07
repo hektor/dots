@@ -16,10 +16,10 @@ get_branch_name() {
 
 get_git_info() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
-  echo -e "- ${1}$(get_branch_name)"
+  echo -e " ${1}$(get_branch_name)"
 }
 
-PS1='\[\033[38;5;244m\]\[${bold}\]$(get_git_info && echo "\n")\[${reset}\]\u \W $ '
+PS1='\[\033[38;5;244m\]\[${bold}\]$(get_git_info && echo "\n")\[${reset}\]\u \W ❭ '
 
 # history
 export HISTCONTROL=ignoreboth
