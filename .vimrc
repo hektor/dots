@@ -36,34 +36,41 @@ endfunc
 nnoremap <space> <nop>
 let mapleader = " "
 
-" splits
+" split
 nmap ss :sp<Return><c-w>w
 nmap sv :vs<Return><c-w>w
 
-" split navigation
+" split navigate
+nnoremap sw <c-w>w
+nnoremap sh <c-w>h
 nnoremap sj <c-w>j
 nnoremap sk <c-w>k
 nnoremap sl <c-w>l
-nnoremap sh <c-w>h
 
-" split resizing
+" split resize
 nnoremap srh <C-w><
 nnoremap srl <C-w>>
 nnoremap srk <C-w>+
 nnoremap srj <C-w>-
 
+" file tree
+nnoremap sb :Lex<CR>
+
 " hard mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
 
 " quick quit
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 
 " quick exit insert
-inoremap <esc> <nop>
 inoremap jj <esc>
 
 " clear search highlight
@@ -169,7 +176,6 @@ let g:tidal_flash_duration = 50
 
 " plugin keybindings ___________________  
 
-nnoremap <silent> <C-b> :Lex<CR>
 nnoremap <c-p> :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>h :History<cr>
