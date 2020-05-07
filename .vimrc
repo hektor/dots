@@ -1,188 +1,142 @@
-"
-" General config
-" ______________________________ 
+" general config _______________________ 
 
 set nocompatible
+
 filetype plugin indent on
 
 set encoding=utf-8
 set hidden
 set ttyfast
 set updatetime=300
-set timeout timeoutlen=1000 ttimeoutlen=50
+set timeout timeoutlen=1000 ttimeoutlen=5
 set undolevels=500
 set history=500
 set shortmess+=c
-" set signcolumn=yes
+set signcolumn=number " make sign replace number
 set nowrap
-set nu rnu " hybrid line numbers 
-set clipboard=unnamedplus "use p to paste clipboard
-
-" indentation
-set backspace=indent,eol,start
-
-set incsearch ignorecase smartcase hlsearch
-set autoindent tabstop=2 softtabstop=2 shiftwidth=2 expandtab 
-set emoji
-
-" no backups
-set nocursorcolumn
-set nocursorline
-set scrolljump=5
-set lazyredraw
+set backspace=indent,eol,start " indentat
+set incsearch ignorecase smartcase hlsearch" search     
+set autoindent tabstop=2 softtabstop=2 shiftwidth=2 expandtab " indenting
+set lazyredraw " only essential redraws
 set synmaxcol=180
-set nobackup
-set nowritebackup
-set noswapfile
+set nobackup nowb noswapfile " turn off backups
 set viminfo='20,\"100 "max 100 lines in registers
-
-set cmdheight=2
 set novisualbell
+set conceallevel=1
+set clipboard=unnamedplus
 
-"
-" Keybindings
-" ______________________________
+" functions ____________________________
 
-" split navigation
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-h> <c-w><c-h>
+func! ToggleRnu() " toggle: no numbers - relative nummbers
+  if(&nu) | set nonu nornu | else | set nu rnu | endif
+endfunc
 
-" leader key
+" keybindings __________________________
+
+nnoremap <space> <nop>
 let mapleader = " "
 
+" splits
+nmap ss :sp<Return><c-w>w
+nmap sv :vs<Return><c-w>w
+
+" split navigation
+nnoremap sj <c-w>j
+nnoremap sk <c-w>k
+nnoremap sl <c-w>l
+nnoremap sh <c-w>h
+
+" split resizing
+nnoremap srh <C-w><
+nnoremap srl <C-w>>
+nnoremap srk <C-w>+
+nnoremap srj <C-w>-
+
 " hard mode
-map <Up> <NOP>
-map <Down> <NOP>
-map <Left> <NOP>
-map <Right> <NOP>
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
-" quick-quit
-:ca Q q
-:ca Q! q!
+" quick quit
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
 
-" quick help
-:ca htab :tab h 
+" quick exit insert
+inoremap <esc> <nop>
+inoremap jj <esc>
+
+" clear search highlight
+nnoremap <leader><space> :noh<cr>
+
+" silver search
+nnoremap <leader>A :Ag <cr> 
+
+" toggle numbers
+nnoremap <leader>n :call ToggleRnu()<cr>
 
 " coc
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
   \ coc#refresh()
- inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+noremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" use @ instead of space
+" <c-space> triggers completion
 inoremap <silent><expr> <c-@> coc#refresh()
 
-if has('patch8.1.1068')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" code action on cursor position
+nmap <leader>do <Plug>(coc-codeaction)
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-"nmap <leader>rn <Plug>(coc-rename)
-
-"xmap <leader>f  <Plug>(coc-format-selected)
-"nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  autocmd FileType typescript, json setl formatexpr=CocAction('formatSelected')
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-"xmap <leader>a  <Plug>(coc-codeaction-selected)
-"nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-"nmap <leader>ac  <Plug>(coc-codeaction)
-"nmap <leader>qf  <Plug>(coc-fix-current)
-
-"xmap if <Plug>(coc-funcobj-i)
-"xmap af <Plug>(coc-funcobj-a)
-"omap if <Plug>(coc-funcobj-i)
-"omap af <Plug>(coc-funcobj-a)
-
-"nmap <silent> <TAB> <Plug>(coc-range-select)
-"xmap <silent> <TAB> <Plug>(coc-range-select)
-
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" apply code action to selected region
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-let g:coc_global_extensions = [
-  \'coc-css',
-  \'coc-eslint',
-  \'coc-html',
-  \'coc-json',
-  \'coc-prettier',
-  \'coc-svelte',
-  \'coc-tsserver',
-  \'coc-emmet'
-  \]
-
+" :Prettier command to prettify file
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-"
-" Plugins
-" ______________________________ 
+" plugins ______________________________ 
 
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree'
-Plug 'yuezk/vim-js'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'ryanoasis/vim-devicons'
+
+Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+  \'coc-eslint',
+  \'coc-prettier',
+  \'coc-tsserver',
+  \'coc-python',
+  \'coc-html',
+  \'coc-emmet',
+  \'coc-css',
+  \'coc-svg',
+  \'coc-svelte',
+  \'coc-json',
+  \'coc-markdownlint',
+  \'coc-yaml',
+  \]
+
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
-Plug 'preservim/nerdcommenter'
+
 call plug#end()
 
-" NERDTree
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusline = ''
+" plugin config ________________________ 
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
@@ -192,33 +146,39 @@ let g:NERDCustomDelimiters = { 'tidal': { 'left': '{-','right': '-}' } }
 let g:NERDCustomDelimiters = { 'tidal': { 'left': '--','right': '' } }
 let g:NERDCommentEmptyLines = 1
 
-" FZF - use silversearcher-ag to respect .gitignore
+" fzf popup
+let g:fzf_layout = {'window': { 'width': 0.62, 'height': 0.62}}
+
+" fzf - use silversearcher-ag to respect .gitignore
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:ag_working_path_mode="r"
-let g:vim_jsx_pretty_colorful_config = 1
+set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip " fzf ignore
 
-" FZF ignore
-set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip
+" js & ts
+let g:javascript_plugin_jsdoc = 1 " jsdoc syntax highlighting
+let g:javascript_plugin_flow = 1 " flow syntax highlighting
+let g:javascript_conceal_function = "ƒ"
+let g:javascript_conceal_return   = "⇚""
 
 " SuperCollider
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 au Filetype supercollider packadd scvim
 
 " tidalvim
-let g:tidal_flash_duration = 50
+let g:tidal_flash_duration = 50 
 
-" plugin keybindings
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
-nnoremap <C-p> :FZF<CR>
+" plugin keybindings ___________________  
+
+nnoremap <silent> <C-b> :Lex<CR>
+nnoremap <c-p> :FZF<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>h :History<cr>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
 
-"
-" Theme
-" ______________________________  
+" theme ________________________________  
 
 colorscheme darkness
-
