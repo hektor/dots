@@ -13,6 +13,7 @@
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.arrowParens": "avoid",
+  "prettier.disableSuccessMessage": true,
 
   "coc.preferences.colorSupport": true,
   "coc.preferences.formatOnInsertLeave": true,
@@ -39,9 +40,10 @@
     "Markdown",
     "css"
   ],
-  "diagnostic.errorSign": "x",
-  "diagnostic.warningSign": "!",
-  "diagnostic.infoSign": "?",
+
+  "diagnostic.errorSign": ">",
+  "diagnostic.warningSign": ".",
+  "diagnostic.infoSign": ".",
   "suggest.autoTrigger": "trigger",
 
   "emmet.includeLanguages": { "javascript": "javascriptreact" }
