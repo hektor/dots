@@ -38,8 +38,7 @@ xset -b
 # adjust typematic delay & rate
 xset r rate 200 30
 
-#exec dwm
 # execute dwm in a loop
 while true; do
-   /usr/local/bin/dwm 2> /dev/null
+  dwm 2> ~/.dwm.log
 done
