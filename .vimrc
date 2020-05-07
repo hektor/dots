@@ -48,22 +48,22 @@ nnoremap sk <c-w>k
 nnoremap sl <c-w>l
 
 " split resize
-nnoremap srh <C-w><
-nnoremap srl <C-w>>
-nnoremap srk <C-w>+
-nnoremap srj <C-w>-
+nnoremap sH <C-w><
+nnoremap sJ <C-w>-
+nnoremap sK <C-w>+
+nnoremap sL <C-w>>
 
 " file tree
 nnoremap sb :Lex<CR>
 
 " hard mode
-nnoremap <up> <nop>
-nnoremap <down> <nop>
 nnoremap <left> <nop>
+nnoremap <down> <nop>
+nnoremap <up> <nop>
 nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
 inoremap <left> <nop>
+inoremap <down> <nop>
+inoremap <up> <nop>
 inoremap <right> <nop>
 
 " quick quit
@@ -157,7 +157,7 @@ let g:NERDCommentEmptyLines = 1
 let g:fzf_layout = {'window': { 'width': 0.62, 'height': 0.62}}
 
 " fzf - use silversearcher-ag to respect .gitignore
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 let g:ag_working_path_mode="r"
 set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip " fzf ignore
 
