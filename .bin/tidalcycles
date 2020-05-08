@@ -1,0 +1,23 @@
+#!/bin/bash
+set -euf -o pipefail
+
+VIM=${VIM:-"vim"}
+TMUX=${TMUX:-"tmux"}
+
+FILE=${FILE:-"$(date +%F).tidal"}
+SESSION=${SESSION:-"tidal"}
+
+TIDAL_BOOT_PATH=${TIDAL_BOOT_PATH:-""}
+GHCI=${GHCI:-""}
+
+args=${@:-$FILE}
+
+# attach if session else create
+$TMUX attach-session -t $SESSION || $TMUX new-session -s $SESSION \; \
+  split-window -h -t $SESSION \; \
+  send-keys -t 0 "$VIM $args" C-m \; \
+  send-keys -t 1 "TIDAL_BOOT_PATH=$TIDAL_BOOT_PATH GHCI=$GHCI tidal" C-m \; \
+  new-window -t $SESSION:2 -n SuperDirt \; \
+  send-keys -t 0 "sclang ~/dev/me/live/tidal/superdirt_startup.scd" C-m \; \
+  select-window -t 1 \; \
+  select-pane -t 0
