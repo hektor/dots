@@ -35,6 +35,7 @@ endfunc
 
 nnoremap <space> <nop>
 let mapleader = " "
+let maplocalleader = ";"
 
 " split
 nmap ss :sp<Return><c-w>w
@@ -81,6 +82,12 @@ nnoremap <leader>A :Ag <cr>
 
 " toggle numbers
 nnoremap <leader>n :call ToggleRnu()<cr>
+
+" edit vim config
+nnoremap <leader>ec :vsplit $MYVIMRC<cr>
+
+" source current file
+nnoremap <leader>so :so %<cr>
 
 " coc
 inoremap <silent><expr> <TAB>
@@ -172,7 +179,7 @@ au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 au Filetype supercollider packadd scvim
 
 " tidalvim
-let g:tidal_flash_duration = 50 
+let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
 
 " plugin keybindings ___________________  
 
