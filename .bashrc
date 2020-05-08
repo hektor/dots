@@ -34,3 +34,6 @@ source /usr/share/fzf/*.bash
 export EDITOR='vim'
 set -o vi
 bind '"jj":"\e"'
+
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
+export FZF_COMPLETION_OPTS='-x'
