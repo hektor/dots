@@ -69,7 +69,9 @@ inoremap <right> <nop>
 
 " quick quit
 nnoremap <leader>w :w<cr>
+nnoremap <leader>W :wq<cr>
 nnoremap <leader>q :q<cr>
+nnoremap <leader>Q :q!<cr>
 
 " quick exit insert
 inoremap jj <esc>
