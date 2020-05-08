@@ -4,6 +4,9 @@
 # load aliases dynamically
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
+# add ~/.bin to PATH
+export PATH=~/.bin:$PATH
+
 # prompt
 bold=$(tput bold)
 reset=$(tput sgr0)
