@@ -28,5 +28,6 @@ export HISTCONTROL=ignoreboth
 source /usr/share/fzf/*.bash
 
 # vim-style keybindings
+export EDITOR='vim'
 set -o vi
 bind '"jj":"\e"'
