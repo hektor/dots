@@ -25,7 +25,7 @@ alias tmuxs='tmux new-session -s'
 alias tmuxk='tmux kill-session -t'
 
 alias lm='xbacklight -set'
-alias bat='cat /sys/class/power_supply/BAT0/capacity'
+alias bat='check-battery-level'
 alias now='date "+%I:%M %a %d %b"'
 alias spot='ncspot'
 alias todo='todoist'
