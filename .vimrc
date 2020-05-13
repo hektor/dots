@@ -49,10 +49,10 @@ nnoremap sk <c-w>k
 nnoremap sl <c-w>l
 
 " split resize
-nnoremap sH <C-w><
-nnoremap sJ <C-w>-
-nnoremap sK <C-w>+
-nnoremap sL <C-w>>
+nnoremap sH <C-w>8<
+nnoremap sJ <C-w>8-
+nnoremap sK <C-w>8+
+nnoremap sL <C-w>8>
 
 " file tree
 nnoremap sb :Lex<CR>
@@ -91,34 +91,6 @@ nnoremap <leader>ec :vsplit $MYVIMRC<cr>
 " source current file
 nnoremap <leader>so :so %<cr>
 
-" coc
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-
-noremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" <c-space> triggers completion
-inoremap <silent><expr> <c-@> coc#refresh()
-
-" code action on cursor position
-nmap <leader>do <Plug>(coc-codeaction)
-
-" apply code action to selected region
-" xmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" :Prettier command to prettify file
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 " plugins ______________________________ 
 
 call plug#begin()
@@ -130,6 +102,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
+Plug 'evanleck/vim-svelte'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
@@ -176,6 +149,10 @@ let g:javascript_plugin_flow = 1 " flow syntax highlighting
 let g:javascript_conceal_function = "ƒ"
 let g:javascript_conceal_return   = "⇚""
 
+" svelte
+let g:svelte_indent_script = 0
+let g:svelte_indent_style = 0
+
 " SuperCollider
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 au Filetype supercollider packadd scvim
@@ -185,7 +162,32 @@ let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.
 
 " plugin keybindings ___________________  
 
+" coc autocompletion
+inoremap <silent><expr> <C-j>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" <TAB> confirm completion
+inoremap <expr> <TAB> pumvisible() ? "\<cr>" : "\<C-g>u\<CR>"
+
+" code action on cursor position
+nmap <leader>do <Plug>(coc-codeaction)
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" :Prettier command to prettify file
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 nnoremap <c-p> :FZF<cr>
+nnoremap <leader>p :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>h :History<cr>
 let g:fzf_action = {
