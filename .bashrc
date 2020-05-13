@@ -37,3 +37,31 @@ bind '"jj":"\e"'
 
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
 export FZF_COMPLETION_OPTS='-x'
+
+# nvm
+lazy_load_nvm() {
+  unset -f nvm node npm npx
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+nvm() {
+  lazy_load_nvm
+  nvm $@
+}
+
+node() {
+  lazy_load_nvm
+  node $@
+}
+
+npm() {
+  lazy_load_nvm
+  npm $@
+}
+
+npx() {
+  lazy_load_nvm
+  npx $@
+}
