@@ -55,7 +55,10 @@ nnoremap sK <C-w>8+
 nnoremap sL <C-w>8>
 
 " file tree
-nnoremap sb :Lex<CR>
+nnoremap sb :Lex<cr>
+
+" terminal
+nnoremap <leader>t :term<cr>
 
 " hard mode
 nnoremap <left> <nop>
