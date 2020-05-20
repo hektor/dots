@@ -48,5 +48,6 @@
 
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
 
+  "javascript.suggestionActions.enabled": false,
   "svelte.plugin.typescript.diagnostics.enable": false
 }
