@@ -1,0 +1,114 @@
+{
+  /* view */
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": false,
+  "breadcrumbs.enabled": false,
+  "editor.minimap.enabled": false,
+  "window.menuBarVisibility": "hidden",
+  "workbench.editor.showTabs": false,
+  "workbench.editor.showIcons": false,
+
+  /* font */
+  "editor.fontSize": 20,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Iosevka",
+  "terminal.integrated.fontSize": 20,
+
+  /* editor */
+  "editor.lineNumbers": "relative",
+  "editor.glyphMargin": false,
+  "terminal.integrated.allowMnemonics": false,
+  "workbench.colorCustomizations": {
+    "editorGroup.emptyBackground": "#0c0c0c",
+    "scrollbar.shadow": "#000",
+    "widget.shadow": "#000",
+    "editorWidget.background": "#0c0c0c",
+    "editor.background": "#0c0c0c",
+    "sideBar.background": "#0c0c0c",
+    "editorGroupHeader.noTabsBackground": "#0c0c0c",
+    "scrollbarSlider.background": "#222",
+    "scrollbarSlider.activeBackground": "#222",
+    "scrollbarSlider.hoverBackground": "#333",
+    "statusBar.noFolderBackground": "#0c0c0c",
+    "statusBar.border": "#0c0c0c",
+    "statusBar.background": "#0c0c0c",
+    "statusBar.foreground": "#555"
+  },
+
+  "editor.tokenColorCustomizations": {
+    "comments": "#555",
+    "functions": "#aaa",
+    "numbers": "#fff",
+    "strings": "#fff",
+    "types": "#aaa",
+    "variables": "#aaa",
+    "keywords": "#aaa"
+  },
+
+  /* vim keybindings */
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    /* quick quit */
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":w"]
+    },
+    {
+      "before": ["<leader>", "Q"],
+      "commands": [":q!"]
+    },
+    {
+      "before": ["<leader>", "W"],
+      "commands": [":w!"]
+    },
+    /* split */
+    {
+      "before": ["<leader>", "s", "s"],
+      "commands": [":sp"]
+    },
+    {
+      "before": ["<leader>", "s", "v"],
+      "commands": [":vs"]
+    },
+    /* clear search highlight */
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": [":nohl"]
+    }
+  ],
+
+  "vim.insertModeKeyBindings": [
+    /* quick exit insert */
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+
+  /* eslint & prettier */
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+
+  "workbench.colorTheme": "Absolute Black",
+  "window.zoomLevel": 1,
+  "javascript.updateImportsOnFileMove.enabled": "always"
+}
