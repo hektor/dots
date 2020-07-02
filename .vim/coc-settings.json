@@ -5,7 +5,8 @@
     "typescript",
     "javascriptreact",
     "typescriptreact",
-    "typescript.tsx"
+    "typescript.tsx",
+    "svelte"
   ],
 
   "prettier.eslintIntegration": true,
@@ -27,7 +28,8 @@
     "html",
     "json",
     "Markdown",
-    "css"
+    "css",
+    "svelte"
   ],
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
@@ -38,7 +40,8 @@
     "html",
     "json",
     "Markdown",
-    "css"
+    "css",
+    "svelte"
   ],
 
   "diagnostic.errorSign": ">",
