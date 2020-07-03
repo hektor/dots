@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
-adb kill-server
-adb start-server
-gnirehtet autorun
+function start() {
+  adb start-server
+  nohup gnirehtet autorun &> /dev/null &
+  echo "Started reverse tethering"
+}
+
+function stop() {
+  adb kill-server 
+  gnirehtet stop
+  pkill gnirehtet
+  echo "Stopped reverse tethering"
+}
+
+case "$1" in 
+  start) start ;;
+  stop) stop ;;
+  restart) stop; start ;;
+  *) echo "start | stop | restart" >&2
+  exit 1
+  ;;
+esac
