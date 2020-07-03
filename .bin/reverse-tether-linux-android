@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+adb kill-server
+adb start-server
+gnirehtet autorun
