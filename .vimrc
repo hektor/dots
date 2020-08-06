@@ -11,16 +11,16 @@ set updatetime=300
 set timeout timeoutlen=1000 ttimeoutlen=5
 set undolevels=500
 set history=500
-set shortmess+=c
+set nu
 set signcolumn=number " make sign replace number
 set nowrap
-set backspace=indent,eol,start " indentat
+set backspace=indent,eol,start " indentation
 set incsearch ignorecase smartcase hlsearch" search     
 set autoindent tabstop=2 softtabstop=2 shiftwidth=2 expandtab " indenting
 set lazyredraw " only essential redraws
-set synmaxcol=180
-set nobackup nowb noswapfile " turn off backups
-set viminfo='20,\"100 "max 100 lines in registers
+set synmaxcol=181
+set nobackup nowb noswapfile " no backups
+set viminfo='20,\"101 "max 100 lines in registers
 set novisualbell
 set conceallevel=1
 set clipboard=unnamedplus
@@ -89,7 +89,7 @@ nnoremap <leader>A :Ag <cr>
 nnoremap <leader>n :call ToggleRnu()<cr>
 
 " edit vim config
-nnoremap <leader>ec :vsplit $MYVIMRC<cr>
+nnoremap <leader>ec :split $MYVIMRC<cr>
 
 " source current file
 nnoremap <leader>so :so %<cr>
@@ -101,11 +101,14 @@ call plug#begin()
 Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte'
+Plug 'axvr/zepl.vim'
+Plug 'takac/vim-hardtime'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
@@ -130,6 +133,8 @@ call plug#end()
 
 " plugin config ________________________ 
 
+
+
 " NERDCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -146,11 +151,20 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 let g:ag_working_path_mode="r"
 set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip " fzf ignore
 
+" vimwiki
+let g:vimwiki_list = [{'path': '~/.vimwiki/',
+                      \ 'template_path': '~/.vimwiki/templates/',
+                      \ 'template_default': 'default',
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                      \ 'path_html': '~/.vimwiki/site_html/', 'custom_wiki2html': 'vimwiki_markdown',
+                      \ 'html_filename_parameterization': 1,
+                      \ 'template_ext': '.tpl'}]
+
 " js & ts
 let g:javascript_plugin_jsdoc = 1 " jsdoc syntax highlighting
 let g:javascript_plugin_flow = 1 " flow syntax highlighting
 let g:javascript_conceal_function = "ƒ"
-let g:javascript_conceal_return   = "⇚""
+let g:javascript_conceal_return = "⇖"
 
 " svelte
 let g:svelte_indent_script = 0
@@ -163,23 +177,18 @@ au Filetype supercollider packadd scvim
 " tidalvim
 let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
 
+" hard time
+let g:hardtime_default_on = 1
+let g:hardtime_maxcount = 4
+
 " plugin keybindings ___________________  
 
 " coc autocompletion
-inoremap <silent><expr> <C-j>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
+
+inoremap <silent><expr><C-j> pumvisible() ? "\<C-n>" :
   \ coc#refresh()
-
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" <TAB> confirm completion
-inoremap <expr> <TAB> pumvisible() ? "\<cr>" : "\<C-g>u\<CR>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "k"
+inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " code action on cursor position
 nmap <leader>do <Plug>(coc-codeaction)
@@ -201,4 +210,17 @@ let g:fzf_action = {
 
 " theme ________________________________  
 
-colorscheme darkness
+colorscheme simple-dark
+
+set laststatus=2
+set noshowcmd
+set noshowmode
+set statusline=
+set statusline+=%3*
+set statusline+=%=
+set statusline+=%1*\ %02l/%L\
+set statusline+=%2*\%02v
+set statusline+=%1*\
+set statusline+=%0*\ %n\
+set shm+=a
+set shm+=W
