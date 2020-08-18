@@ -4,8 +4,11 @@ alias aliasrc="vim ~/.aliasrc"
 alias ..="cd .."
 alias ...="cd ../.."
 
+# Colorize output
+
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
+alias ip='ip --color'
 
 alias l='ls -1'
 alias ll='ls -lh'
@@ -13,6 +16,7 @@ alias la='ls -lha'
 
 alias lgrep='l . | grep'
 alias lagrep='la . | grep'
+
 
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 
