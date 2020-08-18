@@ -26,6 +26,7 @@ PS1='\[\033[38;5;244m\]\[${bold}\]$(get_git_info && echo "\n")\[${reset}\]\u \W 
 
 # history
 export HISTCONTROL=ignoreboth
+export HISTSIZE=500000
 
 # source fuzzy finder 
 source /usr/share/fzf/*.bash
