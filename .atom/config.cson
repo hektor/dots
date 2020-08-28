@@ -1,0 +1,16 @@
+"*":
+  core:
+    autoHideMenuBar: true
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "dun-syntax"
+    ]
+  editor:
+    fontSize: 17
+  "exception-reporting":
+    userId: "6f9fc289-7b3c-4490-937e-5e58e9765c5e"
+  "status-bar":
+    isVisible: false
+  welcome:
+    showOnStartup: false

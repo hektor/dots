@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+cd $HOME/.vimwiki
+git a $HOME/.vimwiki
+git cm 'Update'  
+git push

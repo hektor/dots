@@ -1,0 +1,13 @@
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  'space s h': 'window:focus-pane-on-left'
+  'space s l': 'window:focus-pane-on-right'
+  'space s k': 'window:focus-pane-above'
+  'space s j': 'window:focus-pane-below'
+  'space s v': 'pane:split-right-and-copy-active-item'
+  'space s s': 'pane:split-down-and-copy-active-item'
+  'space q': 'core:close'
+  's': 'unset!'
+  'space p': 'fuzzy-finder:toggle-file-finder'
+
+'atom-text-editor':
+  'ctrl-b': 'tree-view:toggle'
