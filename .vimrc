@@ -124,6 +124,7 @@ let g:coc_global_extensions = [
   \'coc-json',
   \'coc-markdownlint',
   \'coc-yaml',
+  \'coc-snippets'
   \]
 
 Plug 'supercollider/scvim'
