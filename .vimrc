@@ -102,13 +102,13 @@ Plug 'preservim/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+Plug 'axvr/zepl.vim'
+Plug 'takac/vim-hardtime'
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte'
-Plug 'axvr/zepl.vim'
-Plug 'takac/vim-hardtime'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
@@ -133,8 +133,6 @@ Plug 'tidalcycles/vim-tidal'
 call plug#end()
 
 " plugin config ________________________ 
-
-
 
 " NERDCommenter
 let g:NERDSpaceDelims = 1
@@ -185,7 +183,6 @@ let g:hardtime_maxcount = 4
 " plugin keybindings ___________________  
 
 " coc autocompletion
-
 inoremap <silent><expr><C-j> pumvisible() ? "\<C-n>" :
   \ coc#refresh()
 inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "k"
