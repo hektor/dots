@@ -5,7 +5,11 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 capacityStatus=$(cat /sys/class/power_supply/BAT0/capacity)
-chargingStatus=$(cat /sys/class/power_supply/AC/online)
+chargingStatus=""
+
+if [ -f /sys/class/power_supply/AC/online ]; then
+  chargingStatus=$(cat /sys/class/power_supply/AC/online)
+fi
 
 if [ "$chargingStatus" == "1" ]; then
   printf "Battery is ${GREEN}charging${NC}.\n"
