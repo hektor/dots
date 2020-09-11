@@ -3,21 +3,21 @@
 function start() {
   adb start-server
   nohup gnirehtet autorun &> /dev/null &
-  echo "Started reverse tethering"
+  printf "Started reverse tethering \n"
 }
 
 function stop() {
   adb kill-server 
   gnirehtet stop
   pkill gnirehtet
-  echo "Stopped reverse tethering"
+  printf "Stopped reverse tethering \n"
 }
 
 case "$1" in 
   start) start ;;
   stop) stop ;;
   restart) stop; start ;;
-  *) echo "start | stop | restart" >&2
+  *) printf "start | stop | restart \n" >&2
   exit 1
   ;;
 esac
