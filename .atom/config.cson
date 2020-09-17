@@ -7,6 +7,7 @@
       "dun-syntax"
     ]
   editor:
+    fontFamily: "Iosevka Term SS08"
     fontSize: 27
     scrollPastEnd: true
   "exception-reporting":
