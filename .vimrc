@@ -1,4 +1,4 @@
-" general config _______________________ 
+" General config _______________________ 
 
 set nocompatible
 
@@ -25,42 +25,52 @@ set novisualbell
 set conceallevel=1
 set clipboard=unnamedplus
 
-" functions ____________________________
+" Functions ____________________________
+
+" Function: Toggle line numbers
 
 func! ToggleRnu() " toggle: no numbers - relative nummbers
   if(&nu) | set nonu nornu | else | set nu rnu | endif
 endfunc
 
-" keybindings __________________________
+" Keybindings __________________________
+
+" Keybindings: leader keys
 
 nnoremap <space> <nop>
 let mapleader = " "
 let maplocalleader = ";"
 
-" split
+" Keybindings: splits
+
+" Split horizontal & vertical
 nmap ss :sp<Return><c-w>w
 nmap sv :vs<Return><c-w>w
 
-" split navigate
+" Navigate splits 
 nnoremap sw <c-w>w
 nnoremap sh <c-w>h
 nnoremap sj <c-w>j
 nnoremap sk <c-w>k
 nnoremap sl <c-w>l
 
-" split resize
+" Resize splits 
 nnoremap sH <C-w>8<
 nnoremap sJ <C-w>8-
 nnoremap sK <C-w>8+
 nnoremap sL <C-w>8>
 
-" file tree
+" Keybindings: file tree
+
 nnoremap sb :Lex<cr>
 
-" terminal
+
+" Keybindings: terminal
+
 nnoremap <leader>t :term<cr>
 
-" hard mode
+" Keybindings: hard mode
+
 nnoremap <left> <nop>
 nnoremap <down> <nop>
 nnoremap <up> <nop>
@@ -70,47 +80,53 @@ inoremap <down> <nop>
 inoremap <up> <nop>
 inoremap <right> <nop>
 
-" quick quit
+" Keybindings: quick quit
+
 nnoremap <leader>w :w<cr>
 nnoremap <leader>W :wq<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>Q :q!<cr>
 
-" quick exit insert
+" Keybindings: exit insert mode
+
 inoremap jj <esc>
 
-" clear search highlight
+" Keybindings: search 
+
 nnoremap <leader><space> :noh<cr>
 
-" silver search
+" Silver search
 nnoremap <leader>A :Ag <cr> 
 
-" toggle numbers
+" Keybindings: line numbers
+
 nnoremap <leader>n :call ToggleRnu()<cr>
 
-" edit vim config
-nnoremap <leader>ec :split $MYVIMRC<cr>
+" Keybindings: config
 
-" source current file
+nnoremap <leader>ec :split $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 
-" plugins ______________________________ 
+" Plugins ______________________________ 
 
 call plug#begin()
 
+" Plugins: General
+
 Plug 'preservim/nerdcommenter'
+Plug 'takac/vim-hardtime'
+Plug 'machakann/vim-sandwich'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'axvr/zepl.vim'
-Plug 'takac/vim-hardtime'
-Plug 'machakann/vim-sandwich'
+
+" Plugins: Languages
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \'coc-eslint',
@@ -128,14 +144,17 @@ let g:coc_global_extensions = [
   \'coc-snippets'
   \]
 
+" Plugin: TidalCycles
+
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
 
 call plug#end()
 
-" plugin config ________________________ 
+" Plugin config ________________________ 
 
-" NERDCommenter
+" Plugin: NERDCommenter
+
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let NERDAltDelims_haskell = 1
@@ -143,15 +162,20 @@ let g:NERDCustomDelimiters = { 'tidal': { 'left': '{-','right': '-}' } }
 let g:NERDCustomDelimiters = { 'tidal': { 'left': '--','right': '' } }
 let g:NERDCommentEmptyLines = 1
 
-" fzf popup
+" Plugin: fzf
+
+" Popup
+
 let g:fzf_layout = {'window': { 'width': 0.62, 'height': 0.62}}
 
-" fzf - use silversearcher-ag to respect .gitignore
+" Use silversearcher-ag to respect .gitignore
+
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 let g:ag_working_path_mode="r"
 set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip " fzf ignore
 
-" vimwiki
+" Plugin: VimWiki
+
 let g:vimwiki_list = [{'path': '~/.vimwiki/',
                       \ 'template_path': '~/.vimwiki/templates/',
                       \ 'template_default': 'default',
@@ -160,43 +184,37 @@ let g:vimwiki_list = [{'path': '~/.vimwiki/',
                       \ 'html_filename_parameterization': 1,
                       \ 'template_ext': '.tpl'}]
 
-" js & ts
+" Pugin: JS & TypeScript
+
 let g:javascript_plugin_jsdoc = 1 " jsdoc syntax highlighting
 let g:javascript_plugin_flow = 1 " flow syntax highlighting
 let g:javascript_conceal_function = "ƒ"
 let g:javascript_conceal_return = "⇖"
 
-" svelte
+" Plugin: Svelte
+
 let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
 
+" Plugin: TidalCycles
+
 " SuperCollider
+
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
 au Filetype supercollider packadd scvim
 
-" tidalvim
+" TidalVim
+
 let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
 
-" hard time
+" Plugin: Hardtime
+
 let g:hardtime_default_on = 1
 let g:hardtime_maxcount = 4
 
-" plugin keybindings ___________________  
+" Plugin keybindings ___________________  
 
-" coc autocompletion
-inoremap <silent><expr><C-j> pumvisible() ? "\<C-n>" :
-  \ coc#refresh()
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "k"
-inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" code action on cursor position
-nmap <leader>do <Plug>(coc-codeaction)
-
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" :Prettier command to prettify file
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
+" Plugin: fzf
 nnoremap <c-p> :FZF<cr>
 nnoremap <leader>p :FZF<cr>
 nnoremap <leader>b :Buffers<cr>
@@ -207,7 +225,26 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit'
   \}
 
-" theme ________________________________  
+" Plugin: coc
+
+" Autocompletion
+
+inoremap <silent><expr><C-j> pumvisible() ? "\<C-n>" :
+  \ coc#refresh()
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "k"
+inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Code action on cursor position
+
+nmap <leader>do <Plug>(coc-codeaction)
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" :Prettier command to prettify file
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Theme ________________________________  
 
 colorscheme simple-dark
 
