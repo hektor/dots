@@ -1,14 +1,20 @@
 # enable copy to clipboard
 set selection-clipboard clipboard
 set adjust-open width
-set font Iosevka 16
+set font "Iosevka Term SS08 16"
 
-set default-bg "#0d0d0d"
+# theme
+set default-bg "#1c1c1c"
 set default-fg "#ccc"
-set statusbar-bg "#0d0d0d"
+set statusbar-bg "#1c1c1c"
 set statusbar-fg "#ccc"
-set inputbar-bg "#0d0d0d"
+set inputbar-bg "#1c1c1c"
 set inputbar-fg "#ccc"
-set recolor-darkcolor "#ccc"
-set recolor-lightcolor "#0d0d0d"
+
+# dark mode
 set recolor true
+set recolor-darkcolor "#ccc"
+set recolor-lightcolor "#1c1c1c"
+
+# hide status bar
+set guioptions none
