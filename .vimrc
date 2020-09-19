@@ -104,6 +104,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'axvr/zepl.vim'
 Plug 'takac/vim-hardtime'
+Plug 'machakann/vim-sandwich'
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
