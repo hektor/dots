@@ -1,13 +1,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# load aliases dynamically
+# Load aliases dynamically
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
-# add ~/.bin to PATH
+# Add ~/.bin to PATH
 export PATH=~/.bin:$PATH
 
-# prompt
+# Prompt
 bold=$(tput bold)
 reset=$(tput sgr0)
 
@@ -24,14 +24,18 @@ get_git_info() {
 
 PS1='\[\033[38;5;244m\]\[${bold}\]$(get_git_info && echo "\n")\[${reset}\]\u \W ❭ '
 
-# history
+# History
 export HISTCONTROL=ignoreboth
 export HISTSIZE=500000
 
-# source fuzzy finder 
+# Readable man pages
+MANWIDTH=120
+export MANWIDTH
+
+# Source fuzzy finder 
 source /usr/share/fzf/*.bash
 
-# vim-style keybindings
+# Vim style keybindings
 export EDITOR='vim'
 set -o vi
 bind '"jj":"\e"'
@@ -39,7 +43,7 @@ bind '"jj":"\e"'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
 export FZF_COMPLETION_OPTS='-x'
 
-# nvm
+# Nvm
 lazy_load_nvm() {
   unset -f nvm node npm npx
   export NVM_DIR="$HOME/.nvm"
