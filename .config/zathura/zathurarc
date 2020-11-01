@@ -17,4 +17,8 @@ set recolor-darkcolor "#ccc"
 set recolor-lightcolor "#111111"
 
 # hide status bar
-set guioptions none
+# set guioptions none
+
+map J zoom out
+map K zoom in
+map i recolor
