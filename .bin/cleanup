@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+[ -d ~/.local/share/Trash ] && rm -rf ~/.local/share/Trash/*
+[ -d ~/.Trash ] && rm -rf ~/.Trash/*
+[ -d ~/.cache/thumbnails ] && rm -rf ~/.cache/thumbnails/*
