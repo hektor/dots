@@ -10,33 +10,33 @@ endif
 let g:colors_name = "simple-dark"
 
 if has("gui_running") || &t_Co == 256
-	  hi NonText cterm=NONE ctermfg=black ctermbg=NONE gui=NONE guifg=bg guibg=#0c0c0c
-    hi Normal cterm=NONE ctermfg=247 ctermbg=NONE gui=NONE guifg=#cccccc guibg=#0c0c0c
-    hi Keyword cterm=NONE ctermfg=255 ctermbg=NONE gui=NONE guifg=#eeeeee guibg=#0c0c0c
-    hi Constant cterm=NONE ctermfg=252 ctermbg=NONE gui=NONE guifg=#d0d0d0 guibg=#0c0c0c
-    hi String cterm=NONE ctermfg=245 ctermbg=NONE gui=NONE guifg=#8a8a8a guibg=#0c0c0c
-    hi Comment cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#585858 guibg=#0c0c0c
-    hi Number cterm=NONE ctermfg=255  ctermbg=NONE gui=NONE guifg=#ff0000 guibg=#0c0c0c
-    hi Error cterm=NONE ctermfg=255 ctermbg=DarkGray gui=NONE guifg=#eeeeee guibg=#0c0c0c
-    hi ErrorMsg cterm=NONE ctermfg=255 ctermbg=DarkGray gui=NONE guifg=#eeeeee guibg=#0c0c0c
-    hi Search cterm=NONE ctermfg=245 ctermbg=Gray gui=NONE guifg=#8a8a8a guibg=#0c0c0c
-    hi IncSearch cterm=reverse ctermfg=255 ctermbg=245 gui=reverse guifg=#eeeeee guibg=#0c0c0c
-    hi DiffChange cterm=NONE ctermfg=240 ctermbg=255 gui=NONE guifg=#8a8a8a guibg=#0c0c0c
-    hi DiffText cterm=bold ctermfg=255 ctermbg=DarkGray gui=bold guifg=#bcbcbc guibg=#0c0c0c
-    hi SignColumn cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#8a8a8a guibg=#0c0c0c
-    hi SpellBad cterm=undercurl ctermfg=255 ctermbg=245 gui=undercurl guifg=#eeeeee guibg=#0c0c0c
-    hi SpellCap cterm=NONE ctermfg=255 ctermbg=124 gui=NONE guifg=#eeeeee guibg=#0c0c0c
-    hi SpellRare cterm=NONE ctermfg=240 ctermbg=black gui=NONE guifg=#8a8a8a guibg=#0c0c0c
-    hi WildMenu cterm=NONE ctermfg=240 ctermbg=255 gui=NONE guifg=#585858 guibg=#0c0c0c
+	  hi NonText cterm=NONE ctermfg=black ctermbg=NONE gui=NONE guifg=bg guibg=#111111
+    hi Normal cterm=NONE ctermfg=247 ctermbg=NONE gui=NONE guifg=#cccccc guibg=#111111
+    hi Keyword cterm=NONE ctermfg=255 ctermbg=NONE gui=NONE guifg=#eeeeee guibg=#111111
+    hi Constant cterm=NONE ctermfg=252 ctermbg=NONE gui=NONE guifg=#d0d0d0 guibg=#111111
+    hi String cterm=NONE ctermfg=245 ctermbg=NONE gui=NONE guifg=#8a8a8a guibg=#111111
+    hi Comment cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#585858 guibg=#111111
+    hi Number cterm=NONE ctermfg=255  ctermbg=NONE gui=NONE guifg=#ff0000 guibg=#111111
+    hi Error cterm=NONE ctermfg=255 ctermbg=DarkGray gui=NONE guifg=#eeeeee guibg=#111111
+    hi ErrorMsg cterm=NONE ctermfg=255 ctermbg=DarkGray gui=NONE guifg=#eeeeee guibg=#111111
+    hi Search cterm=NONE ctermfg=245 ctermbg=Gray gui=NONE guifg=#8a8a8a guibg=#111111
+    hi IncSearch cterm=reverse ctermfg=255 ctermbg=245 gui=reverse guifg=#eeeeee guibg=#111111
+    hi DiffChange cterm=NONE ctermfg=240 ctermbg=255 gui=NONE guifg=#8a8a8a guibg=#111111
+    hi DiffText cterm=bold ctermfg=255 ctermbg=DarkGray gui=bold guifg=#bcbcbc guibg=#111111
+    hi SignColumn cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#8a8a8a guibg=#111111
+    hi SpellBad cterm=undercurl ctermfg=255 ctermbg=245 gui=undercurl guifg=#eeeeee guibg=#111111
+    hi SpellCap cterm=NONE ctermfg=255 ctermbg=124 gui=NONE guifg=#eeeeee guibg=#111111
+    hi SpellRare cterm=NONE ctermfg=240 ctermbg=black gui=NONE guifg=#8a8a8a guibg=#111111
+    hi WildMenu cterm=NONE ctermfg=240 ctermbg=255 gui=NONE guifg=#585858 guibg=#111111
     hi Pmenu ctermfg=NONE ctermbg=235 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
     hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
-    hi SpecialKey cterm=NONE ctermfg=black ctermbg=255 gui=NONE guifg=#eeeeee guibg=#0c0c0c
-    hi MatchParen cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=#eeeeee guibg=#0c0c0c
-    hi CursorLine cterm=NONE ctermfg=NONE ctermbg=233 gui=NONE guifg=NONE guibg=#0c0c0c
-    hi StatusLine cterm=bold,reverse ctermfg=240 ctermbg=NONE gui=bold,reverse guifg=#8a8a8a guibg=#0c0c0c
-    hi StatusLineNC cterm=reverse ctermfg=240 ctermbg=NONE gui=reverse guifg=#303030 guibg=#0c0c0c
-    hi Visual cterm=reverse ctermfg=250 ctermbg=NONE gui=reverse guifg=#bcbcbc guibg=#0c0c0c
-    hi VertSplit cterm=NONE ctermfg=Gray ctermbg=NONE gui=NONE guifg=#0c0c0c guibg=#0c0c0c
+    hi SpecialKey cterm=NONE ctermfg=black ctermbg=255 gui=NONE guifg=#eeeeee guibg=#111111
+    hi MatchParen cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=#eeeeee guibg=#111111
+    hi CursorLine cterm=NONE ctermfg=NONE ctermbg=233 gui=NONE guifg=NONE guibg=#111111
+    hi StatusLine cterm=bold,reverse ctermfg=240 ctermbg=NONE gui=bold,reverse guifg=#8a8a8a guibg=#111111
+    hi StatusLineNC cterm=reverse ctermfg=240 ctermbg=NONE gui=reverse guifg=#303030 guibg=#111111
+    hi Visual cterm=reverse ctermfg=250 ctermbg=NONE gui=reverse guifg=#bcbcbc guibg=#111111
+    hi VertSplit cterm=NONE ctermfg=Gray ctermbg=NONE gui=NONE guifg=#111111 guibg=#111111
     hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
     hi ColorColumn  cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
     hi ModeMsg cterm=NONE ctermfg=DarkGray ctermbg=NONE
