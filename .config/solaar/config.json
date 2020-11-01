@@ -4,5 +4,21 @@
     "side-scroll": true,
     "smooth-scroll": true
   },
-  "_version": "1.0.1"
+  "405E:C347528E": {
+    "_name": "M720 Triathlon",
+    "hires-smooth-invert": false,
+    "hires-smooth-resolution": true,
+    "pointer_speed": 180,
+    "reprogrammable-keys": {
+      "208": 208,
+      "80": 80,
+      "81": 81,
+      "82": 82,
+      "83": 83,
+      "86": 86,
+      "91": 91,
+      "93": 93
+    }
+  },
+  "_version": "1.0.3"
 }
