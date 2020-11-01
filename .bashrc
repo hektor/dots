@@ -34,6 +34,7 @@ export MANWIDTH
 
 # Source fuzzy finder 
 source /usr/share/fzf/*.bash
+source /usr/share/fzf/key-bindings.bash
 
 # Vim style keybindings
 export EDITOR='vim'
