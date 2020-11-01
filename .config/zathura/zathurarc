@@ -4,17 +4,17 @@ set adjust-open width
 set font "Iosevka Term SS08 16"
 
 # theme
-set default-bg "#1c1c1c"
+set default-bg "#111111"
 set default-fg "#ccc"
-set statusbar-bg "#1c1c1c"
+set statusbar-bg "#111111"
 set statusbar-fg "#ccc"
-set inputbar-bg "#1c1c1c"
+set inputbar-bg "#111111"
 set inputbar-fg "#ccc"
 
 # dark mode
 set recolor true
 set recolor-darkcolor "#ccc"
-set recolor-lightcolor "#1c1c1c"
+set recolor-lightcolor "#111111"
 
 # hide status bar
 set guioptions none
