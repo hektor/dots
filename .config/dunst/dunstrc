@@ -7,7 +7,7 @@
     padding = 8
     horizontal_padding = 0
     frame_width = 1
-    frame_color = "#555555"
+    frame_color = "#111111"
     separator_height = 1
     idle_threshold = 120
     font = Iosevka 12
@@ -18,17 +18,17 @@
     verbosity = info
 
 [urgency_low]
-    background = "#0d0d0d"
+    background = "#111111"
     foreground = "#cccccc"
     timeout = 10
 
 [urgency_normal]
-    background = "#0d0d0d"
+    background = "#111111"
     foreground = "#cccccc"
     timeout = 10
 
 [urgency_critical]
-    background = "#0d0d0d"
+    background = "#111111"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0
