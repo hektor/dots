@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+pdfinfo "$1" | head -n 1 | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'
