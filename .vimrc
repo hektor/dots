@@ -149,6 +149,12 @@ let g:coc_global_extensions = [
   \'coc-snippets'
   \]
 
+" Plugin: LaTeX
+
+Plug 'lervag/vimtex'
+
+" Plugin: TidalCycles
+
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
 
@@ -259,6 +265,12 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " :Prettier command to prettify file
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Plugin: vimtex
+
+let g:vimtex_view_method='zathura'
+let g:tex_flavor = 'latex'
+let g:tex_conceal='abdmg'
 
 " Theme ________________________________  
 
