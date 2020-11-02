@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+session="r5rs"
+
+tmux attach-session -t $session || tmux new-session -s $session \; \
+  split-window -h -t $session \; \
+  send-keys -t 0 "vim" C-m \; \
+  send-keys -t 1 "plt-r5rs --no-prim" C-m \; \
+  resize-pane -t 1 -x 100 \; \
+  resize-pane -t 0 -x 125 \; \
+  select-pane -t 0
