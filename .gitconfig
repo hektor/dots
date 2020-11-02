@@ -3,8 +3,8 @@
   excludesfile = ~/.gitignore
 
 [user]
-	email = hektor.misplon@gmail.com
-	name = Hektor Misplon
+  email = hektor.misplon@gmail.com
+  name = Hektor Misplon
   username = hektormisplon
 
 [alias]
