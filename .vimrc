@@ -149,10 +149,12 @@ let g:coc_global_extensions = [
   \'coc-snippets'
   \]
 
-" Plugin: TidalCycles
-
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
+
+" Plugin: Scheme
+"
+Plug 'jpalardy/vim-slime'
 
 call plug#end()
 
@@ -216,6 +218,15 @@ let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.
 
 let g:hardtime_default_on = 1
 let g:hardtime_maxcount = 4
+
+" Plugin: vim-slime
+
+let g:slime_default_config={'socket_name': 'default', 'target_pane': '{right-of}'}
+let g:slime_paste_file=tempname()
+let g:slime_target='tmux'
+let g:slime_no_mappings = 1
+xmap <leader>el <Plug>SlimeRegionSend
+nmap <leader>ep <Plug>SlimeParagraphSend
 
 " Plugin keybindings ___________________  
 
