@@ -23,6 +23,7 @@ alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo p
 
 alias vi='vim'
 alias py='python'
+alias r5rs='plt-r5rs --no-prim'
 alias cfg='/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h'
 
 alias tmuxl='tmux list-sessions'
