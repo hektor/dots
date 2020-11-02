@@ -118,15 +118,20 @@ Plug 'takac/vim-hardtime'
 Plug 'machakann/vim-sandwich'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'vimwiki/vimwiki', {'branch': 'dev'}
+Plug 'vimwiki/vimwiki'
 Plug 'axvr/zepl.vim'
 
 " Plugins: Languages
+
+" JS & TypeScript
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+
+" Coc w/ extensions
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \'coc-eslint',
@@ -184,7 +189,7 @@ let g:vimwiki_list = [{'path': '~/.vimwiki/',
                       \ 'html_filename_parameterization': 1,
                       \ 'template_ext': '.tpl'}]
 
-" Pugin: JS & TypeScript
+" Plugin: JS & TypeScript
 
 let g:javascript_plugin_jsdoc = 1 " jsdoc syntax highlighting
 let g:javascript_plugin_flow = 1 " flow syntax highlighting
