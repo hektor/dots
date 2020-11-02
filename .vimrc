@@ -227,7 +227,8 @@ let g:hardtime_maxcount = 4
 
 " Plugin: vim-slime
 
-let g:slime_default_config={'socket_name': 'default', 'target_pane': '{right-of}'}
+let g:slime_default_config={"socket_name": get(split($TMUX, ","), 0), "target_pane": '{last}'}
+let g:slime_dont_ask_default = 1
 let g:slime_paste_file=tempname()
 let g:slime_target='tmux'
 let g:slime_no_mappings = 1
