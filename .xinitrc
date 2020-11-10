@@ -38,6 +38,9 @@ xset -b
 # adjust typematic delay & rate
 xset r rate 200 30
 
+slstatus &
+udiskie &
+
 # execute dwm in a loop
 while true; do
   dwm 2> ~/.dwm.log
