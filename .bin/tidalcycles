@@ -11,14 +11,14 @@ SESSION=${SESSION:-"tidal"}
 TIDAL_BOOT_PATH=${TIDAL_BOOT_PATH:-""}
 GHCI=${GHCI:-""}
 
-args=${@:-$FILE}
+args=${*:-$FILE}
 
 # attach if session else create
-$TMUX attach-session -t $SESSION || $TMUX new-session -s $SESSION \; \
-  split-window -h -t $SESSION \; \
+$TMUX attach-session -t "$SESSION" || $TMUX new-session -s "$SESSION" \; \
+  split-window -h -t "$SESSION" \; \
   send-keys -t 0 "$VIM $args" C-m \; \
   send-keys -t 1 "TIDAL_BOOT_PATH=$TIDAL_BOOT_PATH GHCI=$GHCI tidal" C-m \; \
-  new-window -t $SESSION:2 -n SuperDirt \; \
+  new-window -t "$SESSION":2 -n SuperDirt \; \
   send-keys -t 0 "cadence-session-start -s && sclang ~/dev/live/tidal/superdirt_startup.scd" C-m \; \
   select-window -t 1 \; \
   resize-pane -t 1 -x 100 \; \
