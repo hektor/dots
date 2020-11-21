@@ -34,3 +34,6 @@ text-width 80
 
 browser "brave"
 macro m set browser "mpv %u"; open-in-browser ; set browser "brave"
+
+show-title-bar false
+show-keymap-hint false
