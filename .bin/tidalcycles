@@ -19,7 +19,7 @@ $TMUX attach-session -t "$SESSION" || $TMUX new-session -s "$SESSION" \; \
   send-keys -t 0 "$VIM $args" C-m \; \
   send-keys -t 1 "TIDAL_BOOT_PATH=$TIDAL_BOOT_PATH GHCI=$GHCI tidal" C-m \; \
   new-window -t "$SESSION":2 -n SuperDirt \; \
-  send-keys -t 0 "cadence-session-start -s && sclang ~/dev/live/tidal/superdirt_startup.scd" C-m \; \
+  send-keys -t 0 "jack_control start && sclang ~/dev/live/scripts/start.scd" C-m \; \
   select-window -t 1 \; \
   resize-pane -t 1 -x 100 \; \
   resize-pane -t 0 -x 125 \; \
