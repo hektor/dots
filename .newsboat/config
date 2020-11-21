@@ -1,0 +1,36 @@
+auto-reload yes
+reload-threads 100
+
+color background          color240  black
+color listnormal          color238  black
+color listfocus           white     black
+color listnormal_unread   color240  black  bold
+color listfocus_unread    default   black  bold
+color info                default   black
+color article             default   black
+
+bind-key h quit articlelist
+bind-key h quit article
+bind-key h quit tagselection
+bind-key h quit feedlist
+bind-key j down feedlist
+bind-key j down tagselection
+bind-key j next articlelist
+bind-key j down article
+bind-key J next-feed articlelist
+bind-key k up feedlist
+bind-key k prev articlelist
+bind-key k up tagselection
+bind-key K prev-feed articlelist
+bind-key k up article
+bind-key l open articlelist
+bind-key l open feedlist
+bind-key l open tagselection
+
+bind-key G end
+bind-key g home
+
+text-width 80
+
+browser "brave"
+macro m set browser "mpv %u"; open-in-browser ; set browser "brave"
