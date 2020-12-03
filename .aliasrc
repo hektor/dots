@@ -1,5 +1,6 @@
 alias bashrc="vim ~/.bashrc"
 alias aliasrc="vim ~/.aliasrc"
+alias vimrc="vim ~/.vimrc"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -11,13 +12,27 @@ alias ip='ip --color'
 
 alias l='ls -1'
 alias ll='ls -lh'
+alias lt='ls -lht'
 alias la='ls -lha'
+alias lta='ls -lhat'
+
+# Safety
+alias rm='rm -I --preserve-root'
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias mkdir='mkdir -p'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
 
 alias lgrep='l . | grep'
 alias lagrep='la . | grep'
 
 # Pretty print path variables
 alias path='echo -e ${PATH//:/\\n}'
+
+alias df='df -kTh'
 
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 
