@@ -10,22 +10,15 @@ export PATH=~/.bin:$PATH
 # Prompt
 bold=$(tput bold)
 reset=$(tput sgr0)
-
-get_tasks_left() {
-  echo "$(todoist l | wc -l) tasks"
-}
-
 get_branch_name() {
   git symbolic-ref --quiet --short HEAD 2>/dev/null \
     || git rev-parse --short HEAD 2>/dev/null \
     || echo 'some branch'
 }
-
 get_git_info() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
   echo -e " ${1}$(get_branch_name)"
 }
-
 PS1='\[\033[38;5;244m\]\[${bold}\]$(get_git_info && echo "\n")\[${reset}\]\u \W ❭ '
 
 # History
@@ -33,8 +26,10 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=500000
 
 # Readable man pages
-MANWIDTH=120
-export MANWIDTH
+export MANWIDTH=120
+
+# Vim
+export EDITOR='vim'
 
 # Fuzzy finder setup
 source /usr/share/fzf/*.bash
@@ -42,9 +37,6 @@ source /usr/share/fzf/key-bindings.bash
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
 export FZF_DEFAULT_OPTS='--height 38% --reverse --border --prompt="❭ " --pointer="❭"'
 export FZF_COMPLETION_OPTS='-x'
-
-# Vim
-export EDITOR='vim'
 
 # Nvm
 lazy_load_nvm() {
