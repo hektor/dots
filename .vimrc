@@ -111,13 +111,13 @@ nnoremap <leader>n :call ToggleRnu()<cr>
 nnoremap <leader>ec :split $MYVIMRC<cr>
 nnoremap <leader>so :so %<cr>
 
-" Plugins ______________________________ 
+" Plugins ______________________________
 
 call plug#begin()
 
 " Plugins: General
 
-Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'takac/vim-hardtime'
 Plug 'machakann/vim-sandwich'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
