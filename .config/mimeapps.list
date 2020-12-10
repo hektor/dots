@@ -1,2 +1,5 @@
 [Default Applications]
 application/pdf=zathura.desktop
+video/mp4=mpv.desktop
+video/webm=mpv.desktop
+x-scheme-handler/msteams=teams-for-linux.desktop
