@@ -93,7 +93,7 @@ nnoremap <leader>Q :q!<cr>
 
 " Keybindings: exit insert mode
 
-inoremap jj <esc>
+inoremap <nowait> jj <esc>
 
 " Keybindings: search
 
