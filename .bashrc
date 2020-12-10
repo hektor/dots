@@ -11,6 +11,10 @@ export PATH=~/.bin:$PATH
 bold=$(tput bold)
 reset=$(tput sgr0)
 
+get_tasks_left() {
+  echo "$(todoist l | wc -l) tasks"
+}
+
 get_branch_name() {
   git symbolic-ref --quiet --short HEAD 2>/dev/null \
     || git rev-parse --short HEAD 2>/dev/null \
