@@ -1,4 +1,5 @@
-" General config _______________________ 
+" General config ______________________
+"
 
 set nocompatible
 
@@ -15,7 +16,7 @@ set nu rnu
 set signcolumn=number " make sign replace number
 set nowrap
 set backspace=indent,eol,start " indentation
-set incsearch ignorecase smartcase hlsearch" search     
+set incsearch ignorecase smartcase hlsearch" search
 set autoindent tabstop=2 softtabstop=2 shiftwidth=2 expandtab " indenting
 set lazyredraw " only essential redraws
 set synmaxcol=181
@@ -94,12 +95,12 @@ nnoremap <leader>Q :q!<cr>
 
 inoremap jj <esc>
 
-" Keybindings: search 
+" Keybindings: search
 
 nnoremap <leader><space> :noh<cr>
 
 " Silver search
-nnoremap <leader>A :Ag <cr> 
+nnoremap <leader>A :Ag <cr>
 
 " Keybindings: line numbers
 
@@ -167,7 +168,7 @@ Plug 'jpalardy/vim-slime'
 
 call plug#end()
 
-" Plugin config ________________________ 
+" Plugin config ________________________
 
 " Plugin: NERDCommenter
 
@@ -238,7 +239,7 @@ let g:slime_no_mappings = 1
 xmap <leader>el <Plug>SlimeRegionSend
 nmap <leader>ep <Plug>SlimeParagraphSend
 
-" Plugin keybindings ___________________  
+" Plugin keybindings ___________________
 
 " Plugin: fzf
 nnoremap <c-p> :FZF<cr>
@@ -255,10 +256,10 @@ let g:fzf_action = {
 
 " Autocompletion
 
-inoremap <silent><expr><C-j> pumvisible() ? "\<C-n>" :
+inoremap <silent><expr><c-j> pumvisible() ? "\<c-n>" :
   \ coc#refresh()
-inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "k"
-inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr><c-k> pumvisible() ? "\<C-p>" : "k"
+inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<c-y>" : "\<c-g>u\<CR>"
 
 " Code action on cursor position
 
@@ -276,7 +277,7 @@ let g:vimtex_view_method='zathura'
 let g:tex_flavor = 'latex'
 let g:tex_conceal='abdmg'
 
-" Theme ________________________________  
+" Theme ________________________________
 
 colorscheme simple-dark
 
