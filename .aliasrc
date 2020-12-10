@@ -18,10 +18,10 @@ alias lta='ls -lhat'
 
 # Safety
 alias rm='rm -I --preserve-root'
-alias mv='mv -i'
-alias cp='cp -i'
+alias mv='mv -iv'
+alias cp='cp -iv'
 alias ln='ln -i'
-alias mkdir='mkdir -p'
+alias mkdir='mkdir -pv'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
