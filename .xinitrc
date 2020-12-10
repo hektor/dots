@@ -27,6 +27,9 @@ xset -b
 # adjust typematic delay & rate
 xset r rate 200 30
 
+xbanish &
+picom &
+hsetroot -solid "#0a0a0a"
 slstatus &
 udiskie &
 
