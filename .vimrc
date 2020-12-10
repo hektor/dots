@@ -1,5 +1,4 @@
 " General config ______________________
-"
 
 set nocompatible
 
@@ -173,14 +172,11 @@ call plug#end()
 
 " Plugin config ________________________
 
-" Plugin: NERDCommenter
+" Plugin: vim-commentary
 
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let NERDAltDelims_haskell = 1
-let g:NERDCustomDelimiters = { 'tidal': { 'left': '{-','right': '-}' } }
-let g:NERDCustomDelimiters = { 'tidal': { 'left': '--','right': '' } }
-let g:NERDCommentEmptyLines = 1
+xmap <leader>c <Plug>Commentary
+nmap <leader>c <Plug>Commentary
+nmap <leader>cc <Plug>CommentaryLine
 
 " Plugin: fzf
 
