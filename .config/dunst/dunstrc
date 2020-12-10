@@ -10,7 +10,7 @@
     frame_color = "#333333"
     separator_height = 1
     idle_threshold = 120
-    font = Iosevka 12
+    font = Iosevka Term SS08 12
     markup=full
     format = "%a\n%s\n%b"
     dmenu = /usr/bin/dmenu -p dunst:
