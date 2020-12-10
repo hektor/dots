@@ -47,18 +47,21 @@ let maplocalleader = ";"
 nmap ss :sp<Return><c-w>w
 nmap sv :vs<Return><c-w>w
 
-" Navigate splits 
+" Navigate splits
 nnoremap sw <c-w>w
 nnoremap sh <c-w>h
 nnoremap sj <c-w>j
 nnoremap sk <c-w>k
 nnoremap sl <c-w>l
 
-" Resize splits 
-nnoremap sH <C-w>8<
-nnoremap sJ <C-w>8-
-nnoremap sK <C-w>8+
-nnoremap sL <C-w>8>
+" Resize splits
+nnoremap sH <c-w>8<
+nnoremap sJ <c-w>8-
+nnoremap sK <c-w>8+
+nnoremap sL <c-w>8>
+
+" Resize to equal splits
+nnoremap s= <c-w>=
 
 " Keybindings: file tree
 
