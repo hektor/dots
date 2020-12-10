@@ -24,3 +24,6 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# object files
+*.o
