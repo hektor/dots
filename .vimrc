@@ -25,6 +25,9 @@ set viminfo='20,\"101 "max 100 lines in registers
 set novisualbell
 set conceallevel=1
 set clipboard=unnamedplus
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<
+
 
 " Functions ____________________________
 
