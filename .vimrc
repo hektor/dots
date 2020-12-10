@@ -8,7 +8,7 @@ set encoding=utf-8
 set hidden
 set ttyfast
 set updatetime=300
-set timeout timeoutlen=1000 ttimeoutlen=5
+set timeout timeoutlen=200 ttimeoutlen=5
 set undolevels=500
 set history=500
 set nu rnu
