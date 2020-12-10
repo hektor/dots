@@ -40,14 +40,12 @@ export MANWIDTH
 source /usr/share/fzf/*.bash
 source /usr/share/fzf/key-bindings.bash
 
-# Vim style keybindings
-export EDITOR='vim'
-set -o vi
-bind '"jj":"\e"'
-
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
 export FZF_DEFAULT_OPTS='--height 38% --reverse --border --prompt="❭ " --pointer="❭"'
 export FZF_COMPLETION_OPTS='-x'
+
+# Vim
+export EDITOR='vim'
 
 # Nvm
 lazy_load_nvm() {
