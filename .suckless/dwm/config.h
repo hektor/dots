@@ -61,11 +61,16 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray1, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
+static const char *incvol[] = { "amixer", "set", "Master", "3+", NULL };
+static const char *decvol[] = { "amixer", "set", "Master", "3-", NULL };
+static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ NULL,                         XK_Print,  spawn,          {.v = prtscrcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -102,6 +107,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ NULL,                         XF86XK_AudioLowerVolume, spawn, {.v = decvol } },
+	{ NULL,                         XF86XK_AudioRaiseVolume, spawn, {.v = incvol } },
+	{ NULL,                         XF86XK_AudioMute,        spawn, {.v = mutevol } },
 };
 
 /* button definitions */
