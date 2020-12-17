@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+xsetwacom set "Wacom Intuos Pro M Pen stylus" rotate half
+xsetwacom set "Wacom Intuos Pro M Finger touch" rotate half
+xsetwacom set "Wacom HID 5214 Pen stylus" rotate half
+xsetwacom set "Wacom HID 5214 Finger touch" rotate half
+xsetwacom set "Wacom Intuos Pro M Pen eraser" rotate half
+xsetwacom set "Wacom Intuos Pro M Pen cursor" rotate half
+xsetwacom set "Wacom HID 5214 Pen eraser" rotate half
