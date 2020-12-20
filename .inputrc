@@ -6,8 +6,9 @@ set show-mode-in-prompt on
 set vi-ins-mode-string "\1\e[1;32m\2i:\1\e[0m\2"
 set vi-cmd-mode-string "\1\e[1;31m\2c?\1\e[0m\2"
 set show-all-if-ambiguous on
+set visible-stats on
+set mark-symlinked-directories on
 set colored-completion-prefix on
-set colored-stats on
 set completion-display-width 0
 
 $if mode=vi
