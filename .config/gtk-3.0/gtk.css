@@ -44,7 +44,7 @@ headerbar {
 }
 
 entry {
-  border: 1px solid red;
+  border: none;
 }
 
 toolbar {
@@ -62,13 +62,8 @@ menu {
   color: #ccc;
 }
 
-/* inactive tabs*/
 window.background.chromium menubar,
 window.background.chromium {
   background-color: #111;
   color: #ccc;
-}
-
-window.background.chromium textview.view {
-  background-color: transparent;
 }
