@@ -7,3 +7,12 @@ xsetwacom set "Wacom HID 5214 Finger touch" rotate half
 xsetwacom set "Wacom Intuos Pro M Pen eraser" rotate half
 xsetwacom set "Wacom Intuos Pro M Pen cursor" rotate half
 xsetwacom set "Wacom HID 5214 Pen eraser" rotate half
+xsetwacom set "Wacom Intuos Pro M Pen stylus" rotate half
+
+# TODO: Run code depending on current monitor setup
+xsetwacom set "Wacom Intuos Pro M Finger touch" MapToOutput HDMI-A-0
+xsetwacom set "Wacom HID 5214 Pen stylus" MapToOutput HDMI-A-0
+xsetwacom set "Wacom HID 5214 Finger touch" MapToOutput HDMI-A-0
+xsetwacom set "Wacom Intuos Pro M Pen eraser" MapToOutput HDMI-A-0
+xsetwacom set "Wacom Intuos Pro M Pen cursor" MapToOutput HDMI-A-0
+xsetwacom set "Wacom HID 5214 Pen eraser" MapToOutput HDMI-A-0
