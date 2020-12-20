@@ -65,6 +65,8 @@ static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
 static const char *incvol[] = { "amixer", "set", "Master", "3+", NULL };
 static const char *decvol[] = { "amixer", "set", "Master", "3-", NULL };
 static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
+static const char *incbrightness[] = { "xbacklight", "-inc", "10", NULL };
+static const char *decbrightness[] = { "xbacklight", "-dec", "10", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -110,6 +112,8 @@ static Key keys[] = {
 	{ NULL,                         XF86XK_AudioLowerVolume, spawn, {.v = decvol } },
 	{ NULL,                         XF86XK_AudioRaiseVolume, spawn, {.v = incvol } },
 	{ NULL,                         XF86XK_AudioMute,        spawn, {.v = mutevol } },
+	{ NULL,                         XF86XK_MonBrightnessUp,  spawn, {.v = incbrightness} },
+	{ NULL,                         XF86XK_MonBrightnessDown, spawn, {.v = decbrightness} },
 };
 
 /* button definitions */
