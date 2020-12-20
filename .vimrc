@@ -26,7 +26,7 @@ set conceallevel=1
 set clipboard=unnamedplus
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
-
+set fillchars+=vert:│ "cleaner split separator (tmux style)
 
 " Functions ____________________________
 
