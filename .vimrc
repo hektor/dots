@@ -120,7 +120,6 @@ call plug#begin()
 " Plugins: General
 
 Plug 'tpope/vim-commentary'
-Plug 'takac/vim-hardtime'
 Plug 'machakann/vim-sandwich'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -222,11 +221,6 @@ au Filetype supercollider packadd scvim
 " TidalVim
 
 let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
-
-" Plugin: Hardtime
-
-let g:hardtime_default_on = 1
-let g:hardtime_maxcount = 4
 
 " Plugin: vim-slime
 
