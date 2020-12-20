@@ -10,7 +10,7 @@ endif
 let g:colors_name = "simple-dark"
 
 if has("gui_running") || &t_Co == 256
-	  hi NonText cterm=NONE ctermfg=black ctermbg=NONE gui=NONE guifg=bg guibg=#111111
+    hi NonText cterm=NONE ctermfg=black ctermbg=NONE gui=NONE guifg=bg guibg=#111111
     hi Normal cterm=NONE ctermfg=247 ctermbg=NONE gui=NONE guifg=#cccccc guibg=#111111
     hi Keyword cterm=NONE ctermfg=255 ctermbg=NONE gui=NONE guifg=#eeeeee guibg=#111111
     hi Constant cterm=NONE ctermfg=252 ctermbg=NONE gui=NONE guifg=#d0d0d0 guibg=#111111
@@ -19,8 +19,8 @@ if has("gui_running") || &t_Co == 256
     hi Number cterm=NONE ctermfg=255  ctermbg=NONE gui=NONE guifg=#ff0000 guibg=#111111
     hi Error cterm=NONE ctermfg=255 ctermbg=DarkGray gui=NONE guifg=#eeeeee guibg=#111111
     hi ErrorMsg cterm=NONE ctermfg=255 ctermbg=DarkGray gui=NONE guifg=#eeeeee guibg=#111111
-    hi Search cterm=NONE ctermfg=245 ctermbg=Gray gui=NONE guifg=#8a8a8a guibg=#111111
-    hi IncSearch cterm=reverse ctermfg=255 ctermbg=245 gui=reverse guifg=#eeeeee guibg=#111111
+    hi Search cterm=NONE ctermfg=255 ctermbg=240 gui=NONE guifg=#8a8a8a guibg=#111111
+    hi IncSearch cterm=reverse ctermfg=255 ctermbg=240 gui=reverse guifg=#eeeeee guibg=#111111
     hi DiffChange cterm=NONE ctermfg=240 ctermbg=255 gui=NONE guifg=#8a8a8a guibg=#111111
     hi DiffText cterm=bold ctermfg=255 ctermbg=DarkGray gui=bold guifg=#bcbcbc guibg=#111111
     hi SignColumn cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#8a8a8a guibg=#111111
@@ -36,7 +36,7 @@ if has("gui_running") || &t_Co == 256
     hi StatusLine cterm=bold,reverse ctermfg=240 ctermbg=NONE gui=bold,reverse guifg=#8a8a8a guibg=#111111
     hi StatusLineNC cterm=reverse ctermfg=240 ctermbg=NONE gui=reverse guifg=#303030 guibg=#111111
     hi Visual cterm=reverse ctermfg=250 ctermbg=NONE gui=reverse guifg=#bcbcbc guibg=#111111
-    hi VertSplit cterm=NONE ctermfg=Gray ctermbg=NONE gui=NONE guifg=#111111 guibg=#111111
+    hi VertSplit cterm=NONE ctermfg=DarkGray ctermbg=NONE gui=NONE guifg=#111111 guibg=#111111
     hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
     hi ColorColumn  cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
     hi ModeMsg cterm=NONE ctermfg=DarkGray ctermbg=NONE
@@ -49,8 +49,8 @@ else
     hi Number cterm=NONE ctermfg=White ctermbg=NONE
     hi Error cterm=NONE ctermfg=White ctermbg=NONE
     hi ErrorMsg cterm=NONE ctermfg=White ctermbg=NONE
-    hi Search cterm=NONE ctermfg=Gray ctermbg=NONE
-    hi IncSearch cterm=reverse ctermfg=White ctermbg=NONE
+    hi Search cterm=NONE ctermfg=247 ctermbg=NONE
+    hi IncSearch cterm=reverse ctermfg=247 ctermbg=NONE
     hi DiffChange cterm=NONE ctermfg=White ctermbg=NONE
     hi DiffText cterm=bold ctermfg=Gray ctermbg=White
     hi SignColumn cterm=NONE ctermfg=White ctermbg=NONE
@@ -91,7 +91,6 @@ hi! link Function Keyword
 hi! link Include Keyword
 hi! link Type Keyword
 hi! link Typedef Keyword
-hi! link Todo Keyword
 hi! link Label Keyword
 hi! link Define Keyword
 hi! link DiffAdd Keyword
@@ -114,7 +113,7 @@ hi! link WarningMsg Number
 hi! link iCursor SpecialKey
 hi! link SpellLocal SpellCap
 hi! link LineNr Comment
-hi! link NonText NonText 
+hi! link NonText NonText
 hi! link DiffDelete Comment
 hi! link diffRemoved Comment
 hi! link PmenuSbar Visual
