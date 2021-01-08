@@ -685,7 +685,7 @@ setup(void)
 	win = XCreateWindow(dpy, parentwin, x, y, mw - 2 * border_width, mh, border_width,
 	                    CopyFromParent, CopyFromParent, CopyFromParent,
 	                    CWOverrideRedirect | CWBackPixel | CWEventMask, &swa);
-  XSetWindowBorder(dpy, win, scheme[SchemeSel] [ColBg].pixel);
+  XSetWindowBorder(dpy, win, scheme[SchemeOut][ColBg].pixel);
 	XSetClassHint(dpy, win, &ch);
 
 
