@@ -1,3 +1,5 @@
+notify = true
+
 [theme]
 background="black"
 primary="#aaa"
@@ -14,4 +16,4 @@ statusbar="#ccc"
 statusbar_progress="#ccc"
 statusbar_bg="black"
 cmdline="#ccc"
-cmdline_bg="#ccc"
+cmdline_bg="black"
