@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-
-ip addr show wlan0 | awk '/inet / {gsub(/\/.*/,"",$2); print $2}'
+ip addr show $@ | awk '/inet / {gsub(/\/.*/,"",$2); print $2}'
