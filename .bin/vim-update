@@ -1,0 +1,1 @@
+vim +PlugUpgrade +PlugUpdate +CocUpdate
