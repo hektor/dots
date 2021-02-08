@@ -1,5 +1,6 @@
 [Default Applications]
-application/pdf=zathura.desktop
+application/pdf=org.pwmt.zathura.desktop
 video/mp4=mpv.desktop
 video/webm=mpv.desktop
-x-scheme-handler/msteams=teams-for-linux.desktop
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/obsidian=obsidian.desktop
