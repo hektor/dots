@@ -7,15 +7,14 @@ set font "Iosevka Term SS08 16"
 set default-bg "#111"
 set default-fg "#ccc"
 set statusbar-bg "#111"
-set statusbar-fg "#ccc"
+set statusbar-fg "#777"
 set inputbar-bg "#111"
 set inputbar-fg "#ccc"
 set highlight-color "#333"
 
-
 # dark mode
 set recolor true
-set recolor-darkcolor "#ccc"
+set recolor-darkcolor "#aaa"
 set recolor-lightcolor "#111"
 
 # hide status bar
