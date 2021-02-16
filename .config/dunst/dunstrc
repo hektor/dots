@@ -7,28 +7,28 @@
     padding = 8
     horizontal_padding = 8
     frame_width = 1
-    frame_color = "#333333"
+    frame_color = "#333"
     separator_height = 1
     idle_threshold = 120
     font = Iosevka Term SS08 12
     markup=full
-    format = "%a\n%s\n%b"
+    format = "%s\n%b"
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/brave -new-tab
     verbosity = info
 
 [urgency_low]
-    background = "#111111"
-    foreground = "#cccccc"
+    background = "#111"
+    foreground = "#aaa"
     timeout = 10
 
 [urgency_normal]
-    background = "#111111"
-    foreground = "#cccccc"
+    background = "#111"
+    foreground = "#aaa"
     timeout = 10
 
 [urgency_critical]
-    background = "#111111"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
+    background = "#111"
+    foreground = "#fff"
+    frame_color = "#f00"
     timeout = 0
