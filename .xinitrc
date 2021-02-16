@@ -30,7 +30,7 @@ xset r rate 200 30
 xbanish &
 picom &
 hsetroot -solid "#0a0a0a"
-slstatus &
+dwmblocks &
 udiskie &
 
 # execute dwm in a loop
