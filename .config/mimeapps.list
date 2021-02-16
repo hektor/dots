@@ -2,5 +2,9 @@
 application/pdf=org.pwmt.zathura.desktop
 video/mp4=mpv.desktop
 video/webm=mpv.desktop
+image/gif=feh.desktop
+image/jpeg=feh.desktop
+image/png=feh.desktop
 x-scheme-handler/msteams=teams.desktop
 x-scheme-handler/obsidian=obsidian.desktop
+application/gzip=com.github.xournalpp.xournalpp.desktop
