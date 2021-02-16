@@ -2,8 +2,11 @@ alias bashrc="vim ~/.bashrc"
 alias aliasrc="vim ~/.aliasrc"
 alias vimrc="vim ~/.vimrc"
 
+# Navigation
+
 alias ..="cd .."
-alias ...="cd ../.."
+alias .2="cd ../.."
+alias .3="cd ../../.."
 
 # Colorize output
 alias ls="ls --color=auto"
