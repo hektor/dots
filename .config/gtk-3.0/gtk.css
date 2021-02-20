@@ -52,18 +52,17 @@ toolbar {
   color: #ccc;
 }
 
-.top {
-  background: #111;
-  color: #ccc;
-}
-
 menu {
   background: #111;
   color: #ccc;
 }
 
-window.background.chromium menubar,
 window.background.chromium {
-  background-color: #111;
   color: #ccc;
+  background-color: #111;
+}
+
+window.background.chromium menubar {
+  color: #555;
+  background-color: #0a0a0a;
 }
