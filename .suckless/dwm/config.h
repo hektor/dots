@@ -20,16 +20,21 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4" };
+static const char *tags[] = { "zet", "www", "dev", "pdf", "etc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *  WM_CLASS(STRING) = instance, class
 	 *  WM_NAME(STRING) = title
 	 */
-	/* class        instance  title  tags mask  isfloating  monitor */
-	{ NULL,         NULL,     NULL,  0,         False,      -1 },
-	{ "KeePassXC",  NULL,     NULL,  1 << 3,    False,      -1 },
+	/* class            instance  title  tags mask  isfloating  monitor */
+	{ NULL,             NULL,     NULL,  0,         False,      -1 },
+	{ "obsidian",       NULL,     NULL,  1 << 0,    False,      -1 },
+	{ "Brave-browser",  NULL,     NULL,  1 << 1,    False,      -1 },
+	{ "Zathura",        NULL,     NULL,  1 << 3,    False,      -1 },
+	{ "KeePassXC",      NULL,     NULL,  1 << 4,    False,      -1 },
+	{ "Anki",           NULL,     NULL,  1 << 4,    False,      -1 },
+	{ "Goodvibes",      NULL,     NULL,  1 << 4,    False,      -1 },
 };
 
 /* layout(s) */
