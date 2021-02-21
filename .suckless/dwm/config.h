@@ -35,6 +35,7 @@ static const Rule rules[] = {
 	{ "KeePassXC",      NULL,     NULL,  1 << 4,    False,      -1 },
 	{ "Anki",           NULL,     NULL,  1 << 4,    False,      -1 },
 	{ "Goodvibes",      NULL,     NULL,  1 << 4,    False,      -1 },
+	{ "Com.github.xournalpp.xournalpp",  NULL,  NULL,  0,  True,  -1 },
 };
 
 /* layout(s) */
