@@ -1,29 +1,30 @@
 " General config ______________________
 "
-" Most acronyms are unreadable, but they keep the overview 
-" I have to do a quick :h lookup for most of these anyway
+" Most acronyms are unreadable, but they keep the overview
+" I have to do a quick :h lookup for most of these anyway.
 
-se nocp
-filetype plugin indent on
+se nocp                  " Disable vi incompatibility
+filet plugin indent on   " Filetype recognition
 se enc=utf8              "
-se hid                   " allow hiding unsaved buffers
-se tf                    " fast tty
+se hid                   " Allow hiding unsaved buffers
+se tf                    " Fast tty
 se ut=300                " 300ms for update time
-se to tm=200 ttm=5       " timeouts
+se to tm=200 ttm=5       " Timeouts
 se shm+=c                " ...
-se ul=500 hi=500         " history and undo
-se nu rnu scl=number     " line numbers & signs
+se ul=500 hi=500         " History and undo
+se nu rnu scl=number     " Line numbers & signs
 se nowrap
-se bs=indent,eol,start   " indentation
-se ai ts=2 sts=2 sw=2 et " indentation
-se is ic scs hls         " search
-se lz                    " only essential redraws
-se nobk nowb noswf       " no backups
-se vi='20,\"101          " max 100 lines in registers
-se novb                  " bell
-se cole=1                " conceal
-se cb=unnamedplus        " clipboard
-se fcs+=vert:│           " cleaner split separator (tmux style)
+se bs=indent,eol,start   " Indentation
+se ai ts=2 sts=2 sw=2 et " Indentation
+se is ic scs hls         " Search
+se lz                    " Only essential redraws
+se nobk nowb noswf       " No backups
+se vi='20,\"101          " Max 100 lines in registers
+se novb                  " Bell
+se cole=1                " Conceal
+se cb=unnamedplus        " Clipboard
+se fcs+=vert:│           " Cleaner split separator (tmux style)
+set lcs=tab:→\ ,trail:·  " Whitespace rendering
 
 " Functions ____________________________
 
