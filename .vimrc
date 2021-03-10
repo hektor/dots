@@ -1,143 +1,109 @@
 " General config ______________________
+"
+" Most acronyms are unreadable, but they keep the overview 
+" I have to do a quick :h lookup for most of these anyway
 
-set nocompatible
-
+se nocp
 filetype plugin indent on
-
-set encoding=utf-8
-set hidden
-set ttyfast
-set updatetime=300
-set timeout timeoutlen=200 ttimeoutlen=5
-set undolevels=500
-set history=500
-set nu rnu
-set signcolumn=number " make sign replace number
-set nowrap
-set backspace=indent,eol,start " indentation
-set incsearch ignorecase smartcase hlsearch" search
-set autoindent tabstop=2 softtabstop=2 shiftwidth=2 expandtab " indenting
-set lazyredraw " only essential redraws
-set synmaxcol=181
-set nobackup nowb noswapfile " no backups
-set viminfo='20,\"101 "max 100 lines in registers
-set novisualbell
-set conceallevel=1
-set clipboard=unnamedplus
-set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<
-set fillchars+=vert:│ "cleaner split separator (tmux style)
+se enc=utf8              "
+se hid                   " allow hiding unsaved buffers
+se tf                    " fast tty
+se ut=300                " 300ms for update time
+se to tm=200 ttm=5       " timeouts
+se shm+=c                " ...
+se ul=500 hi=500         " history and undo
+se nu rnu scl=number     " line numbers & signs
+se nowrap
+se bs=indent,eol,start   " indentation
+se ai ts=2 sts=2 sw=2 et " indentation
+se is ic scs hls         " search
+se lz                    " only essential redraws
+se nobk nowb noswf       " no backups
+se vi='20,\"101          " max 100 lines in registers
+se novb                  " bell
+se cole=1                " conceal
+se cb=unnamedplus        " clipboard
+se fcs+=vert:│           " cleaner split separator (tmux style)
 
 " Functions ____________________________
 
-" Function: Toggle line numbers
+" Toggle line numbers
+fu! ToggleRnu() " toggle: no numbers - relative nummbers
+  if(&nu) | se nonu nornu | else | se nu rnu | endif
+endfu
 
-func! ToggleRnu() " toggle: no numbers - relative nummbers
-  if(&nu) | set nonu nornu | else | set nu rnu | endif
-endfunc
+" Keybindings
+"""""""""""""
 
-" Keybindings __________________________
-
-" Keybindings: leader keys
-
-nnoremap <space> <nop>
+" Leader keys
+nn <space> <nop>
 let mapleader = " "
 let maplocalleader = ";"
+" Splits & navigation
+nm ss :sp<CR><c-w>w    " Split horizontal
+nm sv :vs<CR><c-w>w    " Split vertical
+nn sw <c-w>w           " Navigate splits
+nn sh <c-w>h           " "
+nn sj <c-w>j           " "
+nn sk <c-w>k           " "
+nn sl <c-w>l           " "
+nn sH <c-w>8<          " Resize splits
+nn sJ <c-w>8-          " "
+nn sK <c-w>8+          " "
+nn sL <c-w>8>          " "
+nn s= <c-w>=           " Equalize splits
+" Open
+nn sb :Lex<cr>         " File tree
+nn <leader>t :term<cr> " Open terminal
+" Remaps
+ino <nowait> jj <esc>  " Normal now
+nn  <left>  <nop>      " Hard mode
+nn  <down>  <nop>      " "
+nn  <up>    <nop>      " "
+nn  <right> <nop>      " "
+ino <left>  <nop>      " "
+ino <down>  <nop>      " "
+ino <up>    <nop>      " "
+ino <right> <nop>      " "
+" Search
+nn <leader>/ :noh<cr>
+nn <leader>f :Ag <cr>
+" Line numbers
+nn <leader>n :call ToggleRnu()<cr>
+" Vim configuration
+nn <leader>ec :split $MYVIMRC<cr>
+nn <leader>so :so %<cr>
 
-" Keybindings: splits
-
-" Split horizontal & vertical
-nmap ss :sp<Return><c-w>w
-nmap sv :vs<Return><c-w>w
-
-" Navigate splits
-nnoremap sw <c-w>w
-nnoremap sh <c-w>h
-nnoremap sj <c-w>j
-nnoremap sk <c-w>k
-nnoremap sl <c-w>l
-
-" Resize splits
-nnoremap sH <c-w>8<
-nnoremap sJ <c-w>8-
-nnoremap sK <c-w>8+
-nnoremap sL <c-w>8>
-
-" Resize to equal splits
-nnoremap s= <c-w>=
-
-" Keybindings: file tree
-
-nnoremap sb :Lex<cr>
-
-
-" Keybindings: terminal
-
-nnoremap <leader>t :term<cr>
-
-" Keybindings: hard mode
-
-nnoremap <left> <nop>
-nnoremap <down> <nop>
-nnoremap <up> <nop>
-nnoremap <right> <nop>
-inoremap <left> <nop>
-inoremap <down> <nop>
-inoremap <up> <nop>
-inoremap <right> <nop>
-
-" Keybindings: quick quit
-
-nnoremap <leader>w :w<cr>
-nnoremap <leader>W :wq<cr>
-nnoremap <leader>q :q<cr>
-nnoremap <leader>Q :q!<cr>
-
-" Keybindings: exit insert mode
-
-inoremap <nowait> jj <esc>
-
-" Keybindings: search
-
-nnoremap <leader><space> :noh<cr>
-
-" Silver search
-nnoremap <leader>A :Ag <cr>
-
-" Keybindings: line numbers
-
-nnoremap <leader>n :call ToggleRnu()<cr>
-
-" Keybindings: config
-
-nnoremap <leader>ec :split $MYVIMRC<cr>
-nnoremap <leader>so :so %<cr>
-
-" Plugins ______________________________
+" Plugins
+"""""""""
 
 call plug#begin()
-
-" Plugins: General
-
+" Coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" General
 Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-sandwich'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'axvr/zepl.vim'
-
-" Plugins: Languages
-
-" JS & TypeScript
-
+" JS and TypeScript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" LaTeX
+Plug 'lervag/vimtex'
+" TidalCycles
+Plug 'supercollider/scvim'
+Plug 'tidalcycles/vim-tidal'
+" Lisp & Scheme
+Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'racket'] }
+call plug#end()
 
-" Coc w/ extensions
+" Plugin config
+"""""""""""""""
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Coc
 let g:coc_global_extensions = [
   \'coc-eslint',
   \'coc-prettier',
@@ -153,44 +119,37 @@ let g:coc_global_extensions = [
   \'coc-yaml',
   \'coc-snippets'
   \]
+" Autocomplete
+ino <silent><expr><c-j> pumvisible() ? "\<c-n>" :
+  \ coc#refresh()
+ino <expr><c-k> pumvisible() ? "\<C-p>" : "k"
+ino <expr><cr> complete_info()["selected"] != "-1" ? "\<c-y>" : "\<c-g>u\<CR>"
+" Code action on cursor position
+nm <leader>do <Plug>(coc-codeaction)
+" Coc statusline
+se statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" Prettier command
+com! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" Plugin: LaTeX
+" LaTex
+let g:vimtex_view_method='zathura'
+let g:tex_flavor = 'latex'
+let g:tex_conceal='abdmg'
+let g:vimtex_quickfix_mode=0
 
-Plug 'lervag/vimtex'
+" Comments
+xm <leader>c <Plug>Commentary
+nm <leader>c <Plug>Commentary
+nm <leader>cc <Plug>CommentaryLine
 
-" Plugin: TidalCycles
-
-Plug 'supercollider/scvim'
-Plug 'tidalcycles/vim-tidal'
-
-" Plugin: Scheme
-"
-Plug 'jpalardy/vim-slime'
-
-call plug#end()
-
-" Plugin config ________________________
-
-" Plugin: vim-commentary
-
-xmap <leader>c <Plug>Commentary
-nmap <leader>c <Plug>Commentary
-nmap <leader>cc <Plug>CommentaryLine
-
-" Plugin: fzf
-
-" Popup
-
+" FZF
 let g:fzf_layout = {'window': { 'width': 0.62, 'height': 0.62}}
-
-" Use silversearcher-ag to respect .gitignore
-
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 let g:ag_working_path_mode="r"
-set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip " fzf ignore
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' " respect gitignore
+se wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip "   " ignore these
 
-" Plugin: VimWiki
-
+" Wiki
+let g:vimwiki_auto_chdir = 1
 let g:vimwiki_list = [{'path': '~/.vimwiki/',
                       \ 'template_path': '~/.vimwiki/templates/',
                       \ 'template_default': 'default',
@@ -199,90 +158,55 @@ let g:vimwiki_list = [{'path': '~/.vimwiki/',
                       \ 'html_filename_parameterization': 1,
                       \ 'template_ext': '.tpl'}]
 
-" Plugin: JS & TypeScript
-
+" JS and TypeScript
 let g:javascript_plugin_jsdoc = 1 " jsdoc syntax highlighting
 let g:javascript_plugin_flow = 1 " flow syntax highlighting
 let g:javascript_conceal_function = "ƒ"
 let g:javascript_conceal_return = "⇖"
-
-" Plugin: Svelte
-
 let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
 
-" Plugin: TidalCycles
-
 " SuperCollider
-
-au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd set filetype=supercollider
+au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd se filetype=supercollider
 au Filetype supercollider packadd scvim
 
-" TidalVim
-
+" Tidalcycles (sclang and vim-tidal)
 let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
 
-" Plugin: vim-slime
+" Slimv
+let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
 
-let g:slime_default_config={"socket_name": get(split($TMUX, ","), 0), "target_pane": '{last}'}
-let g:slime_dont_ask_default = 1
-let g:slime_paste_file=tempname()
-let g:slime_target='tmux'
-let g:slime_no_mappings = 1
-xmap <leader>el <Plug>SlimeRegionSend
-nmap <leader>ep <Plug>SlimeParagraphSend
+" Plugin keybindings
+""""""""""""""""""""
 
-" Plugin keybindings ___________________
-
-" Plugin: fzf
-nnoremap <c-p> :FZF<cr>
-nnoremap <leader>p :FZF<cr>
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>h :History<cr>
+" FZF
+nn <c-p> :FZF<cr>
+nn <leader>p :FZF<cr>
+nn <leader>b :Buffers<cr>
+nn <leader>h :History<cr>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
 
-" Plugin: coc
+" Color theme & statusline
+""""""""""""""""""""""""""
 
-" Autocompletion
+se nosc
+se nosmd
+se ls=2
+se stl=\ %0*%n
+se stl+=\ %m
+se stl+=\ %y%1*
+se stl+=\ %<%F
+se stl+=\ %1*%=%5l%*
+se stl+=%2*/%L%*
 
-inoremap <silent><expr><c-j> pumvisible() ? "\<c-n>" :
-  \ coc#refresh()
-inoremap <expr><c-k> pumvisible() ? "\<C-p>" : "k"
-inoremap <expr><cr> complete_info()["selected"] != "-1" ? "\<c-y>" : "\<c-g>u\<CR>"
+colo simple-dark
 
-" Code action on cursor position
+" Other
+"""""""""""""""""""""""
 
-nmap <leader>do <Plug>(coc-codeaction)
-
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" :Prettier command to prettify file
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
-" Plugin: vimtex
-
-let g:vimtex_view_method='zathura'
-let g:tex_flavor = 'latex'
-let g:tex_conceal='abdmg'
-
-" Theme ________________________________
-
-colorscheme simple-dark
-
-set laststatus=2
-set noshowcmd
-set noshowmode
-set statusline=
-set statusline+=%3*
-set statusline+=%=
-set statusline+=%1*\ %02l/%L\
-set statusline+=%2*\%02v
-set statusline+=%1*\
-set statusline+=%0*\ %n\
-set shm+=a
-set shm+=W
+" VIM config hot reload
+autocmd! bufwritepost .vimrc source %
