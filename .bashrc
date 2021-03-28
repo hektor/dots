@@ -8,8 +8,6 @@
 export PATH=~/.bin:$PATH
 
 # Prompt
-bold=$(tput bold)
-reset=$(tput sgr0)
 get_branch_name() {
   git symbolic-ref --quiet --short HEAD 2>/dev/null \
     || git rev-parse --short HEAD 2>/dev/null \
@@ -17,9 +15,11 @@ get_branch_name() {
 }
 get_git_info() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
-  echo -e " ${1}$(get_branch_name)"
+  echo -e " $(get_branch_name)"
 }
-PS1='\[\033[38;5;244m\]\[${bold}\]$(get_git_info && echo "\n")\[${reset}\]\u \W ❭ '
+
+
+export PS1="\u \w ❭\[$(tput sgr0)\] "
 
 # History
 export HISTCONTROL=ignoreboth
