@@ -1,0 +1,20 @@
+snippet reqtrace "(#%require racket/trace)" b
+(#%require racket/trace)
+endsnippet
+
+snippet strln "(string-length <string>)" b
+(string-length $0)
+endsnippet
+
+snippet impb "Import rnrs base libraries" b
+(import (rnrs base (6))
+        (rnrs io simple)$0)
+endsnippet
+
+snippet def "(define <name> <variable>)" b
+(define $0 $1)
+endsnippet
+
+snippet defp "(define (<procedure-name> <arguments>))" b
+(define ($0 $1))
+endsnippet
