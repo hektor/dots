@@ -28,7 +28,6 @@ xset -b
 xset r rate 200 30
 
 xbanish &
-picom &
 hsetroot -solid "#0a0a0a"
 dwmblocks &
 udiskie &
