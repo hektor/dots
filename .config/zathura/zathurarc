@@ -1,9 +1,9 @@
-# enable copy to clipboard
+# Enable copy to clipboard
 set selection-clipboard clipboard
 set adjust-open best-width
 set font "Iosevka Term SS08 16"
 
-# theme
+# Theme
 set default-bg "#111"
 set default-fg "#ccc"
 set statusbar-bg "#111"
@@ -12,14 +12,18 @@ set inputbar-bg "#111"
 set inputbar-fg "#ccc"
 set highlight-color "#333"
 
-# dark mode
+# Dark mode
 set recolor true
 set recolor-darkcolor "#aaa"
 set recolor-lightcolor "#111"
 
-# hide status bar
-# set guioptions none
+# Hide status bar
+# Set guioptions none
 
 map J zoom out
 map K zoom in
 map i recolor
+unmap q
+
+# Allow opening links
+set sandbox none
