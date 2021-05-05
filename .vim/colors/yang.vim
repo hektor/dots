@@ -39,7 +39,7 @@ let s:palette.blue = [67, '#5f87af']
 let s:palette.darkblue = [27, '#005fff']
 let s:palette.green = [65, '#5f875f']
 let s:palette.red = [88, '#870000']
-let s:palette.magenta = [125, '#af005f']
+let s:palette.orange = [166, '#5f5fd7']
 
 if has("nvim")
     let g:terminal_color_0 = s:palette.gray01[1]
@@ -145,7 +145,7 @@ call s:hi('WarningMsg', s:palette.brown, s:palette.white, '')
 call s:hi('ModeMsg', s:palette.gray10, [], '')
 call s:hi('MoreMsg', s:palette.gray10, [], '')
 
-call s:hi('MatchParen', s:palette.magenta, s:palette.white, '')
+call s:hi('MatchParen', s:palette.orange, s:palette.white, '')
 
 call s:hi('Cursor', [], s:palette.gray12, '')
 call s:hi('Underlined', s:palette.gray08, [], 'underline')

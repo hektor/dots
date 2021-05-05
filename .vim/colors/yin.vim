@@ -15,29 +15,8 @@ let g:colors_name = "yin"
 
 let s:palette = {}
 
-" Original
-" let s:palette.blackest = [232, '#080808']
-" let s:palette.black = [234, '#1c1c1c']
-" let s:palette.gray01 = [235, '#262626']
-" let s:palette.gray02 = [238, '#444444']
-" let s:palette.gray03 = [239, '#4e4e4e']
-" let s:palette.gray04 = [240, '#585858']
-" let s:palette.gray05 = [242, '#666666']
-" let s:palette.gray06 = [243, '#767676']
-" let s:palette.gray07 = [244, '#808080']
-" let s:palette.gray08 = [245, '#8a8a8a']
-" let s:palette.gray09 = [246, '#949494']
-" let s:palette.gray10 = [247, '#9e9e9e']
-" let s:palette.gray11 = [248, '#a8a8a8']
-" let s:palette.gray12 = [249, '#b2b2b2']
-" let s:palette.gray13 = [250, '#bcbcbc']
-" let s:palette.gray14 = [251, '#c6c6c6']
-" let s:palette.gray15 = [254, '#e4e4e4']
-" let s:palette.white = [255, '#eeeeee']
-
-" Custom
 let s:palette.blackest = [0, '#0c0c0c']
-let s:palette.black = [232, '#111111']
+let s:palette.black = [233, '#111111']
 let s:palette.gray01 = [235, '#262626']
 let s:palette.gray02 = [238, '#444444']
 let s:palette.gray03 = [239, '#4e4e4e']
@@ -63,7 +42,7 @@ let s:palette.blue = [24, '#005f87']
 let s:palette.lightblue = [31, '#00afff']
 let s:palette.green = [29, '#00875f']
 let s:palette.red = [88, '#870000']
-let s:palette.magenta = [89, '#87005f']
+let s:palette.orange = [166, '#5f5fd7']
 
 if has("nvim")
     let g:terminal_color_0 = s:palette.gray01[1]
@@ -169,7 +148,7 @@ call s:hi('WarningMsg', s:palette.brown, s:palette.black, '')
 call s:hi('ModeMsg', s:palette.gray10, [], '')
 call s:hi('MoreMsg', s:palette.gray10, [], '')
 
-call s:hi('MatchParen', s:palette.magenta, s:palette.black, '')
+call s:hi('MatchParen', s:palette.orange, s:palette.black, '')
 
 call s:hi('Cursor', [], s:palette.gray12, '')
 call s:hi('Underlined', s:palette.gray08, [], 'underline')
