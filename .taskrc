@@ -1,0 +1,10 @@
+data.location=~/.task
+
+# Theme
+include /usr/share/doc/task/rc/dark-gray-256.theme
+
+# Changes to `all` report:
+#
+# due->due.remaining
+report.all.columns=id,status.short,uuid.short,start.active,entry.age,end.age,depends.indicator,priority,project.parent,tags.count,recur.indicator,wait.remaining,scheduled.remaining,due.remaining,until.remaining,description
+report.all.labels=ID,St,UUID,A,Age,Done,D,P,Project,Tags,R,Wait,Sch,Due,Until,Description
