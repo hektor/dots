@@ -1,0 +1,101 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  color: #ccc;
+  background: #111;
+  font-family: 'Inter', serif;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 1.6rem;
+  margin: 0 auto;
+  max-width: 32rem;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+th {
+  padding: 0.4rem 0;
+  text-align: left;
+}
+
+td {
+  padding: 0.4rem 0;
+}
+
+ul,
+ol {
+  list-style-position: outside;
+  padding: 0;
+  margin: 0;
+}
+
+ul ul,
+ol ol {
+  padding-left: 0.8rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Minimal scrollbars */
+::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 0.8rem 0;
+}
+
+p {
+  max-width: 32rem;
+}
+
+figcaption {
+  text-align: right;
+  font-size: 10px;
+  font-style: italic;
+}
+
+th {
+  border-bottom: 1px solid #222;
+}
