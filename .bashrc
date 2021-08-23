@@ -49,3 +49,5 @@ nvm() { lazy_load_nvm nvm $@; }
 node() { lazy_load_nvm node $@; }
 npm() { lazy_load_nvm npm $@; }
 npx() { lazy_load_nvm npx $@; }
+# Ellipsis when deep in directory
+export PROMPT_DIRTRIM=2
