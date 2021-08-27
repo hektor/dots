@@ -46,9 +46,6 @@ alias py='python'
 alias r5rs-repl='plt-r5rs --no-prim'
 alias cfg='/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h'
 
-alias tmuxl='tmux list-sessions'
-alias tmuxs='tmux new-session -s'
-alias tmuxk='tmux kill-session -t'
 
 alias lm='xbacklight -set'
 alias bat='check-battery-level'
