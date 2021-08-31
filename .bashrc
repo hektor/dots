@@ -39,15 +39,10 @@ export FZF_DEFAULT_OPTS='--height 38% --reverse --border --prompt="❭ " --point
 export FZF_COMPLETION_OPTS='-x'
 
 # Nvm
-lazy_load_nvm() {
-  unset -f nvm node npm npx
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-}
-nvm() { lazy_load_nvm nvm $@; }
-node() { lazy_load_nvm node $@; }
-npm() { lazy_load_nvm npm $@; }
-npx() { lazy_load_nvm npx $@; }
+
+export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
+
 # Ellipsis when deep in directory
 export PROMPT_DIRTRIM=2
