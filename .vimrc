@@ -34,6 +34,12 @@ fu! ToggleRnu() " toggle: no numbers - relative nummbers
   if(&nu) | se nonu nornu | else | se nu rnu | endif
 endfu
 
+" https://alok.github.io/2018/04/26/using-vim-s-conceal-to-make-languages-more-tolerable/
+fu! ToggleConceal()
+  if (&cole == 0) | se cole =2 | else | set cole =0 | endif
+endfu
+com! -nargs=0 ToggleConceal :call ToggleConceal()
+
 " Keybindings
 """""""""""""
 
