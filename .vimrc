@@ -100,8 +100,9 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
-" LaTeX
+" LaTeX & markdown
 Plug 'lervag/vimtex'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 " TidalCycles
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
@@ -142,9 +143,12 @@ com! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " LaTex
 let g:vimtex_view_method='zathura'
-let g:tex_flavor = 'latex'
+let g:tex_flavor='latex'
 let g:tex_conceal='abdmg'
 let g:vimtex_quickfix_mode=0
+
+" Markdown
+au FileType markdown setl tw=80 fo+=t " Wrap markdown to 80 characters
 
 " Comments
 xm <leader>c <Plug>Commentary
