@@ -1,0 +1,17 @@
+window:
+  padding:
+    x: 0
+    y: 0
+font:
+  normal:
+    family: Iosevka Term SS08
+  bold:
+    family: Iosevka Term SS08
+    style: bold
+  italic:
+    family: Iosevka Term SS08
+    style: italic
+  size: 8
+colors:
+  primary:
+    background: '0x111111'
