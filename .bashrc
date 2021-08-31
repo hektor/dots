@@ -44,5 +44,7 @@ export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 
+export XDG_SESSION_TYPE=X11
+
 # Ellipsis when deep in directory
 export PROMPT_DIRTRIM=2
