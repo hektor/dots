@@ -63,6 +63,7 @@ nn s= <c-w>=|            " Equalize splits
 " Open
 nn sb :Lex<cr>|          " File tree
 nn <leader>t :term<cr>| " Open terminal
+nn <leader>o :!xdg-open http://localhost:8080/%:r.html & <cr>
 " Remaps
 ino <nowait> jj <esc>|   " Normal now
 nn  <left>  <nop>|       " Hard mode
