@@ -25,6 +25,7 @@ se cole=0 cocu=""        " Conceal
 se cb=unnamedplus        " Clipboard
 se fcs+=vert:│           " Cleaner split separator (tmux style)
 set lcs=tab:→\ ,trail:·  " Whitespace rendering
+set ar                   " Autoread
 
 " Functions ____________________________
 
