@@ -130,10 +130,21 @@ let g:coc_global_extensions = [
   \'coc-snippets'
   \]
 " Autocomplete
+imap <tab> <Plug>(coc-snippets-expand)
+nn <leader>es :CocCommand snippets.editSnippets<cr>
 ino <silent><expr><c-j> pumvisible() ? "\<c-n>" :
   \ coc#refresh()
 ino <expr><c-k> pumvisible() ? "\<C-p>" : "k"
 ino <expr><cr> complete_info()["selected"] != "-1" ? "\<c-y>" : "\<c-g>u\<CR>"
+" Show doccumentation
+fu! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+nnoremap K :call show_documentation()
 " Code action on cursor position
 nm <leader>do <Plug>(coc-codeaction)
 " Coc statusline
