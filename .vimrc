@@ -92,7 +92,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " General
 Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-sandwich'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki'
 " JS and TypeScript
