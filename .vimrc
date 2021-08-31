@@ -21,7 +21,7 @@ se lz                    " Only essential redraws
 se nobk nowb noswf       " No backups
 se vi='20,\"101          " Max 100 lines in registers
 se novb                  " Bell
-se cole=1                " Conceal
+se cole=0 cocu=""        " Conceal
 se cb=unnamedplus        " Clipboard
 se fcs+=vert:│           " Cleaner split separator (tmux style)
 set lcs=tab:→\ ,trail:·  " Whitespace rendering
