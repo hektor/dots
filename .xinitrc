@@ -21,16 +21,14 @@ fi
 
 # ______________________________
 
-# disable bell
-xset -b
-
-# adjust typematic delay & rate
-xset r rate 200 30
+xset -b            # disable bell
+xset r rate 200 30 # adjust typematic delay & rate
 
 xbanish &
-hsetroot -solid "#0a0a0a"
 dwmblocks &
 udiskie &
+
+xsetroot -solid "#0a0a0a"
 
 # execute dwm in a loop
 while true; do
