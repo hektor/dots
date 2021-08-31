@@ -13,11 +13,12 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias ip='ip --color'
 
-alias l='ls -1'
-alias ll='ls -lh'
-alias lt='ls -lht'
-alias la='ls -lha'
-alias lta='ls -lhat'
+alias l="ls -1"
+alias ll="ls -lh"
+alias lt="ls -lht"
+alias la="ls -lha"
+alias lta="ls -lhat"
+alias ld="ls -d */" # list directories
 
 # Safety
 alias rm='rm -I --preserve-root'
