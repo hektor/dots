@@ -9,12 +9,9 @@
 
 [alias]
   d = diff
-  ds = diff --stat
   dc = diff --cached
   a = add
-  ap = add -p
   cm = commit -m
-  cam = commit -a -m
   l = log --pretty=format:"(%an)\\ \\ %h\\ \\ %ad\\ \\ %s" --date=short
   s = status -s
   co = checkout
