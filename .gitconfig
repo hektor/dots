@@ -17,6 +17,7 @@
   co = checkout
   cob = checkout -b
   alias = "!git config -l | grep alias | cut -c 7-"
+  rs = "restore --staged"
 
 [color]
   ui = auto
