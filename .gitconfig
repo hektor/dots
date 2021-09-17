@@ -39,14 +39,14 @@
   newHighlight = "green bold 22"
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+  current = normal bold
+  local = normal
+  remote = normal italic
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+  added = green
+  changed = yellow
+  untracked = normal italic
 
 [credential]
   helper = cache --timeout=3600
