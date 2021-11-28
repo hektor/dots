@@ -1,0 +1,35 @@
+data.location=~/.task
+
+# Theme
+include /usr/share/doc/task/rc/dark-gray-256.theme
+
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
+
+taskd.certificate=/home/h/.task/private.certificate.pem
+taskd.key=/home/h/.task/private.key.pem
+taskd.ca=/home/h/.task/ca.crt
+taskd.server=inthe.am:53589
+taskd.credentials=inthe_am/hektor.misplon/2feb9351-d86a-4ecc-9a69-72ac391e15e6
+taskd.trust=strict
+
+# Changes to `all` report:
+#
+# due->due.remaining
+report.all.columns=id,status.short,uuid.short,start.active,entry.age,end.age,depends.indicator,priority,project.parent,tags.count,recur.indicator,wait.remaining,scheduled.remaining,due.remaining,until.remaining,description
+report.all.labels=ID,St,UUID,A,Age,Done,D,P,Project,Tags,R,Wait,Sch,Due,Until,Description
+
+# Description report
+report.description.columns=description
+
+# Adjust defaults
+alias.burndown=burndown.daily
+
+urgency.user.project.run.coefficient=0
+urgency.user.project.side.coefficient=-1.0
+
+verbose=blank,header,footnote,label,new-id,affected,edit,special,project,unwait
