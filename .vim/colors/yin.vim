@@ -17,7 +17,7 @@ let s:palette = {}
 
 let s:palette.blackest = [0, '#0c0c0c']
 let s:palette.black = [233, '#111111']
-let s:palette.gray01 = [235, '#262626']
+let s:palette.gray01 = [235, '#1e1e1e']
 let s:palette.gray02 = [238, '#444444']
 let s:palette.gray03 = [239, '#4e4e4e']
 let s:palette.gray04 = [240, '#585858']
@@ -99,7 +99,7 @@ function! s:hi(group, fg_color, bg_color, style)
 endfunction
 
 
-call s:hi('Normal', s:palette.gray13, s:palette.black, '')
+call s:hi('Normal', s:palette.gray11, s:palette.black, '')
 set background=dark
 
 call s:hi('Constant', s:palette.gray05, [], 'bold')
@@ -161,8 +161,8 @@ call s:hi('PmenuSbar', s:palette.black, s:palette.gray15, 'none')
 call s:hi('PmenuSel', s:palette.gray03, s:palette.gray10, '')
 call s:hi('PmenuThumb', s:palette.gray03, s:palette.gray09, 'none')
 
-call s:hi('StatusLine', s:palette.gray11, s:palette.gray03, 'none')
-call s:hi('StatusLineNC', s:palette.gray04, s:palette.gray01, 'none')
+call s:hi('StatusLine', s:palette.gray12, s:palette.gray01, 'none')
+call s:hi('StatusLineNC', s:palette.black, s:palette.black, 'none')
 call s:hi('WildMenu', s:palette.gray08, [], '')
 call s:hi('VertSplit', s:palette.gray03, s:palette.black, 'none')
 
