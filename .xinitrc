@@ -29,7 +29,12 @@ dwmblocks &
 udiskie &
 redshift &
 
-xsetroot -solid "#0a0a0a"
+# No compositor
+# xsetroot -solid "#0a0a0a"
+
+# With compositor
+hsetroot -solid "#0a0a0a"
+picom &
 
 # execute dwm in a loop
 while true; do
