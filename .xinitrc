@@ -27,6 +27,7 @@ xset r rate 200 30 # adjust typematic delay & rate
 xbanish &
 dwmblocks &
 udiskie &
+redshift &
 
 xsetroot -solid "#0a0a0a"
 
