@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# Script to create a markdown file containing links to all filenames prefixed
+# with "anki-"
+#
+
+wiki="$HOME/.wiki"
+
+find "$wiki"/anki-*.md -printf "%f\n" > "$HOME/.wiki/scripts/anki/links"
+find "$wiki"/anki-*.md -exec head -n 1 {} \; > "$HOME/.wiki/scripts/anki/titles"
+
+sed -i -e 's/^/(/' links -e 's/$/)/'  # Wrap links in parentheses
+sed -i -e 's/^/[/' titles -e 's/$/]/' # Wrap titles in square brackets
+sed -i -e 's/^\[#\ /* \[/'  titles    # Remove '#' and add list bullet
+
+echo "# My anki decks\n" > "$HOME/.wiki/my-anki.md"  # Clear file and add markdown title
+paste titles links -d "" >> "$HOME/.wiki/my-anki.md" # Concatenate & append to file
