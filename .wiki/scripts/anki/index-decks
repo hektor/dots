@@ -14,5 +14,5 @@ sed -i -e 's/^/(/' links -e 's/$/)/'  # Wrap links in parentheses
 sed -i -e 's/^/[/' titles -e 's/$/]/' # Wrap titles in square brackets
 sed -i -e 's/^\[#\ /* \[/'  titles    # Remove '#' and add list bullet
 
-echo "# My anki decks\n" > "$HOME/.wiki/my-anki.md"  # Clear file and add markdown title
+echo -e "# My anki decks\n" > "$HOME/.wiki/my-anki.md"  # Clear file and add markdown title
 paste titles links -d "" >> "$HOME/.wiki/my-anki.md" # Concatenate & append to file
