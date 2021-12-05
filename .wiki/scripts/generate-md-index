@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+#
+# Script to create a markdown file containing links to all filenames prefixed
+# with "<prefix>-":
+#
+# Example usage: generate-md-index "book" "Books" "my-books.md"
+#
+#   Creates a file my-books.md in the wiki with a title of "Books" This file
+#   contains titled links to every markdown file starting with "books-"
+
+wiki="$HOME/.wiki"
+prefix="$1"
+title="$2"
+filename="$3"
+
+if [ $# == 2 ]; then
+    echo "$0 <prefix> <title> <filename>"
+    exit 0
+fi
+
+find "$wiki"/"$prefix"-*.md -printf "%f\n"        > "$wiki/scripts/$prefix/$prefix-links"
+find "$wiki"/"$prefix"-*.md -exec head -n 1 {} \; > "$wiki/scripts/$prefix/$prefix-titles"
+
+sed -i -e 's/^/(/' "$wiki/scripts/$prefix/$prefix-links" -e 's/$/)/'  # Wrap links in parentheses
+sed -i -e 's/^/[/' "$wiki/scripts/$prefix/$prefix-titles" -e 's/$/]/' # Wrap titles in square brackets
+sed -i -e 's/^\[#\ /* \[/'  "$wiki/scripts/$prefix/$prefix-titles"    # Remove '#' and add list bullet
+
+echo -e "# $title\n" > "$wiki/$filename" # Clear file and add markdown title
+paste "$wiki/scripts/$prefix/$prefix-titles" "$wiki/scripts/$prefix/$prefix-links" -d "" >> "$wiki/$filename"   # Concatenate & append to file
+paste "$wiki/scripts/$prefix/$prefix-titles" "$wiki/scripts/$prefix/$prefix-links" -d ""
