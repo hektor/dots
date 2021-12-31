@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 options="nl:en\nen:nl\nnl:fr\nfr:nl\nen:fr\nfr:en\nnl:de\nde:nl"
 
 selected=$(echo -e "$options" | dmenu -p "s?:t?" -i -l 0)

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+options="Play\nPause\nNext\nPrevious"
+
+selected=$(echo -e "$options" | dmenu -i)
+
+case "$selected" in
+  "Play") playerctl --player=ncspot play;;
+  "Pause") playerctl --player=ncspot pause;;
+  "Next") playerctl --player=ncspot next;;
+  "Previous") playerctl --player=ncspot previous;;
+esac

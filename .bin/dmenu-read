@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Open pdf by title
+# Note: does not handle incorrect metadata
+
+dir=/home/h/doc/books
+
+ag -g ".pdf$" $dir \
+  | xargs -n1 -d '\n' pdfinfo 2> /dev/null \
+  | grep "Title: " \
+  | awk '{for (i=2; i<NF; i++) printf $i " "; printf $NF; printf "\n"}' \
+  | grep -v "Title:"\
+  | dmenu -i -p "Read:"
