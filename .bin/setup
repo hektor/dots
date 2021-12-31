@@ -1,0 +1,76 @@
+#!/bin/bash
+
+install() {
+  if pacman -Qi "$1" &> /dev/null; then
+    echo ""$1" is already installed"
+  else
+    echo "Installing " "$1"
+    sudo pacman -S --noconfirm --needed "$1"
+  fi
+}
+
+# Packages to install from Arch repositories
+pac_list=(
+git
+vim
+)
+
+# Packages to install from AUR
+aurpac_list=(
+xbanish
+ttf-iosevka-term-ss08
+)
+
+# Suckless software to build
+suckless_list=( $(ls -1 "$HOME/.suckless/") )
+
+count=0
+
+echo " "
+echo "Installing required packages"
+echo " "
+
+printf '%s\n' "${pac_list[@]}"
+
+for pac in "${pac_list[@]}" ; do
+  count=$[count+1]
+  install "$pac";
+done
+
+echo " "
+echo "Installing aur packages"
+echo " "
+
+# [ ] Create aurpac installer function
+for aurpac in "${aurpac_list[@]}" ; do
+  if pacman -Qi "$1" &> /dev/null; then
+    echo "$1 is already installed"
+  else
+    count=$[count+1]
+    ("$HOME/.bin/aurpac" "$aurpac" && cd "$aurpac" && makepkg -si)
+  fi
+done
+
+echo " "
+echo "Setting up suckless tools"
+echo " "
+
+printf '%s\n' "${suckless_list[@]}"
+
+# for tool in "${suckless_list[@]}" ; do
+#   count=$[count+1]
+#   (cd "$HOME/.suckless/$tool/" && sudo make clean install);
+# done
+
+# echo " "
+# echo "Setting up vim"
+# echo " "
+
+# cp .vimrc $HOME/.vimrc
+# vim +PlugInstall
+
+## Bluetooth setup
+# ___
+
+# - [ ] Check if /etc/pulse/default.pa contains following line
+# load-module module-switch-on-connect
