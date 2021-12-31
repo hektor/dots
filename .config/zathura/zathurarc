@@ -11,6 +11,7 @@ set statusbar-fg "#777"
 set inputbar-bg "#111"
 set inputbar-fg "#ccc"
 set highlight-color "#333"
+set notification-bg "#111"
 
 # Dark mode
 set recolor true
@@ -25,5 +26,5 @@ map K zoom in
 map i recolor
 unmap q
 
-# Allow opening links
-set sandbox none
+# Zooming
+set zoom-center
