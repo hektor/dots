@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sink=$(pacmd list-sinks \
+  | grep "bluez.alias" \
+  | cut -d' ' -f3 \
+  | tr -d \" \
+  | xargs)
+
+echo "$sink"
