@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-BRAVE_USER_FLAGS_FILE="$XDG_CONFIG_HOME/brave-flags.conf"
-if [[ -f $BRAVE_USER_FLAGS_FILE ]]; then
-      USER_FLAGS="$(sed 's/#.*//' < "$BRAVE_USER_FLAGS_FILE")"
-fi
-
-/usr/bin/brave "$@" "$USER_FLAGS"

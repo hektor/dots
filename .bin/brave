@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/brave "$@" --use-gl=desktop
