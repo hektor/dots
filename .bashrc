@@ -18,12 +18,12 @@ get_git_info() {
   echo -e " $(get_branch_name)"
 }
 
-
 export PS1="\u \w ❭\[$(tput sgr0)\] "
 
 # History
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=500000
+export HISTIGNORE="clear:l: *"
 
 # Readable man pages
 export MANWIDTH=120
