@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+capacityStatus="$(cat /sys/class/power_supply/BAT0/capacity)"
+
+printf "$capacityStatus%%"
