@@ -1,24 +1,17 @@
 {
+  "prettier.requireConfig":true,
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "typescript.tsx",
-    "svelte"
-  ],
-
-  "prettier.eslintIntegration": true,
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact", "typescript.tsx", "svelte"],
   "prettier.semi": false,
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.arrowParens": "avoid",
+  "prettier.printWidth": 120,
   "prettier.disableSuccessMessage": true,
 
   "coc.preferences.colorSupport": true,
-  "coc.preferences.formatOnInsertLeave": true,
   "coc.preferences.formatOnType": true,
+
   "coc.preferences.formatOnTypeFiletypes": [
     "javascript",
     "typescript",
@@ -31,6 +24,7 @@
     "css",
     "svelte"
   ],
+
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
@@ -44,15 +38,25 @@
     "svelte"
   ],
 
+  "languageserver": {
+    "racket": {
+      "command": "racket",
+      "args": ["--lib", "racket-langserver"],
+      "filetypes": ["scheme", "racket"]
+    }
+  },
+
+  "diagnostic.messageTarget": "echo",
+  "signature.target": "echo",
   "diagnostic.errorSign": ">",
   "diagnostic.warningSign": ".",
   "diagnostic.infoSign": ".",
+
   "suggest.autoTrigger": "trigger",
-
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
-
-  "javascript.suggestionActions.enabled": false,
-  "svelte.plugin.typescript.diagnostics.enable": false,
-
-  "snippets.userSnippetsDirectory": "~/.vim/snips/"
+  "javascript.suggestionActions.enabled": true,
+  "typescript.suggestionActions.enabled": true,
+  "svelte.plugin.typescript.diagnostics.enable": true,
+  "snippets.userSnippetsDirectory": "~/.vim/snips/",
+  "coc.source.file.triggerCharacters": ["/"]
 }
