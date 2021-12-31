@@ -23,7 +23,7 @@ all: $(exports)
 	 --lua-filter=$(VIMWIKI_DIR)/filters/diagram-generator.lua \
 	 --lua-filter=$(VIMWIKI_DIR)/filters/lilypond.lua \
 	 --mathjax \
-	 --extract-media=diagrams \
+	 --extract-media=img \
 	 --strip-comments \
 	 -s -o $@ $<
 
