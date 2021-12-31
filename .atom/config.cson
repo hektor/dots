@@ -1,6 +1,33 @@
 "*":
+  "atom-package-deps":
+    ignored: [
+      "linter-ui-default"
+    ]
   core:
     autoHideMenuBar: true
+    disabledPackages: [
+      "linter-glslify"
+      "github"
+      "spell-check"
+      "background-tips"
+      "wrap-guide"
+      "whitespace"
+      "welcome"
+      "markdown-preview"
+      "tabs"
+      "git-diff"
+      "go-to-line"
+      "image-view"
+      "language-coffee-script"
+      "language-git"
+      "autocomplete-glsl"
+      "autocomplete-atom-api"
+      "autocomplete-css"
+      "autocomplete-html"
+      "autocomplete-plus"
+      "autocomplete-snippets"
+      "notifications"
+    ]
     telemetryConsent: "no"
     themes: [
       "one-dark-ui"
@@ -12,7 +39,14 @@
     scrollPastEnd: true
   "exception-reporting":
     userId: "6f9fc289-7b3c-4490-937e-5e58e9765c5e"
+  "linter-ui-default":
+    showPanel: true
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
   "status-bar":
     isVisible: false
+  tabs:
+    alwaysShowTabBar: false
   welcome:
     showOnStartup: false
