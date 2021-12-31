@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+status="$(bluetoothctl info "$1" | grep Connected | cut -f 2 -d ':' | cut -f 2 -d ' ')"
+
+if [ "$status" == "no" ]
+then
+  bluetoothctl connect "$1"
+elif [ "$status" == "yes" ]
+then
+  bluetoothctl disconnect "$1"
+fi
