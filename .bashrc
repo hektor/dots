@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # Load aliases dynamically
-[ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
+[ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
 
 # Add ~/.bin to PATH
 export PATH=~/.bin:$PATH
