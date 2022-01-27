@@ -8,10 +8,7 @@
   "prettier.arrowParens": "avoid",
   "prettier.printWidth": 120,
   "prettier.disableSuccessMessage": true,
-
-  "coc.preferences.colorSupport": true,
   "coc.preferences.formatOnType": true,
-
   "coc.preferences.formatOnTypeFiletypes": [
     "javascript",
     "typescript",
@@ -24,7 +21,6 @@
     "css",
     "svelte"
   ],
-
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
@@ -37,7 +33,6 @@
     "css",
     "svelte"
   ],
-
   "languageserver": {
     "racket": {
       "command": "racket",
@@ -45,7 +40,6 @@
       "filetypes": ["scheme", "racket"]
     }
   },
-
   "diagnostic.messageTarget": "echo",
   "signature.target": "echo",
   "diagnostic.errorSign": ">",
