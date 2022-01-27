@@ -34,6 +34,7 @@ export EDITOR='vim'
 # Fuzzy finder setup
 source /usr/share/fzf/*.bash
 source /usr/share/fzf/key-bindings.bash
+export FZF_COMPLETION_TRIGGER='**'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
 export FZF_DEFAULT_OPTS='--height 38% --reverse --border --prompt="❭ " --pointer="❭"'
 export FZF_COMPLETION_OPTS='-x'
