@@ -51,6 +51,7 @@ alias zzz='systemctl suspend && exit'
 alias o='xdg-open'
 alias now='date +"%T"'
 alias week='date +%V'
+alias wiki='vim +WikiIndex'
 
 # Programs
 
