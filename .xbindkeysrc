@@ -25,3 +25,9 @@
 "exec playerctl --player=ncspot play"
   m:0x0 + c:208
   XF86AudioPlay
+
+# Wacom mappings
+"xdotool key Super_L+j"
+  m:0x00 + b:13
+"xdotool key space"
+  m:0x00 + b:12
