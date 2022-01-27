@@ -10,17 +10,20 @@
 
 #
 # Drawing area
+# TODO: w,h,x,y parameters w/ these defaults
+#       call script from autorandr with corresponding parameters.
 #
 
-w=1920                  # Width
-h=1080                  # Height
-x=1920                  # Horizontal offset
-y=1080                  # Vertical offset
-orientation="landscape" # Portrait/landscape
-
 # Get screen resolution (TODO: test external monitor)
-resolution=$(xrandr --current | grep "connected primary" | awk '{print $4}')
-echo "$resolution"
+resolution=$(xrandr --current | grep "connected primary" | awk '{print $4}' | sed 's/x/ /g' | sed 's/+[0-9]//g')
+screen_w=$(echo "$resolution" | awk '{print $1}')
+screen_h=$(echo "$resolution" | awk '{print $2}')
+
+w=1920                   # Width
+h=1080                   # Height
+x="$((screen_w - 1920))" # Horizontal offset
+y="$((screen_h - 1080))" # Vertical offset
+orientation="landscape"  # Portrait/landscape
 
 # Get rotation setting
 rotate=`[[ "$orientation" == "landscape" ]] && echo "half" || echo "ccw"`
