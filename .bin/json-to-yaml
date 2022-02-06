@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+
+import yaml, json, sys
+
+print(yaml.dump(json.load(open(sys.argv[1])), allow_unicode=True), end='')
