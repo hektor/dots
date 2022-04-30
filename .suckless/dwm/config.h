@@ -12,11 +12,20 @@ static const char col_gray0[]       = "#0a0a0a";
 static const char col_gray1[]       = "#111111";
 static const char col_gray2[]       = "#333333";
 static const char col_gray3[]       = "#555555";
+// Warn & urgent colors
 static const char col_gray4[]       = "#cccccc";
+static const char col_black[]       = "#000000";
+static const char col_red[]         = "#ff0000";
+static const char col_yellow[]      = "#ffff00";
+static const char col_white[]       = "#ffffff";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray0, col_gray0 },
-	[SchemeSel]  = { col_gray4, col_gray0,  col_gray2  },
+	/*                fg         bg         border   */
+	[SchemeNorm] =  { col_gray4, col_gray0, col_gray2 },
+	[SchemeSel]  =  { col_white, col_gray0,  col_gray3 },
+  // Extra color schemes
+  [SchemeWarn] =	{ col_black, col_yellow, col_red },
+  [SchemeUrgent]=	{ col_white, col_red,    col_red },
 };
 
 /* tagging */
