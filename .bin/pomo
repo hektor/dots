@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+# Pomodoro timer 
+#
+# - Writes pomodoro timer to temporary file so dwmblocks
+#   statusbar can read it
+# - Notification on session finish
+# - Notification on break finish
+
+import os
+import atexit
+from argparse import ArgumentParser
+from time import sleep
+from plyer import notification
+
+def clear():
+  os.system('echo -n "" > /tmp/pomo')
+
+atexit.register(clear)
+
+parser = ArgumentParser()
+
+parser.add_argument('-w', '--work-duration', type=int, help='Duration of a session', default=25)
+parser.add_argument('-b', '--break-duration', type=int, help='Duration of a break', default=5)
+
+args = parser.parse_args()
+
+work_duration = args.work_duration * 60
+break_duration = args.break_duration * 60
+
+def countdown(duration):
+  while duration!= 0:
+    mins = duration // 60
+    secs = duration % 60
+    os.system('echo -n \x03 "{:02d}:{:02d} \x01" > /tmp/pomo'.format(mins, secs))
+    sleep(1)
+    duration -= 1
+
+countdown(work_duration)
+notification.notify(title="Time for a break")
+countdown(break_duration)
+notification.notify(title="Break is over, set a new timer")
