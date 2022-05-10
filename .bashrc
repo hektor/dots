@@ -23,9 +23,10 @@ export PS1="\u \w ❭\[$(tput sgr0)\] "
 # History
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=500000
+# Omit `clear, ls...`; commands prepended with space
 export HISTIGNORE="clear:l: *"
 
-# Readable man pages
+# Man pages
 export MANWIDTH=120
 
 # Vim
@@ -40,11 +41,11 @@ export FZF_DEFAULT_OPTS='--height 38% --reverse --border --prompt="❭ " --point
 export FZF_COMPLETION_OPTS='-x'
 
 # Nvm
-
 export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 
+# X11
 export XDG_SESSION_TYPE=X11
 
 # Ellipsis when deep in directory
