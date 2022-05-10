@@ -114,6 +114,8 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" JSON with comments
+Plug 'neoclide/jsonc.vim'
 " LaTeX & markdown
 Plug 'lervag/vimtex'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -209,6 +211,9 @@ let g:javascript_conceal_function = "ƒ"
 let g:javascript_conceal_return = "⇖"
 let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
+
+" JSONC (see https://github.com/neoclide/jsonc.vim/pull/9")
+autocmd BufNewFile,BufRead */.vscode/*.json setlocal filetype=jsonc
 
 " SuperCollider
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd se filetype=supercollider
