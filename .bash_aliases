@@ -18,12 +18,12 @@ alias ip="ip --color"
 
 # Listing
 
-alias l="ls -1"
-alias ll="ls -lh"
-alias lt="ls -lht"
-alias la="ls -lha"
-alias lta="ls -lhat"
-alias ld="ls -d */" # list directories
+alias l="ls -1p"
+alias ll="ls -lhp"
+alias lt="ls -lhtp"
+alias la="ls -lhap"
+alias lta="ls -lhatp"
+alias ld="ls -dp" # list directories
 
 # Safety
 
@@ -38,31 +38,29 @@ alias chgrp="chgrp --preserve-root"
 
 # Clipboard
 
-alias clip='xclip -sel clip'
-alias srclip='clip -o | speedread -w 500'
+alias clip="xclip -sel clip"
+alias srclip="clip -o | speedread -w 500"
 
 # Other
 
-alias df='df -kTh'
-alias path='echo -e ${PATH//:/\\n}' # Pretty print path variables
-alias cfg='/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h'
+alias cfg="/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h"
+alias df="df -kTh"
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
-alias zzz='systemctl suspend && exit'
-alias o='xdg-open'
-alias now='date +"%T"'
-alias week='date +%V'
-alias wiki='vim +WikiIndex'
+alias o="xdg-open"
+alias path="echo -e ${PATH//:/\\n}" # Pretty print path variables
+alias wiki="vim +WikiIndex"
 
 # Programs
 
+alias feh="feh -B black --scale-down --auto-zoom"
+alias fm='pcmanfm'
 alias g='git'
 alias lm='xbacklight -set'
-alias vi='vim'
 alias py='python'
 alias r5rs-repl='plt-r5rs --no-prim'
-alias feh="feh -B black --scale-down --auto-zoom"
-
-alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
+alias vi='vim'
+alias xopp="xournalpp $1 &>/dev/null"
+alias xev='xev | grep -A2 ButtonPress' # Ignore mouse movements
 
 reboot_to_windows ()
 {
