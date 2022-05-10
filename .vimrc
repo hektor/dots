@@ -30,14 +30,23 @@ set ar                   " Autoread
 " Functions ____________________________
 
 " Toggle line numbers
-fu! ToggleRnu() " toggle: no numbers - relative nummbers
-  if(&nu) | se nonu nornu | else | se nu rnu | endif
+fu! ToggleLineNumbers()
+  set nu! rnu! " toggle: no numbers - relative nummbers
 endfu
 
 " https://alok.github.io/2018/04/26/using-vim-s-conceal-to-make-languages-more-tolerable/
 fu! ToggleConceal()
   if (&cole == 0) | se cole =2 | else | set cole =0 | endif
 endfu
+
+" Insert date
+fu! Today()
+  :put =strftime('%d %b %Y')
+endfu
+
+" Add command line functions names
+com! -nargs=0 Today :call Today()
+com! -nargs=0 ToggleLineNumbers :call ToggleLineNumbers()
 com! -nargs=0 ToggleConceal :call ToggleConceal()
 
 " Keybindings
