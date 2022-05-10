@@ -141,7 +141,8 @@ let g:coc_global_extensions = [
   \'coc-json',
   \'coc-markdownlint',
   \'coc-yaml',
-  \'coc-snippets'
+  \'coc-snippets',
+  \'coc-clangd'
   \]
 " Autocomplete
 imap <tab> <Plug>(coc-snippets-expand)
