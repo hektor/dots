@@ -120,8 +120,6 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 " TidalCycles
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
-" Lisp & Scheme
-Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'racket'] }
 call plug#end()
 
 " Plugin config
