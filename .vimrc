@@ -49,6 +49,11 @@ com! -nargs=0 Today :call Today()
 com! -nargs=0 ToggleLineNumbers :call ToggleLineNumbers()
 com! -nargs=0 ToggleConceal :call ToggleConceal()
 
+" Setup Man command for reading man pages
+if exists(":Man") != 2
+  source $VIMRUNTIME/ftplugin/man.vim
+endif
+
 " Keybindings
 """""""""""""
 
