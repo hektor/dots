@@ -1,28 +1,14 @@
-# Keyboard controls for music player
-"exec playerctl --player=ncspot next"
-  m:0x40 + c:114
-  Mod4 + Right
-"exec playerctl --player=ncspot previous"
-  m:0x40 + c:113
-  Mod4 + Left
-"exec playerctl --player=ncspot pause"
-  m:0x40 + c:116
-  Mod4 + Down
-"exec playerctl --player=ncspot play"
-  m:0x40 + c:111
-  Mod4 + Up
-
-# Headphone controls for music player
-"exec playerctl --player=ncspot next"
+# Headphone controls for spotify
+"playerctl --player=ncspot next --player=spotify next"
   m:0x0 + c:171
   XF86AudioNext
-"exec playerctl --player=ncspot previous"
+"playerctl --player=ncspot previous --player=spotify previous"
   m:0x0 + c:173
   XF86AudioPrev
-"exec playerctl --player=ncspot pause"
+"playerctl --player=ncspot pause --player=spotify pause"
   m:0x0 + c:209
   XF86AudioPause
-"exec playerctl --player=ncspot play"
+"playerctl --player=ncspot play --player=spotify play"
   m:0x0 + c:208
   XF86AudioPlay
 
@@ -31,3 +17,5 @@
   m:0x00 + b:13
 "xdotool key space"
   m:0x00 + b:12
+"xdotool key Print"
+  m:0x00 + b:11
