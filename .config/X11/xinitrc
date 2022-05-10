@@ -23,6 +23,7 @@ fi
 xset -b            # disable bell
 xset r rate 200 30 # adjust typematic delay & rate
 
+xbindkeys &
 xbanish &
 dwmblocks &
 udiskie &
