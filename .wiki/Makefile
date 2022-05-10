@@ -11,16 +11,16 @@ all: $(exports)
 
 %.html:%.md
 	pandoc \
-	 -f markdown \
+	 -f markdown+latex_macros-yaml_metadata_block \
 	 -t html5 \
 	 -c pandoc.css \
 	 --pdf-engine=xelatex \
 	 --bibliography $(VIMWIKI_DIR)/references.bib \
 	 --citeproc \
-	 --highlight-style=monochrome \
 	 --resource-path=$(VIMWIKI_DIR)/img/ \
 	 --lua-filter=$(VIMWIKI_DIR)/filters/html-links.lua \
 	 --lua-filter=$(VIMWIKI_DIR)/filters/diagram-generator.lua \
+	 --lua-filter=$(VIMWIKI_DIR)/filters/tikz.lua \
 	 --lua-filter=$(VIMWIKI_DIR)/filters/lilypond.lua \
 	 --mathjax \
 	 --extract-media=img \
