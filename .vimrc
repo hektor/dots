@@ -205,8 +205,6 @@ au Filetype supercollider packadd scvim
 " Tidalcycles (sclang and vim-tidal)
 let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
 
-" Slimv
-let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
 
 " Plugin keybindings
 """"""""""""""""""""
