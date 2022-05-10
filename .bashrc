@@ -55,5 +55,8 @@ export NVM_DIR="$HOME/.nvm"
 # X11
 export XDG_SESSION_TYPE=X11
 
+# Jupyter
+export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+
 # Ellipsis when deep in directory
 export PROMPT_DIRTRIM=2
