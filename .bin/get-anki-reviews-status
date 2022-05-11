@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Get Anki review status from exit code
+
 num_reviews="$(cat /tmp/anki-reviews)"
 
 if [ "$num_reviews" -ge "400" ]
