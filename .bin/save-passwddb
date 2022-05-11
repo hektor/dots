@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Save (encrypted) password database to cloud storage
+#
+# Can be run manually or daily by enabling the corresponding systemd user
+# service and timer, i.e.
+#
+# `systemctl --user enable save-passwddb.service`
+# `systemctl --user enable save-passwddb.timer`
+
+rclone copy "$HOME/doc/passwd.kdbx" google-drive:

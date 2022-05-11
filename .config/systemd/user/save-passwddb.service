@@ -1,0 +1,11 @@
+[Unit]
+Description=Save KeypassXC password database to cloud
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/h/.bin/save-passwddb
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Save Keepass password database to cloud daily
+
+[Timer]
+OnCalendar=daily
+RandomizedDelaySec=12h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
