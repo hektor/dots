@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-ip addr show $@ | awk '/inet / {gsub(/\/.*/,"",$2); print $2}'
+
+# Get local IP
+
+ip addr show $@ | awk '/inet / {gsub(/\/.*/,"",$2); print $2}' | tail -n 1
