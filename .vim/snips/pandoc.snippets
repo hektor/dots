@@ -1,0 +1,378 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+# Zettelkasten templating
+
+snippet nl
+(*Ned.*: $1)
+endsnippet
+
+snippet eng
+(*Eng.*: $1)
+endsnippet
+
+snippet fr
+(*Fr.*: $1)
+endsnippet
+
+snippet de
+(*De.*: $1)
+endsnippet
+
+snippet in
+(In [$1]($2))$3
+endsnippet
+
+snippet ref "References"
+<!--references-->
+endsnippet
+
+snippet foot "Footnotes"
+<!--footnotes-->
+[^0]:
+endsnippet
+
+snippet def "Definition"
+**Definition $1** [@$2]
+
+$3
+
+___
+endsnippet
+
+snippet theo "Theorem"
+**Theorem $1** [@]
+
+$2
+
+___
+endsnippet
+
+snippet prop "Property"
+**Property $1** [@]
+
+$2
+
+___
+endsnippet
+
+snippet lemm "Lemma"
+**Lemma $1** [@]
+
+$2
+
+___
+endsnippet
+
+snippet coro "Corollary"
+**Corollary $1** [@]
+
+$2
+
+___
+endsnippet
+
+# Zettelkasten to Anki
+
+snippet td "TARGET DECK: <Deck name>"
+TARGET DECK: $1::$2
+endsnippet
+
+snippet cloze
+START
+Cloze
+$1
+END
+$2
+endsnippet
+
+snippet clozedef
+START
+Cloze
+**Definition$1**
+
+$2
+END
+endsnippet
+
+snippet clozeprop
+START
+Cloze
+**Property$1**
+
+$2
+END
+endsnippet
+
+snippet clozetheorem
+START
+Cloze
+**Theorem$1**
+
+$2
+END
+endsnippet
+
+snippet clozelemma
+START
+Cloze
+**Lemma$1**
+
+$2
+END
+endsnippet
+
+snippet c1
+{{c1::$1}}$2
+endsnippet
+
+snippet c2
+{{c2::$1}}$2
+endsnippet
+
+snippet c3
+{{c3::$1}}$2
+endsnippet
+
+snippet c4
+{{c4::$1}}$2
+endsnippet
+
+snippet c5
+{{c5::$1}}$2
+endsnippet
+
+snippet c6
+{{c6::$1}}$2
+endsnippet
+
+snippet c7
+{{c7::$1}}$2
+endsnippet
+
+snippet c8
+{{c8::$1}}$2
+endsnippet
+
+snippet c9
+{{c9::$1}}$2
+endsnippet
+
+snippet c10
+{{c10::$1}}$2
+endsnippet
+
+# MathJax environments
+
+snippet asa "Als en slechts als" i
+als en slechts als 
+endsnippet
+
+snippet align "" i
+\begin{align}
+$1
+\end{align}
+$2
+endsnippet
+
+snippet cases "" i
+\begin{cases}
+$1 \\\\
+$2
+\end{cases}
+$3
+endsnippet
+
+snippet matrix "Matrix" i
+\begin{bmatrix}
+$1
+\end{bmatrix}
+endsnippet
+
+snippet $
+$$1$$2
+endsnippet
+
+snippet $$
+$$
+$1
+$$
+$2
+endsnippet
+
+# MathJax
+
+snippet fa "For all" i
+\forall
+endsnippet
+
+snippet frac "" i
+\frac{$1}{$2}$3
+endsnippet
+
+snippet set "" i
+\\{$1\\}$2
+endsnippet
+
+snippet N "" i
+\mathbb{N}
+endsnippet
+
+snippet N0 "" i
+\mathbb{N}_0
+endsnippet
+
+snippet N+ "" i
+\mathbb{N}^+
+endsnippet
+
+snippet Z "" i
+\mathbb{Z}
+endsnippet
+
+snippet Z0 "" i
+\mathbb{Z}_0
+endsnippet
+
+snippet Z+ "" i
+\mathbb{Z}^+
+endsnippet
+
+snippet R "" i
+\mathbb{R}
+endsnippet
+
+snippet R0 "" i
+\mathbb{R}_0
+endsnippet
+
+snippet R+ "" i
+\mathbb{R}^+
+endsnippet
+
+snippet C "" i
+\mathbb{C}
+endsnippet
+
+snippet lim "" i
+\lim_{$1}$2
+endsnippet
+
+snippet limn "" i
+\lim_{n \to \infty}$2
+endsnippet
+
+snippet binom "" i
+\binom{$1}{$2}$3
+endsnippet
+
+snippet andmath "description" i
+\text{ and }
+endsnippet
+
+snippet enmath "description" i
+\text{ en }
+endsnippet
+
+snippet lra "MathJax: long right arrow" i
+\longrightarrow
+endsnippet
+
+snippet Ra "MathJax: right arrow" i
+\Rightarrow
+endsnippet
+
+snippet Im "MathJax: image operator" i
+\operatorname{Im}
+endsnippet
+
+snippet ggd "Grootste gemene deler" i
+\operatorname{ggd}
+endsnippet
+
+snippet fl "Floating point" i
+\operatorname{fl}
+endsnippet
+
+snippet Var "Variance" i
+\operatorname{Var}
+endsnippet
+
+snippet E "Expectation" i
+\operatorname{E}
+endsnippet
+
+snippet mxn "Matrix" i
+m \times n
+endsnippet
+
+snippet Span "Span" i
+\operatorname{Span}\\{$1\\}$2
+endsnippet
+
+snippet Nul "Null" i
+\operatorname{Nul}($1)$2
+endsnippet
+
+snippet Col "Column space" i
+\operatorname{Col}($1)$2
+endsnippet
+
+snippet kern "Kernel" i
+\operatorname{kern}($1)$2
+endsnippet
+
+snippet vec "Vector" i
+\mathbf{$1}$2
+endsnippet
+
+snippet v1tovp "Vectors v indexed from 1 to p" b
+\mathbf{v_1},...,\mathbf{v_p}$2
+endsnippet
+
+snippet a1toan "Vectors a indexed from 1 to n" b
+\mathbf{a_1},...,\mathbf{v_n}$2
+endsnippet
+
+snippet .. "Dot dot dot" i
+\dots $1
+endsnippet
+
+snippet text "MathJax text" i
+\text{$1}$2
+endsnippet
+
+snippet leq "Less than or equal to" i
+\leq
+endsnippet
+
+snippet leq "Greater than or equal to" i
+\geq
+endsnippet
+
+snippet eat "Evaluated at" i
+{\biggr\rvert}_{$1}$2
+endsnippet
