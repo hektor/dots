@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+num_done="$(task end.after:today status:completed count)"
+num_pending="$(($(task count status:pending) + $num_done))"
+
+if [ "$num_done" -ge "$num_pending" ];then
+  color="\x01"
+elif [ "$num_done" -ge "$((num_pending/2))" ]; then
+  color="\x03"
+else
+  color="\x04"
+fi
+
+echo -n -e "$color Tasks: $num_done/$num_pending \x01"

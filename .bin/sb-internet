@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if grep -xq 'up' /sys/class/net/w*/operstate 2>/dev/null ; then
+	wifiicon="$(awk '/^\s*w/ { print "WiFi", int($3 * 100 / 70) "% " }' /proc/net/wireless)"
+fi
+
+printf " %s%s%s |" "$wifiicon" "$(sed "s/down//;s/up/Ethernet/" /sys/class/net/e*/operstate 2>/dev/null)"

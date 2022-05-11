@@ -70,11 +70,19 @@ void getcmd(const Block *block, char *output)
     pclose(cmdf);
     return;
   }
-  if (delim[0] != '\0') {
-    //only chop off newline if one is present at the end
-    i = output[i-1] == '\n' ? i-1 : i;
-    strncpy(output+i, delim, delimLen); 
-  }
+
+  /*
+   * Temporary workaround, I guess newlines caused replacement characters to be
+   * displayed. Removing this check and newlines from statusbar scripts does
+   * the trick for now. Might patch later.
+   */
+
+  /* if (delim[0] != '\0') {
+   *   //only chop off newline if one is present at the end
+   *   i = output[i-1] == '\n' ? i-1 : i;
+   *   strncpy(output+i, delim, delimLen);
+   * } */
+
   else
     output[i++] = '\0';
   pclose(cmdf);

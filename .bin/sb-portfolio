@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+"$HOME/dev/automation/portfolio-tracker/index.js"
