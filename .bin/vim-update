@@ -1,1 +1,5 @@
+#!/usr/bin/env bash
+
+# Tiny Vim update helper
+
 vim +PlugUpgrade +PlugUpdate +CocUpdate
