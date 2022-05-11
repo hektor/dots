@@ -85,3 +85,5 @@ xsetwacom set "Wacom HID 5214 Pen eraser"       rotate none
 xsetwacom set "Wacom HID 5214 Pen eraser"       MapToOutput 1920x1080+0+0
 xsetwacom set "Wacom HID 5214 Pen stylus"       MapToOutput 1920x1080+0+0
 xsetwacom set "Wacom HID 5214 Finger touch"     MapToOutput 1920x1080+0+0
+
+xsetwacom --set "Wacom Intuos Pro M Finger touch" TOUCH off
