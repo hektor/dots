@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
-capacityStatus="$(cat /sys/class/power_supply/BAT0/capacity)"
+cap="$(cat /sys/class/power_supply/BAT0/capacity)"
 
-printf "$capacityStatus%%"
+if [ "$cap" -ge 33 ];then
+  color="\x01"
+elif [ "$cap" -ge 10 ]; then
+  color="\x03"
+else
+  color="\x04"
+fi
+
+echo -n -e "$color $cap%"
