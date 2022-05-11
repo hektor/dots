@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+options="Mouse\nHeadphones"
+
+selected="$(echo -e "$options" | fzf)"
+
+case "$selected" in
+  "Mouse")      toggle-bt-device E4:19:21:56:C8:70;;
+  "Headphones") toggle-bt-device 38:18:4C:D4:74:42;;
+esac
