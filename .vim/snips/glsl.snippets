@@ -1,0 +1,76 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet ifdef
+#ifdef GL_ES
+precision mediump float;
+#endif
+endsnippet
+
+snippet defpi
+#define PI 3.14159265359
+endsnippet
+
+snippet main
+void main() {
+  $1
+}
+endsnippet
+
+snippet uni
+uniform $1;
+endsnippet
+
+snippet unif
+uniform float $1;
+endsnippet
+
+snippet univ
+uniform vec$1 float $2;
+endsnippet
+
+snippet univ2
+uniform vec2 float $1;
+endsnippet
+
+snippet univ3
+uniform vec3 float $1;
+endsnippet
+
+snippet univ4
+uniform vec4 float $1;
+endsnippet
+
+snippet f
+float
+endsnippet
+
+snippet v
+vec
+endsnippet
+
+snippet ss
+smoothstep($1)$2
+endsnippet
