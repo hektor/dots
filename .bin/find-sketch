@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Find and open Xournal sketch
+
+selected=$(ls ~/sketches/*.xopp | fzf)
+
+xournalpp "$selected" &

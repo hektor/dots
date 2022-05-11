@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Find and open pdf
+
+selected=$(ls ~/doc/books/*.{pdf,epub,djvu} | fzf)
+
+zathura "$selected" &
