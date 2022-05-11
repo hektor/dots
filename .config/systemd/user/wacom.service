@@ -1,0 +1,11 @@
+[Unit]
+Description=Configure my Wacom tablet
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/h/.bin/set-wacom-draw-area
+
+[Install]
+WantedBy=graphical-session.target
