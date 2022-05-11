@@ -1,0 +1,78 @@
+#
+# Inspired by https://castel.dev/post/lecture-notes-1/
+#
+
+snippet beg "begin{} / end{}" b
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet def "begin{definition} / end{definition}" b
+\begin{definition}
+	$0
+\end{defintion}
+endsnippet
+
+snippet fig "begin{figure} / end{figure}" b
+\begin{figure}
+	$0
+\end{figure}
+endsnippet
+
+snippet time "Time"
+`date +%R`
+endsnippet
+
+snippet i
+\textit{$0}
+endsnippet
+
+snippet b
+\textbf{$0}
+endsnippet
+
+snippet center
+\begin{center}
+$0
+\end{center}
+endsnippet
+
+snippet pac
+\usepackage{$0}
+endsnippet
+
+snippet foot
+\footnote{$0}
+endsnippet
+
+# snippet m "Math" wA
+# $${1}$`!p
+# if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+#		snip.rv = ' '
+# else:
+#		snip.rv = ''
+# `$2
+# endsnippet
+
+snippet dm "Math" wA
+\[
+$1
+\]$0
+endsnippet
+
+snippet ch
+\chapter{$0}
+endsnippet
+
+snippet sec
+\section{$0}
+endsnippet
+
+snippet ssec
+\subsection{$0}
+endsnippet
+
+snippet sssec
+\subsubsection{$0}
+endsnippet
