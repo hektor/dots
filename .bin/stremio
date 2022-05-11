@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+get-anki-reviews-status && stremio || $(echo "Do your reviews first" | notify-pipe)

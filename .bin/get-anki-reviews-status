@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+num_reviews="$(cat /tmp/anki-reviews)"
+
+if [ "$num_reviews" -ge "400" ]
+then
+  exit 0
+else
+  exit 1
+fi

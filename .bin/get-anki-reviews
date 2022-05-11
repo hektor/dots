@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Get current card count from Anki
+count=$(curl -s localhost:8765 -X POST -d '{"action": "getNumCardsReviewedToday", "version": 6}' | jq '.result')
+
+if [ -z "$count" ]
+then
+  if [ -s /tmp/anki-reviews ]; then
+    true
+  else
+    echo "0" > /tmp/anki-reviews
+  fi
+else
+  echo "$count" > /tmp/anki-reviews
+fi
+
+num_reviews=$(cat /tmp/anki-reviews)
+
+if [ "$num_reviews" -ge 400 ];then
+  color="\x01"
+  "$(task "Anki reviews" done)" # Check of taskwarrior task
+elif [ "$num_reviews" -ge 200 ]; then
+  color="\x03"
+else
+  color="\x04"
+fi
+
+echo -n -e "$color Reviews: $(python3 -c "print('{:.2%}'.format($num_reviews/400))") \x01"
