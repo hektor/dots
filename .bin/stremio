@@ -2,4 +2,4 @@
 
 # Only allow stremio when I have finished my Anki reviews
 
-get-anki-reviews-status && stremio || $(echo "Do your reviews first" | notify-pipe)
+get-anki-reviews-status && stremio || $(echo "Do your reviews first" | notify)
