@@ -23,7 +23,7 @@ alias ll="ls -lhp"
 alias lt="ls -lhtp"
 alias la="ls -lhap"
 alias lta="ls -lhatp"
-alias ld="ls -dp" # list directories
+alias ldir="ls -dp" # list directories
 
 # Safety
 
