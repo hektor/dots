@@ -1,11 +1,15 @@
 [Unit]
 Description=Configure my Wacom tablet
-After=graphical-session.target
-PartOf=graphical-session.target
+After=default.target
+PartOf=default.target
 
 [Service]
 Type=oneshot
+Environment=XAUTHORITY=/home/h/.Xauthority
+Environment=DISPLAY=:0
+ExecStartPre=/bin/sleep 3
 ExecStart=/home/h/.bin/set-wacom-draw-area
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=default.target
+WantedBy=sys-devices-pci0000:00-0000:00:08.1-0000:04:00.3-usb1-1\x2d2.device
