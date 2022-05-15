@@ -19,9 +19,8 @@ all: $(exports)
 	 --citeproc \
 	 --resource-path=$(VIMWIKI_DIR)/img/ \
 	 --lua-filter=$(VIMWIKI_DIR)/filters/html-links.lua \
-	 --lua-filter=$(VIMWIKI_DIR)/filters/diagram-generator.lua \
-	 --lua-filter=$(VIMWIKI_DIR)/filters/tikz.lua \
-	 --lua-filter=$(VIMWIKI_DIR)/filters/lilypond.lua \
+	 --lua-filter=$(VIMWIKI_DIR)/lua-filters/diagram-generator/diagram-generator.lua \
+	 --lua-filter=$(VIMWIKI_DIR)/lua-filters/lilypond/lilypond.lua \
 	 --mathjax \
 	 --extract-media=img \
 	 --strip-comments \
