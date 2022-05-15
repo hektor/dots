@@ -55,3 +55,6 @@
 [log]
   date = relative
   abbrevCommit = true
+
+[credential "https://github.com"]
+  helper = !/usr/bin/gh auth git-credential
