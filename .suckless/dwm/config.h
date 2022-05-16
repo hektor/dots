@@ -77,11 +77,11 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu-run-history", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_gray1, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *prtscrcmd[] = { "flameshot", "gui", NULL};
-static const char *incvol[] = { "amixer", "set", "Master", "3+", NULL };
-static const char *decvol[] = { "amixer", "set", "Master", "3-", NULL };
-static const char *mutevol[] = { "amixer", "set", "Master", "toggle", NULL };
-static const char *incbrightness[] = { "xbacklight", "-inc", "10", NULL };
-static const char *decbrightness[] = { "xbacklight", "-dec", "10", NULL };
+static const char *incvol[] = { "pactl", "set-sink-volume", "56", "+5%", NULL };
+static const char *decvol[] = { "pactl", "set-sink-volume", "56", "-5%", NULL };
+static const char *mutevol[] = { "pactl", "set-sink-mute", "56", "toggle", NULL };
+static const char *incbrightness[] = { "xbacklight", "-inc", "5", NULL };
+static const char *decbrightness[] = { "xbacklight", "-dec", "5", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
