@@ -1,0 +1,11 @@
+[google-drive]
+type = drive
+scope = drive
+token =
+
+[onedrive-vub]
+type = webdav
+url =
+vendor = sharepoint
+user =
+pass =
