@@ -1,0 +1,19 @@
+# Restic ignore
+
+# General
+.cache
+cache
+build
+.git
+node_modules
+
+# Specifics
+$HOME/.atom
+$HOME/.cargo
+$HOME/.espressif
+$HOME/.local/share/torbrowser
+$HOME/.mozilla
+$HOME/.nvm
+$HOME/.npm
+$HOME/.nuget
+$HOME/doc/disk-images
