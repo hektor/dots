@@ -3,11 +3,20 @@
 # General
 .cache
 cache
+Cache
+CachedData
+CachedExtension
+__pycache__
+GPUCache
+ShaderCache
 build
 .git
 node_modules
+venv
+env
 
 # Specifics
+$HOME/.android
 $HOME/.atom
 $HOME/.cargo
 $HOME/.espressif
