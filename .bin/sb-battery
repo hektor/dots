@@ -10,4 +10,4 @@ else
   color="\x04"
 fi
 
-echo -n -e "$color $cap%"
+echo -n -e "$color $cap% \x01"

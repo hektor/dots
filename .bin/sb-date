@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-echo -n -e "Week $(date '+%V') - $(date '+%a %d %b %H:%M')"
+echo -n -e "Week $(date '+%V') $(date '+%a %d %b %H:%M') "
