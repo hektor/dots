@@ -9,6 +9,6 @@ hi! link pandocCiteLocator Comment
 syn match ClozeDelimiter /{{c\d::/ conceal containedin=pandocUListItem,pandocListItem
 syn match ClozeDelimiter /}}/ conceal containedin=pandocUListItem,pandocListItem
 " Match text between cloze delimiters
-syn match Cloze /\({{c\d\+::\)\@<=\([A-Za-z0-9$\ \\\-\*]*\)\(}}\)\@=/ containedin=pandocUListItem,pandocListItem
+syn match Cloze /\({{c\d\+::\)\@<=\(\_[A-Za-z0-9$\ \\\-\*,_]*\)\(}}\)\@=/ containedin=pandocUListItem,pandocListItem
 
 hi! link Cloze Comment
