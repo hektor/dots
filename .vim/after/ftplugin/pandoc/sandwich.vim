@@ -1,21 +1,6 @@
 function GetClozeNumber()
-
-  " let REGEX_CLOZE_NOTE_START = 'START\nCloze\n'
-  " " Backwards search for Cloze note start from cursor position
-  " let cloze_note_start = searchpos(REGEX_CLOZE_NOTE_START, 'bnW', line("gg"))
-  " if max(cloze_note_start) != 0
-  " " Part of a cloze note
-  "   ...
-  " else
-  "   " Not part of a cloze note
-  "   return 1
-  " endif
-
   let REGEX_CLOZE_START = '{{c\d\+::'
 
-  let saved_cursor = getcurpos()[1:-1]
-
-  call cursor(saved_cursor)
   " Find previous cloze match
   let prev_match = searchpos(REGEX_CLOZE_START, 'bW', line("gg"))
   " Only get number if cloze was matched (i.e. when cursor does not end up at
