@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+fn="/tmp/fontnames.txt"
+
+contains_dash() {
+  [[ "$1" =~ - ]]
+}
+
+update() {
+  echo "" > "$fn"
+
+  font_list=$(fc-list -f "%{fullname}\n")
+
+  echo "$font_list" | while read line ; do
+    first="$(echo "$line" | cut -d',' -f1)"
+    last="$(echo "$line" | cut -d',' -f2)"
+
+    if $(contains_dash "$first"); then
+      echo "$last" >> "$fn"
+    else
+      echo "$first" >> "$fn"
+    fi
+  done
+}
+
+case "$1" in
+  --update) update;;
+  *) cat "$fn" | sort | uniq | awk 'NF' | fzf;;
+esac
