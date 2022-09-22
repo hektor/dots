@@ -11,11 +11,11 @@ update() {
 
   font_list=$(fc-list -f "%{fullname}\n")
 
-  echo "$font_list" | while read line ; do
+  echo "$font_list" | while read -r line ; do
     first="$(echo "$line" | cut -d',' -f1)"
     last="$(echo "$line" | cut -d',' -f2)"
 
-    if $(contains_dash "$first"); then
+    if "$(contains_dash "$first")"; then
       echo "$last" >> "$fn"
     else
       echo "$first" >> "$fn"
@@ -25,5 +25,5 @@ update() {
 
 case "$1" in
   --update) update;;
-  *) cat "$fn" | sort | uniq | awk 'NF' | fzf;;
+  *) sort "$fn" | uniq | awk 'NF' | fzf;;
 esac
