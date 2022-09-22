@@ -23,20 +23,33 @@ fi
 xset -b            # disable bell
 xset r rate 200 30 # adjust typematic delay & rate
 
+# Shared
 xbindkeys &
 xbanish &
-dwmblocks &
-udiskie &
-redshift -t 4500:3000 &
+redshift -o & # Run redshift in one shot mode
 
-# No compositor
-# xsetroot -solid "#0a0a0a"
+# DWM
+# dwmblocks &
+# udiskie &
+# # No compositor
+# # xsetroot -solid "#0a0a0a"
+# # With compositor
+# # hsetroot -solid "#0a0a0a"
+# # picom &
+# # execute dwm in a loop
+# while true; do
+#   dwm 2> ~/.dwm.log
+# done
 
-# With compositor
-hsetroot -solid "#0a0a0a"
-picom &
+# Openbox
+# # udiskie --tray &
+# # plank &
+# # picom &
+# # hsetroot -solid "#555555"
+# # openbox
 
-# execute dwm in a loop
-while true; do
-  dwm 2> ~/.dwm.log
-done
+exec xmonad
+
+keychain ~/.ssh/id_rsa.pub
+[ -f ~/.keychain/$HOSTNAME-sh ] && . ~/.keychain/$HOSTNAME-sh 2>/dev/null
+[ -f ~/.keychain/$HOSTNAME-sh-gpg ] && . ~/.keychain/$HOSTNAME-sh-gpg 2>/dev/null
