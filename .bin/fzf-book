@@ -2,6 +2,8 @@
 
 # Find and open pdf
 
-selected=$(ls ~/doc/books/*.{pdf,epub,djvu} | fzf)
+# -printf "%f\n"
+selected="$(find /home/h/doc/books/ -regex '.*\.\(pdf\|epub\|djvu\)' -type f | sort | fzf --delimiter=/ --with-nth=-1)"
 
-zathura "$selected" &
+# Open and redirect output to /dev/null
+zathura "$selected" 2> /dev/null &
