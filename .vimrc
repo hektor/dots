@@ -1,4 +1,4 @@
-" General config ______________________
+" General config {{{
 "
 " Most acronyms are unreadable, but they keep the overview
 " I have to do a quick :h lookup for most of these anyway.
