@@ -26,3 +26,7 @@ $HOME/.nvm
 $HOME/.npm
 $HOME/.nuget
 $HOME/doc/disk-images
+$HOME/.config/BraveSoftware/Brave-Browser/Default/Local Storage
+$HOME/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings
+$HOME/.config/devcert
+$HOME/.build
