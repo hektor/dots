@@ -1,6 +1,7 @@
 import           XMonad
 import           XMonad.Hooks.DynamicLog
 import           XMonad.Hooks.ManageDocks
+import           XMonad.Layout.NoBorders      (smartBorders)
 
 import           XMonad.Layout.Magnifier
 import           XMonad.Layout.Spacing
@@ -33,10 +34,11 @@ import qualified Data.Map.Strict              as M
 import qualified XMonad.StackSet              as W
 
 -- Magnifier is off by default (can be controlled using arrow keys)
-myLayout = threeColMid |||
-           magnifiercz magnificationFactorH tiled |||
-           magnifiercz magnificationFactorV (Mirror tiled) |||
-           Full
+myLayout = smartBorders $
+             threeColMid |||
+             magnifiercz magnificationFactorH tiled |||
+             magnifiercz magnificationFactorV (Mirror tiled) |||
+             Full
   where
     magnificationFactorV = 1.384
     magnificationFactorH = 1.621
