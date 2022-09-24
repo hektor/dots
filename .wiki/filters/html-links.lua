@@ -1,5 +1,9 @@
--- https://stackoverflow.com/questions/40993488/convert-markdown-links-to-html-with-pandoc
 function Link(el)
-  el.target = string.gsub(el.target, "%.md", ".html")
+  --Replace markdown extension with html extension
+  if string.match(el.target, '.md$') then
+    el.target = string.gsub(el.target, "%.md", "")
+    --Add html extension
+    el.target = el.target .. '.html'
+  end
   return el
 end
