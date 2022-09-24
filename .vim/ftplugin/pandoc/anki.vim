@@ -18,5 +18,5 @@
 " In this sentence this word was closed.
 " ```
 
-au FileType pandoc com! -range AnkiRemoveAllClozes :%s/{{c\d\+:://ge | :%s/}}//ge | :%s/START\nCloze\n//ge | :%s/END\n//ge
+au FileType pandoc com! -range AnkiRemoveAllClozes :%s/\%V{{c\d\+:://ge | :%s/\%V}}//ge | :%s/\%VSTART\nCloze\n//ge | :%s/\%VEND\n//ge
 au FileType pandoc com! -range AnkiRemoveSelectedClozes :%s/\%V{{c\d\+:://ge | :%s/\%V}}//ge | :%s/\%VSTART\nCloze\n//ge | :%s/\%VEND\n//ge
