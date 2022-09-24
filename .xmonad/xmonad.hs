@@ -4,6 +4,7 @@ import           XMonad.Hooks.ManageDocks
 import           XMonad.Layout.NoBorders      (smartBorders)
 
 import           XMonad.Layout.Magnifier
+import qualified XMonad.Layout.Magnifier      as Mag (MagnifyMsg (..))
 import           XMonad.Layout.Spacing
 import           XMonad.Layout.Tabbed         (Theme (..), shrinkText,
                                                tabbedAlways)
@@ -112,8 +113,11 @@ myKeysP = [
   , ("M-S-b", spawn "firefox --fullscreen")
 
   -- Magnify window using arrow keys
-  , ("M-<Up>", sendMessage MagnifyMore)
-  , ("M-<Down>", sendMessage MagnifyLess)
+  , ("M-=", sendMessage MagnifyMore >> sendMessage Mag.ToggleOn)
+  , ("M--", sendMessage MagnifyLess >> sendMessage Mag.ToggleOn)
+  -- Reset magnification
+  , ("M-S-=", sendMessage Mag.ToggleOff)
+
   ]
 
 -- Keybindings to be removed
