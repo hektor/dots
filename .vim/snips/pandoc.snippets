@@ -24,21 +24,39 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
+extends html
+
 # Zettelkasten templating
 
 snippet nl
-(*Ned.*: $1)
+*Ned.*: $1
 endsnippet
 
 snippet eng
-(*Eng.*: $1)
+*Eng.*: $1
 endsnippet
 
 snippet fr
+*Fr.*: $1
+endsnippet
+
+snippet (de
+*De.*: $1
+endsnippet
+
+snippet (nl
+(*Ned.*: $1)
+endsnippet
+
+snippet (eng
+(*Eng.*: $1)
+endsnippet
+
+snippet (fr
 (*Fr.*: $1)
 endsnippet
 
-snippet de
+snippet (de
 (*De.*: $1)
 endsnippet
 
@@ -50,25 +68,36 @@ snippet ref "References"
 <!--references-->
 endsnippet
 
+snippet sort "Sort"
+<!--sort-->
+endsnippet
+
 snippet foot "Footnotes"
 <!--footnotes-->
 [^0]:
 endsnippet
 
 snippet def "Definition"
-**Definition $1** [@$2]
+**Definition${1:: $2}**${3: [${4:citation}${5:, ${6:pointer}}]}
 
-$3
+$7
 
 ___
 endsnippet
 
 snippet theo "Theorem"
-**Theorem $1** [@]
+**Theorem${1:: $2}**${3: [${4:citation}${5:, ${6:pointer}}]}
 
-$2
+$7
+
+${8/(\w+).*/**Theorem** \n\n.../}
 
 ___
+endsnippet
+
+snippet q
+Your age: ${1|<18,18~60,>60|}
+Your height: ${2|<120cm,120cm~180cm,>180cm|}
 endsnippet
 
 snippet prop "Property"
@@ -101,12 +130,22 @@ snippet td "TARGET DECK: <Deck name>"
 TARGET DECK: $1::$2
 endsnippet
 
-snippet cloze
+snippet cloze "Cloze"
+START
+Cloze
+${0:${VISUAL}}$1
+END
+$2
+endsnippet
+
+snippet clozes "Cloze start"
 START
 Cloze
 $1
+endsnippet
+
+snippet clozee "Cloze end"
 END
-$2
 endsnippet
 
 snippet clozedef
@@ -127,7 +166,7 @@ $2
 END
 endsnippet
 
-snippet clozetheorem
+snippet clozetheo
 START
 Cloze
 **Theorem$1**
@@ -136,7 +175,7 @@ $2
 END
 endsnippet
 
-snippet clozelemma
+snippet clozelemm
 START
 Cloze
 **Lemma$1**
@@ -145,57 +184,32 @@ $2
 END
 endsnippet
 
-snippet c1
-{{c1::$1}}$2
-endsnippet
-
-snippet c2
-{{c2::$1}}$2
-endsnippet
-
-snippet c3
-{{c3::$1}}$2
-endsnippet
-
-snippet c4
-{{c4::$1}}$2
-endsnippet
-
-snippet c5
-{{c5::$1}}$2
-endsnippet
-
-snippet c6
-{{c6::$1}}$2
-endsnippet
-
-snippet c7
-{{c7::$1}}$2
-endsnippet
-
-snippet c8
-{{c8::$1}}$2
-endsnippet
-
-snippet c9
-{{c9::$1}}$2
-endsnippet
-
-snippet c10
-{{c10::$1}}$2
+snippet "c(\d+)" "Cloze <number>" br
+{{c`!p snip.rv = int(match.group(1))`::${0:${VISUAL}}$1}}$2
 endsnippet
 
 # MathJax environments
 
-snippet asa "Als en slechts als" i
+snippet asaw "Als en slechts als (woorden)" i
 als en slechts als 
+endsnippet
+
+snippet iffw "If and only if (words)" i
+if and only if
+endsnippet
+
+snippet asas "Als en slechts als (shorthand)" i
+**asa**
+endsnippet
+
+snippet iffs "If and only if (shorthand)" i
+**iff**
 endsnippet
 
 snippet align "" i
 \begin{align}
 $1
 \end{align}
-$2
 endsnippet
 
 snippet cases "" i
@@ -325,8 +339,28 @@ snippet E "Expectation" i
 \operatorname{E}
 endsnippet
 
+snippet Cov "Covariance" i
+\operatorname{Cov}
+endsnippet
+
 snippet mxn "Matrix" i
 m \times n
+endsnippet
+
+snippet mxn- "Matrix" i
+$m \times n$-matrix
+endsnippet
+
+snippet nxn "Matrix" i
+n \times n
+endsnippet
+
+snippet det "Determinant" i
+\operatorname{det}(${1:A})$2
+endsnippet
+
+snippet det| "Determinant alternative notation" i
+|${1:A}|$2
 endsnippet
 
 snippet Span "Span" i
@@ -375,4 +409,8 @@ endsnippet
 
 snippet eat "Evaluated at" i
 {\biggr\rvert}_{$1}$2
+endsnippet
+
+snippet sketch "Link a sketch" i
+[$1](file:///home/h/sketches/$2)
 endsnippet
