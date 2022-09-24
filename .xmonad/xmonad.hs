@@ -55,6 +55,9 @@ myStartupHook = do
                    , (SCUpperLeft, prevWS)
                    ]
 
+myManageHook = composeAll
+                 [ className =? "Zathura" --> doShift "ε" ]
+
 myConfig = def
   {
     terminal = "alacritty"
@@ -70,6 +73,7 @@ myConfig = def
 
   -- Hooks
   , startupHook = myStartupHook
+  , manageHook = myManageHook <+> manageHook def
   , layoutHook = screenCornerLayoutHook $ avoidStruts myLayout
   , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook <+> screenCornerEventHook
   } `additionalKeysP` myKeysP
