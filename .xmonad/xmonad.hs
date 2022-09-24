@@ -122,6 +122,10 @@ myKeysP = [
   -- Reset magnification
   , ("M-S-=", sendMessage Mag.ToggleOff)
 
+  , ("M-t", sendMessage $ JumpToLayout "Tall")
+  , ("M-f", sendMessage $ JumpToLayout "Full")
+  , ("M-S-\\", sendMessage $ JumpToLayout "ThreeCol")
+
   ]
 
 -- Keybindings to be removed
