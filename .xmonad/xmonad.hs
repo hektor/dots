@@ -58,7 +58,7 @@ myConfig = def
 
   -- Use Win key instead of Alt
   , modMask = mod4Mask
-  , workspaces = ["α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ"]
+  , workspaces = ["α", "β", "γ", "δ", "ε", "ζ", "η"]
 
   -- Styling
   , focusedBorderColor = "#888"
