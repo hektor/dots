@@ -1,13 +1,23 @@
 {
-  "prettier.requireConfig":true,
+  "prettier.requireConfig": false,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "svelte"
+  ],
   "eslint.autoFixOnSave": true,
+  "eslint.format.enable": true,
   "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact", "typescript.tsx", "svelte"],
   "prettier.semi": false,
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.arrowParens": "avoid",
   "prettier.printWidth": 120,
-  "prettier.disableSuccessMessage": true,
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnTypeFiletypes": [
     "javascript",
