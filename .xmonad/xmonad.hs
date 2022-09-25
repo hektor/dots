@@ -56,7 +56,9 @@ myStartupHook = do
                    ]
 
 myManageHook = composeAll
-                 [ className =? "Zathura" --> doShift "ε" ]
+                 [ className =? "Zathura" --> doShift "ε"
+                 , className =? "Launcher" --> doRectFloat (W.RationalRect 0.05 0.4 0.9 0.5)
+                 ]
 
 myConfig = def
   {
@@ -85,7 +87,7 @@ myKeysP = [
     ("M-S-<Space>", withFocused $ windows . W.sink)
 
   -- Use rofi to launch programs
-  , ("M-p", spawn "rofi -show run")
+  , ("M-p", spawn "launcher")
 
   -- Map insert key to paste from clipboard
   , ("<Insert>", pasteSelection)

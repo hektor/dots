@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+alacritty --class Launcher,Launcher -e sh \
+  -c 'compgen -c | sort -u | fzf --reverse | (x=$(cat); (set -m; exec $x &))'
