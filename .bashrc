@@ -46,17 +46,14 @@ export MANWIDTH=120
 export EDITOR=nvim
 # }}}
 
-# Nvm
-export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
-export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
-
 # X11 {{{
 export XDG_SESSION_TYPE=X11
 export XDG_CONFIG_HOME=$HOME/.config
 # }}}
 
 # Nix package manager {{{
+# Add ~/.nix-profile/bin to PATH
+export PATH=~/.nix-profile/bin:$PATH
 # }}}
 
 # FZF {{{
