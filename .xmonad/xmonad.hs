@@ -64,11 +64,17 @@ myXmobarPP = def
 
 
 
--- Magnifier is off by default (can be controlled using arrow keys)
-myLayout = smartBorders $
+-- layoutHook
+myLayoutHook= smartBorders $
+             -- Column layouts
+             threeCol |||
              threeColMid |||
+             -- Tiled layouts
+             --   Note: magnifier is off by default
+             --   (controllable usingarrow keys)
              magnifiercz magnificationFactorH tiled |||
              magnifiercz magnificationFactorV (Mirror tiled) |||
+             -- Single window / monocle layout
              Full
   where
     magnificationFactorV = 1.384
@@ -148,11 +154,10 @@ myKeysP = [
   , ("M--", sendMessage MagnifyLess >> sendMessage Mag.ToggleOn)
   -- Reset magnification
   , ("M-S-=", sendMessage Mag.ToggleOff)
-
-  , ("M-t", sendMessage $ JumpToLayout "Tall")
+  -- Layouts
+  , ("M-t", sendMessage $ JumpToLayout "Magnifier Tall")
+  , ("M-c", sendMessage $ JumpToLayout "ThreeCol")
   , ("M-f", sendMessage $ JumpToLayout "Full")
-  , ("M-S-\\", sendMessage $ JumpToLayout "ThreeCol")
-
   ]
 
 -- Keybindings to be removed
