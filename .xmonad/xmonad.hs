@@ -126,8 +126,8 @@ myKeysP = [
   -- Fit floating windows back to layout
     ("M-S-<Space>", withFocused $ windows . W.sink)
 
-  -- Use rofi to launch programs
-  , ("M-p", spawn "launcher")
+  -- Launchers
+  , ("M-p", spawn "albert toggle")
 
   -- Map insert key to paste from clipboard
   , ("<Insert>", pasteSelection)
