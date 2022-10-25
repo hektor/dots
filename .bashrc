@@ -46,22 +46,6 @@ export MANWIDTH=120
 export EDITOR=nvim
 # }}}
 
-
-# Fuzzy finder setup
-export FZF_COMPLETION_TRIGGER='**'
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
-export FZF_DEFAULT_OPTS="
---pointer="❭"
---height 10%
---color=fg:-1,bg:-1"
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_CTRL_T_OPTS="--preview='bat {} | head -500'"
-source /usr/share/fzf/completion.bash
-source /usr/share/fzf/key-bindings.bash
-_fzf_setup_completion path vim
-_fzf_setup_completion path zathura
-_fzf_setup_completion path xournalpp
-
 # Nvm
 export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
@@ -75,6 +59,27 @@ export XDG_SESSION_TYPE=X11
 # }}}
 
 # FZF {{{
+# Check if fzf is installed
+if [ -f "/usr/bin/fzf" ]; then
+  # Fuzzy finder setup
+  export FZF_COMPLETION_TRIGGER='**'
+  export FZF_DEFAULT_COMMAND='ag --hidden --skip-vcs-ignores -t -g ""'
+  export FZF_DEFAULT_OPTS="
+  --pointer='❭'
+  --height 10%
+  --color=fg:-1,bg:-1"
+  export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+  export FZF_CTRL_T_OPTS="--preview='bat {} | head -500'"
+  source /usr/share/fzf/completion.bash
+  source /usr/share/fzf/key-bindings.bash
+
+  _fzf_setup_completion path vim
+  _fzf_setup_completion path zathura
+  _fzf_setup_completion path xournalpp
+  _fzf_setup_completion path nvim
+else
+  echo "fzf not installed"
+fi
 # }}}
 
 # Node {{{
