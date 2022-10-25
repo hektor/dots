@@ -115,7 +115,6 @@ myConfig = def
   , borderWidth = 2
 
   -- Hooks
-  , startupHook = myStartupHook
   , manageHook = myManageHook <+> manageHook def
   , layoutHook = avoidStruts myLayoutHook
   , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
