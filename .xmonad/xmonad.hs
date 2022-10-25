@@ -28,8 +28,39 @@ import           XMonad.Util.Run                (spawnExternalProcess,
                                                  spawnPipe)
 import           XMonad.Util.Ungrab
 
+-- Statusbar
+myXmobarPP :: PP
+myXmobarPP = def
+    { ppSep             = tertiaryColor " | "
+    , ppCurrent         = brackitify
+    , ppHidden          = secondaryColor
+    , ppHiddenNoWindows = tertiaryColor
+    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
+    , ppLayout  = \l -> case l of "Tall"                        -> "[]="
+                                  "Magnifier Tall"              -> "[]+"
+                                  "Magnifier (off) Tall"        -> "[]="
+                                  "Magnifier Mirror Tall"       -> "+[]"
+                                  "Magnifier (off) Mirror Tall" -> "=[]"
+                                  "Full"                        -> "[ ]"
+                                  "ThreeCol"                    -> "|||"
+                                  _                             -> l
+    , ppTitle   = shorten 80
+    , ppTitleSanitize   = xmobarStrip
+    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
+    , ppExtras          = [logTitles formatFocused formatUnfocused]
+    }
+  where
+    brackitify = wrap "[" "]"
+    formatFocused   = secondaryColor . brackitify . ppWindow
+    formatUnfocused = tertiaryColor . ppWindow
 
+    ppWindow = xmobarRaw . (\w -> if null w then "Untitled" else w) . shorten 16
 
+    primaryColor = xmobarColor "#eeeeee" ""
+    secondaryColor = xmobarColor "#aaaaaa" ""
+    tertiaryColor = xmobarColor "#888888" ""
+    yellow   = xmobarColor "#ff0" ""
+    red      = xmobarColor "#ff5555" ""
 
 
 
@@ -132,38 +163,6 @@ myKeysP = [
 -- Keybindings to be removed
 myRemoveKeysP = [ "M-t" ]
 
-myXmobarPP :: PP
-myXmobarPP = def
-    { ppSep             = tertiaryColor " | "
-    , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = brackitify
-    , ppHidden          = secondaryColor . wrap " " ""
-    , ppHiddenNoWindows = secondaryColor . wrap " " ""
-    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppLayout  = \l -> case l of "Tall"                  -> "[]="
-                                  "Magnifier Tall"        -> "[]+"
-                                  "Magnifier Mirror Tall" -> "+[]"
-                                  "Full"                  -> "[ ]"
-                                  "ThreeCol"              -> "|||"
-                                  _                       -> l
-    , ppTitle   = shorten 80
-    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras          = [logTitles formatFocused formatUnfocused]
-    }
-  where
-
-    brackitify = wrap "[" "]"
-    formatFocused   = primaryColor . brackitify . ppWindow
-    formatUnfocused = secondaryColor . brackitify . ppWindow
-
-    ppWindow = xmobarRaw . (\w -> if null w then "Untitled" else w) . shorten 30
-
-    primaryColor = xmobarColor "#eeeeee" ""
-    secondaryColor = xmobarColor "#888888" ""
-    tertiaryColor = xmobarColor "#555555" ""
-    white    = xmobarColor "#ffffff" ""
-    yellow   = xmobarColor "#ff0" ""
-    red      = xmobarColor "#ff5555" ""
 
 main :: IO ()
 main = do xmonad $ docks $ ewmh $ withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey myConfig
