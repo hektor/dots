@@ -62,7 +62,22 @@ myXmobarPP = def
     yellow   = xmobarColor "#ff0" ""
     red      = xmobarColor "#ff5555" ""
 
+-- Shift to workspace and view workspace
+shiftAndView id = doF (W.view id) <> doF (W.shift id)
 
+-- manageHook
+myManageHook = composeAll
+                 [
+                   className =? "Zathura"    --> doShift "pdf"
+                 , className =? "firefox"    --> shiftAndView "www"
+                 , className =? "Anki"       --> shiftAndView "etc"
+                 , className =? "Obsidian"   --> shiftAndView "etc"
+                 , className =? "Launcher"   --> doRectFloat (W.RationalRect 0.05 0.4 0.9 0.5)
+                 , className =? "Calculator" --> doCenterFloat
+                 , className =? "feh"        --> doCenterFloat
+                 , className =? "albert"     --> hasBorder False
+                 , className =? "Xournalpp"  --> doRectFloat (W.RationalRect 0.5 0.5 0.5 0.5)
+                 ]
 
 -- layoutHook
 myLayoutHook= smartBorders $
@@ -85,11 +100,6 @@ myLayoutHook= smartBorders $
     nmaster = 1
     ratio   = 1/2
     delta   = 4/100
-
-myManageHook = composeAll
-                 [ className =? "Zathura" --> doShift "ε"
-                 , className =? "Launcher" --> doRectFloat (W.RationalRect 0.05 0.4 0.9 0.5)
-                 ]
 
 myConfig = def
   {
