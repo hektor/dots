@@ -1,13 +1,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Aliases {{{
 # Load aliases dynamically
 [ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
+# }}}
 
-# Add ~/.bin to PATH
-export PATH=~/.bin:$PATH
-
-# Prompt
+# Prompt {{{
 get_branch_name() {
   git symbolic-ref --quiet --short HEAD 2>/dev/null \
     || git rev-parse --short HEAD 2>/dev/null \
@@ -19,17 +18,32 @@ get_git_info() {
 }
 export PS1="\u \w ❭\[$(tput sgr0)\] "
 
-# History
+
+# Ellipsis when deep in directory
+export PROMPT_DIRTRIM=2
+# }}}
+
+# Path {{{
+# Add ~/.bin to PATH
+export PATH=~/.bin:$PATH
+# }}}
+
+# History {{{
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=500000
 # Omit `clear, ls...`; commands prepended with space
 export HISTIGNORE="clear:l: *"
+# }}}
 
-# Man pages
+# Man pages {{{
 export MANWIDTH=120
+# }}}
 
-# Vim
-export EDITOR=vim
+# Editor {{{
+# Set vim as default editor
+export EDITOR=nvim
+# }}}
+
 
 # Fuzzy finder setup
 export FZF_COMPLETION_TRIGGER='**'
@@ -51,11 +65,20 @@ export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh" --no-use
 
-# X11
+# X11 {{{
 export XDG_SESSION_TYPE=X11
+# }}}
 
-# Jupyter
+# Nix package manager {{{
+# }}}
+
+# FZF {{{
+# }}}
+
+# Node {{{
+# }}}
+
+# Jupyter {{{
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
+# }}}
 
-# Ellipsis when deep in directory
-export PROMPT_DIRTRIM=2
