@@ -1,38 +1,37 @@
 import           XMonad
+
 import           XMonad.Hooks.DynamicLog
+import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks
-import           XMonad.Layout.NoBorders      (smartBorders)
-
-import           XMonad.Layout.Magnifier
-import qualified XMonad.Layout.Magnifier      as Mag (MagnifyMsg (..))
-import           XMonad.Layout.Spacing
-import           XMonad.Layout.Tabbed         (Theme (..), shrinkText,
-                                               tabbedAlways)
-import           XMonad.Layout.ThreeColumns
-import           XMonad.Layout.ToggleLayouts  (ToggleLayout (..), toggleLayouts)
-import           XMonad.Layout.WindowArranger
-
-import           XMonad.Util.EZConfig
-import           XMonad.Util.Loggers
-import           XMonad.Util.Paste
-import           XMonad.Util.Run              (spawnPipe)
-import           XMonad.Util.Ungrab
-
-import           XMonad.Actions.CycleWS
-import           XMonad.Actions.WindowGo
-
 import           XMonad.Hooks.ManageHelpers
-import           XMonad.Hooks.ScreenCorners
 import           XMonad.Hooks.StatusBar
 import           XMonad.Hooks.StatusBar.PP
 
-import qualified XMonad.Util.Hacks            as Hacks
+import           XMonad.Layout.Magnifier
+import qualified XMonad.Layout.Magnifier        as Mag (MagnifyMsg (..))
+import           XMonad.Layout.NoBorders        (hasBorder, smartBorders)
+import           XMonad.Layout.PerScreen
+import           XMonad.Layout.ResizableTile
+import           XMonad.Layout.Spacing
+import           XMonad.Layout.ThreeColumns
+import           XMonad.Layout.ToggleLayouts    (ToggleLayout (..),
+                                                 toggleLayouts)
+import           XMonad.Layout.WindowNavigation
 
--- EWMH compliance
-import           XMonad.Hooks.EwmhDesktops
+import qualified XMonad.StackSet                as W
 
-import qualified Data.Map.Strict              as M
-import qualified XMonad.StackSet              as W
+import           XMonad.Util.EZConfig
+import qualified XMonad.Util.Hacks              as Hacks
+import           XMonad.Util.Loggers
+import           XMonad.Util.Paste
+import           XMonad.Util.Run                (spawnExternalProcess,
+                                                 spawnPipe)
+import           XMonad.Util.Ungrab
+
+
+
+
+
 
 -- Magnifier is off by default (can be controlled using arrow keys)
 myLayout = smartBorders $
