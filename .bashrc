@@ -16,11 +16,13 @@ get_git_info() {
   git rev-parse --is-inside-work-tree &>/dev/null || return
   echo -e " $(get_branch_name)"
 }
-export PS1="\u \w ❭\[$(tput sgr0)\] "
 
+PS1="\u \w ❭\[$(tput sgr0)\] "
 
 # Ellipsis when deep in directory
 export PROMPT_DIRTRIM=2
+
+export PS1
 # }}}
 
 # Path {{{
