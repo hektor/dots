@@ -13,45 +13,55 @@ from argparse import ArgumentParser
 from time import sleep
 from plyer import notification
 
+
 def clear():
-  os.system('echo -n "" > /tmp/pomo')
+    os.system('echo -n "" > /tmp/pomo')
+
 
 atexit.register(clear)
 
 parser = ArgumentParser()
 
-parser.add_argument('-p', '--prep-duration', type=int, help='Preparation duration of a session', default=0)
-parser.add_argument('-w', '--work-duration', type=int, help='Duration of a session', default=25)
-parser.add_argument('-b', '--break-duration', type=int, help='Duration of a break', default=5)
-parser.add_argument('-r', '--repeats', type=int, help='Numer of sessions', default=1)
+parser.add_argument('-p', '--prep-duration', type=int,
+                    help='Pre session duration', default=0)
+parser.add_argument('-w', '--work-duration', type=int,
+                    help='Session duration', default=25)
+parser.add_argument('-b', '--break-duration', type=int,
+                    help='Break duration', default=5)
+parser.add_argument('-r', '--repeats', type=int,
+                    help='Numer of sessions', default=1)
 
 args = parser.parse_args()
 
-prep_duration  = args.prep_duration * 60
-work_duration  = args.work_duration * 60
+prep_duration = args.prep_duration * 60
+work_duration = args.work_duration * 60
 break_duration = args.break_duration * 60
 repeats = args.repeats
 
-def make_countdown(color):
-  def countdown(duration):
-    while duration!= 0:
-      mins = duration // 60
-      secs = duration % 60
-      os.system('echo -n "{:s} {:02d}:{:02d} \x01" > /tmp/pomo'.format(color, mins, secs))
-      sleep(1)
-      duration -= 1
-  return countdown
 
-prep_countdown  = make_countdown("\x01")
-work_countdown  = make_countdown("\x03")
+def make_countdown(color):
+    def countdown(duration):
+        while duration != 0:
+            mins = duration // 60
+            secs = duration % 60
+            # os.system('echo -n "{:s} {:02d}:{:02d} \x01" > /tmp/pomo'.format(color, mins, secs))
+            os.system('echo -n "{:02d}:{:02d}" > /tmp/pomo'.format(mins, secs))
+            sleep(1)
+            duration -= 1
+    return countdown
+
+
+prep_countdown = make_countdown("\x01")
+work_countdown = make_countdown("\x03")
 break_countdown = make_countdown("\x02")
 
 prep_countdown(prep_duration)
 
-while repeats!=0:
-  notification.notify(title="Get started")
-  work_countdown(work_duration)
-  notification.notify(title="Time for a break")
-  break_countdown(break_duration)
-  notification.notify(title="Break is over, set a new timer")
-  repeats-=1
+while repeats != 0:
+    notification.notify(title="Get started")
+    work_countdown(work_duration)
+    if break_duration != 0:
+        notification.notify(title="Time for a break")
+        break_countdown(break_duration)
+        notification.notify(title="Break is over, back to work")
+    repeats -= 1
