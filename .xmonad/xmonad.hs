@@ -80,11 +80,6 @@ myLayout = smartBorders $
     ratio   = 1/2
     delta   = 4/100
 
-myStartupHook = do
-  addScreenCorners [ (SCUpperRight, nextWS)
-                   , (SCUpperLeft, prevWS)
-                   ]
-
 myManageHook = composeAll
                  [ className =? "Zathura" --> doShift "ε"
                  , className =? "Launcher" --> doRectFloat (W.RationalRect 0.05 0.4 0.9 0.5)
@@ -106,8 +101,8 @@ myConfig = def
   -- Hooks
   , startupHook = myStartupHook
   , manageHook = myManageHook <+> manageHook def
-  , layoutHook = screenCornerLayoutHook $ avoidStruts myLayout
-  , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook <+> screenCornerEventHook
+  , layoutHook = avoidStruts myLayoutHook
+  , handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
   } `additionalKeysP` myKeysP
     `removeKeysP` myRemoveKeysP
 
