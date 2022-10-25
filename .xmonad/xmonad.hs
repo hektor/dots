@@ -170,7 +170,7 @@ myKeysP = [
   ]
 
 -- Keybindings to be removed
-myRemoveKeysP = [ "M-t" ]
+myRemoveKeysP = [ ]
 
 
 main :: IO ()
