@@ -4,6 +4,6 @@ options="nl:en\nen:nl\nnl:fr\nfr:nl\nen:fr\nfr:en\nnl:de\nde:nl"
 
 selected=$(echo -e "$options" | dmenu -p "s?:t?" -i -l 0)
 
-notify-send --app-name= -t 3000 "$(trans $selected -b "$(dmenu -p $selected &)" \
+notify-send --app-name= -t 3000 "$(trans "$selected" -b "$(dmenu -p "$selected" &)" \
   | tr -d '\n' \
   | xclip -sel clip -f)"
