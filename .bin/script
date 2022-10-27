@@ -13,5 +13,13 @@ path="$HOME/.bin/$1"
 set -o noclobber
 
 # Create script
-echo "#!/usr/bin/env bash" > "$path"
+cat > "$path" << EOF
+#!/usr/bin/env bash
+
+
+EOF
+
 chmod +x "$path"
+
+# Open script in editor on line 3
+"$EDITOR" +3 "$path"
