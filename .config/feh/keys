@@ -1,0 +1,12 @@
+prev_img      h
+next_img      l
+scroll_left   L
+scroll_right  H
+scroll_up     J
+scroll_down   K
+zoom_in       j
+zoom_out      k
+zoom_fit      z
+zoom_default  =
+mirror        bar
+close         q Q
