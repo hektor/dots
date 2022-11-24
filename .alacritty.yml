@@ -5,7 +5,7 @@ window:
 font:
   normal:
     family: Iosevka Term SS08
-    white:   '#d0d0d0'
+    white: '#d0d0d0'
   bold:
     family: Iosevka Term SS08
     style: bold
@@ -16,4 +16,13 @@ font:
 colors:
   primary:
     foreground: '0x111111'
-    background: '0xdddddd'
+    background: '0xcccccc'
+  normal:
+    black: '0x000000'
+    red: '0xcc3333'
+    green: '0x33cc33'
+    yellow: '0x885800'
+    blue: '0x3333cc'
+    magenta: '0xcc33cc'
+    cyan: '0x33cccc'
+    white: '0xcccccc'
