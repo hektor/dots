@@ -109,7 +109,6 @@ Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-sandwich'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'vimwiki/vimwiki'
 " JS and TypeScript
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx'] }
@@ -119,6 +118,11 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'neoclide/jsonc.vim'
 " LaTeX & markdown
 Plug 'lervag/vimtex'
+" Wiki
+Plug 'lervag/wiki.vim'
+Plug 'hektor/taskwiki'
+" Markdown
+Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 " TidalCycles
 Plug 'supercollider/scvim'
