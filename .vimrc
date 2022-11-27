@@ -206,9 +206,77 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'], }
 
-" Wiki
-let g:vimwiki_auto_chdir = 1
-let g:vimwiki_list = [{'path': '~/.vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:ag_working_path_mode="r"
+
+" }}}
+
+" `vim-pandoc/vim-pandoc` {{{
+" `vim-pandoc/vim-pandoc-syntax`
+
+au FileType pandoc call pandoc#completion#Init()
+let g:pandoc#filetypes#pandoc_markdown=0
+let g:pandoc#spell#enabled=0
+let g:pandoc#spell#default_langs=['en_us', 'nl_be']
+let g:pandoc#syntax#conceal#urls=1
+let g:pandoc#syntax#conceal#blacklist=[]
+let g:pandoc#formatting#mode='a'
+let g:pandoc#formatting#textwidth=90
+let g:pandoc#modules#disabled = ["formatting", "dashes", "yaml", "metadata"]
+
+" }}}
+
+" `lervag/wiki.vim` {{{
+
+" Only load wiki.vim for wiki directory
+let g:wiki_global_load=0
+let g:wiki_root='~/.wiki'
+let g:wiki_index_name='index'
+let g:wiki_zotero_root='~/doc/Zotero'
+let g:wiki_filetypes=['md']
+let g:wiki_completion_case_sensitive=0
+
+" Mappings
+" Remap <leader>p
+
+augroup filetype_pandoc
+  autocmd!
+  au BufRead,BufNewFile /home/h/.wiki/*.md nn <buffer><leader>p :WikiFzfPages<cr>
+  au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> sv empty(g:wiki#link#get()) ? ':vs<CR><c-w>w' : '<Plug>(wiki-link-follow-vsplit)'
+  au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> ss empty(g:wiki#link#get()) ? ':sp<CR><c-w>w' : '<Plug>(wiki-link-follow-split)'
+augroup END
+
+" If we are on a wiki link 
+
+" let g:wiki_file_handlenmap r
+
+" Links
+let g:wiki_link_extension='.md'
+" Do not automatically transform to link, use `<leader>wf` for this
+let g:wiki_link_toggle_on_follow=0
+let g:wiki_link_target_type='md'
+
+let g:wiki_map_text_to_link='Slugify'
+
+" E.g. transform `My link` into `[My link](my-link.md)`
+function Slugify(text) abort
+  return [substitute(tolower(a:text), '\s\+', '-', 'g'), a:text]
+endfunction
+
+vmap <leader>wf <Plug>(wiki-link-toggle-visual)
+
+" Automatically save when navigation
+let g:wiki_write_on_nav=1
+
+" }}}
+
+" `tools-life/taskwiki` {{{
+
+let g:taskwiki_taskrc_location='/home/h/.config/task/taskrc'
+let g:taskwiki_disable_concealcursor=1
+let g:taskwiki_dont_preserve_folds=1
+let g:taskwiki_dont_fold=1
+
+" }}}
 
 " JS and TypeScript
 let g:javascript_plugin_jsdoc = 1 " jsdoc syntax highlighting
@@ -242,24 +310,89 @@ let g:fzf_action = {
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit'
   \}
+" Insert path completion
+ino <expr><c-f> fzf#vim#complete#path('rg --files --sort path')
 
-" Color theme & statusline
-""""""""""""""""""""""""""
+" }}}
 
-se nosc
-se nosmd
+" Color theme & statusline {{{
+"
+
 se ls=2
 se stl=\ %0*%n
 se stl+=\ %m
-se stl+=\ %y%1*
+se stl+=\ %y%0*
 se stl+=\ %<%F
-se stl+=\ %1*%=%5l%*
-se stl+=%2*/%L%*
+se stl+=\ %0*%=%5l%*
+se stl+=%0*/%L%*
 
-colo simple-dark
+colo yang
 
-" Other
-"""""""""""""""""""""""
+" }}}
+
+" Quick hacks {{{
+"
+
+fu! Compile()
+  if expand('%:e') == "md" 
+    :silent exec "!pandoc % -s -o /tmp/op.pdf &"
+  endif
+endfu
+
+fu! Preview()
+  :call Compile()
+  :silent exec "!zathura /tmp/op.pdf &"
+endfu
 
 " VIM config hot reload
-autocmd! bufwritepost .vimrc source %
+
+au! bufwritepost .vimrc source $HOME/.vimrc
+
+" TODO: separate to filetype specific files
+
+" JS
+" Jump between `=` and `;`
+au FileType javascript set mps+==:;
+
+" JSONC (see https://github.com/neoclide/jsonc.vim/pull/9")
+au BufNewFile,BufRead */.vscode/*.json setlocal filetype=jsonc
+
+" Hacky way to pass on active note to script for automated for HTML preview
+au BufEnter /home/h/.wiki/*.md silent exe '!echo %:t > /home/h/.local/share/nvim/plugged/bro/current-page'
+
+" }}}
+
+highlight QuickScopeSecondary cterm=underline
+highlight QuickScopePrimary ctermbg=253 ctermfg=232 cterm=none
+highlight Pmenu ctermfg=232
+
+function! SynGroup()
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfun
+
+com! -nargs=0 Syn :call SynGroup()
+
+" Taken from /usr/share/vim/vim90/defaults.vim
+augroup vimStartup
+  au!
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid, when inside an event handler
+  " (happens when dropping a file on gvim) and for a commit message (it's
+  " likely a different one than last time).
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+
+augroup END
+
+" Highlight todo's for every filetype
+" https://stackoverflow.com/questions/11709965/vim-highlight-the-word-todo-for-every-filetype
+augroup HiglightTODO
+    autocmd!
+    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
+    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
+    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'QUESTION', -1)
+augroup END
