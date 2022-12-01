@@ -48,12 +48,13 @@ alias df="df -kTh"
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias o="xdg-open"
 alias path="echo -e ${PATH//:/\\n}" # Pretty print path variables
-alias wiki="vim +WikiIndex"
 
 # Programs
 
 alias feh="feh -B black --scale-down --auto-zoom"
 alias fm='pcmanfm'
+alias v="nvim"
+alias w="nvim +WikiIndex"
 alias g='git'
 alias lm='xbacklight -set'
 alias py='python'
