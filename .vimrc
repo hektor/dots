@@ -106,6 +106,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'github/copilot.vim'
 " General
+Plug 'unblevable/quick-scope'
 Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-sandwich'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -298,6 +299,13 @@ let g:svelte_indent_style = 0
 
 " JSONC (see https://github.com/neoclide/jsonc.vim/pull/9")
 autocmd BufNewFile,BufRead */.vscode/*.json setlocal filetype=jsonc
+
+" `.../quickscope` {{{
+
+let g:qs_max_chars=80
+let g:qs_lazy_highlight = 1
+
+" }}}
 
 " SuperCollider
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd se filetype=supercollider
