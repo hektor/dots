@@ -104,6 +104,7 @@ nn <leader>so :so %<cr>
 call plug#begin()
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'github/copilot.vim'
 " General
 Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-sandwich'
@@ -171,6 +172,15 @@ nm <leader>do <Plug>(coc-codeaction)
 se statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Prettier command
 com! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" `.../copilot` {{{
+
+let g:copilot_node_command = "/home/h/.config/nvm/versions/node/v16.18.0/bin/node"
+let g:copilot_no_tab_map = v:true
+imap <c-l> <Plug>(copilot-next)
+imap <c-h> <Plug>(copilot-prev)
+imap <silent><script><expr> <s-tab> copilot#Accept("\<CR>")
+" Show Copilot node v16 as it does not work with v18 yet
 
 " LaTex
 let g:vimtex_view_method='zathura'
