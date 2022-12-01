@@ -135,6 +135,11 @@ call plug#end()
 """""""""""""""
 
 " Coc
+" `.../sandwich` {{{
+nmap s <Nop>
+xmap s <Nop>
+let g:sandwich#recipes = deepcopy(g:sandwich#default_recipes)
+" }}}
 
 " `neoclide/coc.nvim` {{{
 let g:coc_global_extensions = [
