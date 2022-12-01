@@ -1,13 +1,21 @@
 Config { overrideRedirect = False
        , font =         "xft:Iosevka Term SS08:size=12:antialias=true"
-       , bgColor =      "#111"
-       , fgColor =      "#ccc"
-       , position = TopW L 90
+       , bgColor =      "#cccccc"
+       , fgColor =      "#111"
+       , position = TopW L 100
        , commands = [ Run Cpu
                         [ "-L", "3"
                         , "-H", "50"
                         , "--high"  , "red"
-                        , "--normal", "green"
+                        ] 10
+                    , Run Battery [
+                        "-t", "<acstatus>: <left>% - <timeleft>",
+                        "--",
+                        --"-c", "charge_full",
+                        "-O", "AC",
+                        "-o", "Bat",
+                        "-h", "green",
+                        "-l", "red"
                         ] 10
                     , Run Alsa "default" "Master"
                         [ "--template", "Vol: <volumestatus>"
@@ -17,9 +25,12 @@ Config { overrideRedirect = False
                         ]
                     , Run Memory ["--template", "Mem: <usedratio>%"] 10
                     , Run Date "%a %Y-%m-%d %H:%M" "date" 10
+                    , Run Com "sb-pomo" [] "pomo" 10
+                    , Run Com "sb-anki" [] "anki" 10
+                    , Run Com "sb-tasks" [] "tasks" 10
                     , Run XMonadLog
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% | %date% "
+       , template = "%XMonadLog%%anki%%pomo%%tasks% }{ %alsa:default:Master% | %battery% | %date%"
        }
