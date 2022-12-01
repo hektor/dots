@@ -30,37 +30,39 @@ import           XMonad.Util.Ungrab
 
 -- Statusbar
 myXmobarPP :: PP
-myXmobarPP = def
-    { ppSep             = tertiaryColor " | "
-    , ppCurrent         = brackitify
-    , ppHidden          = secondaryColor
-    , ppHiddenNoWindows = tertiaryColor
-    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppLayout  = \l -> case l of "Tall"                        -> "[]="
-                                  "Magnifier Tall"              -> "[]+"
-                                  "Magnifier (off) Tall"        -> "[]="
-                                  "Magnifier Mirror Tall"       -> "+[]"
-                                  "Magnifier (off) Mirror Tall" -> "=[]"
-                                  "Full"                        -> "[ ]"
-                                  "ThreeCol"                    -> "|||"
-                                  _                             -> l
-    , ppTitle   = shorten 80
-    , ppTitleSanitize   = xmobarStrip
-    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras          = [logTitles formatFocused formatUnfocused]
+myXmobarPP =
+  def
+    { ppSep = tertiaryColor " | ",
+      ppCurrent = brackitify,
+      ppHidden = secondaryColor,
+      ppHiddenNoWindows = tertiaryColor,
+      ppUrgent = red . wrap (yellow "!") (yellow "!"),
+      ppLayout = \l -> case l of
+        "Tall" -> "[]="
+        "Magnifier Tall" -> "[]+"
+        "Magnifier (off) Tall" -> "[]="
+        "Magnifier Mirror Tall" -> "+[]"
+        "Magnifier (off) Mirror Tall" -> "=[]"
+        "Full" -> "[ ]"
+        "ThreeCol" -> "|||"
+        _ -> l,
+      ppTitle = shorten 80,
+      ppTitleSanitize = xmobarStrip,
+      ppOrder = \[ws, l, _, wins] -> [ws, l, wins],
+      ppExtras = [logTitles formatFocused formatUnfocused]
     }
   where
     brackitify = wrap "[" "]"
-    formatFocused   = secondaryColor . brackitify . ppWindow
+    formatFocused = secondaryColor . brackitify . ppWindow
     formatUnfocused = tertiaryColor . ppWindow
 
     ppWindow = xmobarRaw . (\w -> if null w then "Untitled" else w) . shorten 16
 
-    primaryColor = xmobarColor "#eeeeee" ""
-    secondaryColor = xmobarColor "#aaaaaa" ""
-    tertiaryColor = xmobarColor "#888888" ""
-    yellow   = xmobarColor "#ff0" ""
-    red      = xmobarColor "#ff5555" ""
+    primaryColor = xmobarColor "#000000" ""
+    secondaryColor = xmobarColor "#333333" ""
+    tertiaryColor = xmobarColor "#555555" ""
+    yellow = xmobarColor "#ff0" ""
+    red = xmobarColor "#ff5555" ""
 
 -- Shift to workspace and view workspace
 shiftAndView id = doF (W.view id) <> doF (W.shift id)
