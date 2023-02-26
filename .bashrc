@@ -51,26 +51,6 @@ export EDITOR=nvim
 # Vim
 export EDITOR=vim
 
-# Fuzzy finder setup
-export FZF_COMPLETION_TRIGGER='**'
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -t -g ""'
-export FZF_DEFAULT_OPTS="
---pointer="❭"
---height 10%
---color=fg:-1,bg:-1"
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_CTRL_T_OPTS="--preview='bat {} | head -500'"
-
-if [[ $ID == "raspbian" ]]; then
-  source /usr/share/doc/fzf/examples/completion.bash
-  source /usr/share/doc/fzf/examples/key-bindings.bash
-elif [[ $ID == "arch" ]]; then
-  source /usr/share/fzf/completion.bash
-  source /usr/share/fzf/key-bindings.bash
-fi
-
-_fzf_setup_completion path vimn zathura xournalpp
-
 # Nvm
 export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
 export NVM_DIR="$HOME/.nvm"
@@ -98,13 +78,16 @@ if [ -f "/usr/bin/fzf" ]; then
   --color=fg:-1,bg:-1"
   export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
   export FZF_CTRL_T_OPTS="--preview='bat {} | head -500'"
-  source /usr/share/fzf/completion.bash
-  source /usr/share/fzf/key-bindings.bash
 
-  _fzf_setup_completion path vim
-  _fzf_setup_completion path zathura
-  _fzf_setup_completion path xournalpp
-  _fzf_setup_completion path nvim
+  if [[ $ID == "raspbian" ]]; then
+    source /usr/share/doc/fzf/examples/completion.bash
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+  elif [[ $ID == "arch" ]]; then
+    source /usr/share/fzf/completion.bash
+    source /usr/share/fzf/key-bindings.bash
+  fi
+
+  _fzf_setup_completion path vimn zathura xournalpp
 else
   echo "fzf not installed"
 fi
