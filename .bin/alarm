@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-sudo rtcwake -m no -l -t "$(date +%s -d 'tomorrow 09:30')"

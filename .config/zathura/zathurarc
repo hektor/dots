@@ -7,9 +7,9 @@ unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 
-# Theme
-set default-bg "#ffffff"
-set default-fg "#eee"
+# Initial theme
+set default-bg "#cccccc"
+set default-fg "#111"
 set statusbar-bg "#111"
 set statusbar-fg "#777"
 set inputbar-bg "#111"
@@ -23,14 +23,10 @@ set completion-highlight-bg "#333"
 set highlight-fg "#ccc"
 set highlight-color "#111"
 set highlight-active-color "#333"
-
-# Dark mode
-set recolor
-set recolor-darkcolor "#aaa"
-set recolor-lightcolor "#111"
-
-# midnight mode    
-map <F1> focus_inputbar "set default-bg \#111111"
+set index-fg "#eee"
+set index-bg "#111"
+set index-active-fg "#eee"
+set index-active-bg "#333"
 
 # Hide status bar
 set guioptions none
@@ -38,5 +34,32 @@ set render-loading "false"
 
 map J zoom out
 map K zoom in
-map i recolor
 unmap q
+
+#
+# Hack for switching color themes (change default background too on recolor)
+#
+
+# Default to light recolor
+set recolor
+set recolor-lightcolor "#cccccc"
+set recolor-darkcolor "#111"
+set recolor-keephue
+
+# No recolor
+map <F1> focus_inputbar ":set recolor true"
+map <F2> focus_inputbar ":set recolor false"
+map <F3> focus_inputbar ":set default-bg \#fff"
+map 1 feedkeys "<F2><Return><F3><Return>"
+
+# Light recolor
+map <F4> focus_inputbar ":set default-bg \#cccccc"
+map <F5> focus_inputbar ":set recolor-lightcolor \#cccccc"
+map <F6> focus_inputbar ":set recolor-darkcolor \#111"
+map 2 feedkeys "<F1><Return><F4><Return><F5><Return><F6><Return>"
+
+# Dark recolor
+map <F7> focus_inputbar ":set default-bg \#111"
+map <F8> focus_inputbar ":set recolor-lightcolor \#111"
+map <F9> focus_inputbar ":set recolor-darkcolor \#aaa"
+map 3 feedkeys "<F1><Return><F7><Return><F8><Return><F9><Return>"

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Script to create script
+
+if [ -z "$1" ]; then
+    echo "Script name required"
+    exit
+fi
+
+path="$HOME/.bin/$1"
+
+# Prevent overwriting existing script
+set -o noclobber
+
+# Create script
+cat > "$path" << EOF
+#!/usr/bin/env bash
+
+
+EOF
+
+chmod +x "$path"
+
+# Open script in editor on line 3
+"$EDITOR" +3 "$path"
