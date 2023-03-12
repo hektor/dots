@@ -65,7 +65,15 @@ alias xev='xev | grep -A2 ButtonPress' # Ignore mouse movements
 
 reboot_to_windows ()
 {
-  windows_title=$(grep -i windows /boot/grub/grub.cfg | cut -d "'" -f 2)
-    sudo grub-reboot "$windows_title" && sudo reboot
+  # Check if grub is installed by checking if the command exists, if it does
+  # not, then assume that the system is using systemd-boot
+  if grub-install --version &>/dev/null; then
+    windows_title=$(grep -i windows /boot/grub/grub.cfg | cut -d "'" -f 2)
+    sudo grub-reboot "$windows_title"
+    echo "Grub set to reboot to Windows"
+  else
+    sudo bootctl set-oneshot windows.conf
+    echo "Systemd set to reboot to Windows"
+  fi
 }
 alias reboot-to-windows='reboot_to_windows'
