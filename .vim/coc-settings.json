@@ -99,4 +99,7 @@
   "svelte.plugin.typescript.diagnostics.enable": true,
   "snippets.userSnippetsDirectory": "~/.vim/snips/",
   "coc.source.file.triggerCharacters": ["/"]
+  // Add BibTex file for coc-bibtex autocompletion
+  "list.source.bibtex.files": ["~/.wiki/references.bib", "./*.bib"],
+  "bibtex.silent": true,
 }
