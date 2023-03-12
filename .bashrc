@@ -89,7 +89,7 @@ if [ -f "/usr/bin/fzf" ]; then
     source /usr/share/fzf/key-bindings.bash
   fi
 
-  _fzf_setup_completion path vim zathura xournalpp nvim
+  _fzf_setup_completion path vim zathura xournalpp nvim mpv
 else
   echo "fzf not installed"
 fi
@@ -112,5 +112,3 @@ export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 # Conda {{{
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 # }}}
-
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
