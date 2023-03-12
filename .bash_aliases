@@ -1,8 +1,8 @@
 # Config quick-open
 
-alias bashrc="vim ~/.bashrc"
-alias aliasrc="vim ~/.aliasrc"
-alias vimrc="vim ~/.vimrc"
+alias bashrc="nvim ~/.bashrc"
+alias aliasrc="nvim ~/.aliasrc"
+alias vimrc="nvim ~/.vimrc"
 
 # Navigation
 
