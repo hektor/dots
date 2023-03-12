@@ -40,7 +40,9 @@ export HISTIGNORE="clear:l: *"
 # }}}
 
 # Man pages {{{
-export MANWIDTH=120
+# See `:h :Man` in NeoVim
+export MANWIDTH=999
+# export MANPAGER='nvim +Man!'
 # }}}
 
 # Editor {{{
@@ -87,7 +89,7 @@ if [ -f "/usr/bin/fzf" ]; then
     source /usr/share/fzf/key-bindings.bash
   fi
 
-  _fzf_setup_completion path vimn zathura xournalpp
+  _fzf_setup_completion path vim zathura xournalpp nvim
 else
   echo "fzf not installed"
 fi
@@ -106,3 +108,9 @@ source /usr/share/nvm/install-nvm-exec
 # Jupyter {{{
 export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 # }}}
+
+# Conda {{{
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+# }}}
+
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
