@@ -12,6 +12,21 @@
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSave": true,
 
+  // Markdown
+  "markdownlint.config": {
+    "heading-style": {
+      "style": "atx"
+    },
+    "ul-style": {
+      "style": "asterisk"
+    }
+  },
+
+  /**
+   * Language server & diagnostics
+   */
+
+  // Language server
   "languageserver": {
     // "racket": {
     //   "command": "racket",
@@ -42,23 +57,80 @@
       // "settings": { ... }
     },
     "R": {
-        "enable": true,
-        "command": "/usr/bin/R",
-        "args": [
-            "--slave",
-            "-e",
-            "languageserver::run()"
-        ],
-        "filetypes": [
-            "r"
-        ]
+      "enable": true,
+      "command": "/usr/bin/R",
+      "args": ["--slave", "-e", "languageserver::run()"],
+      "filetypes": ["r"]
+    },
+    "prolog-lsp": {
+      "command": "swipl",
+      "args": ["-g", "use_module(library(lsp_server)).", "-g", "lsp_server:main", "-t", "halt", "--", "stdio"],
+      "filetypes": ["prolog"]
     }
   },
-  "diagnostic.messageTarget": "echo",
-  "signature.target": "echo",
-  "diagnostic.errorSign": "⚠",
-  "diagnostic.warningSign": "⚠ ",
+  "jedi.workspace.extraPaths": [
+    "/home/h/.local/lib/python3.8/site-packages",
+    "/home/h/.local/lib/python3.9/site-packages",
+    "/home/h/.local/lib/python3.10/site-packages",
+    "/home/h/.conda/envs/ml-2223/lib/python3.10/site-packages",
+    "/home/h/.conda/envs/nlp-2223/lib/python3.10/site-packages"
+  ],
+
+  // Diagnostics
   "diagnostic.infoSign": "🛈",
+  "diagnostic-languageserver.filetypes": {
+    "python": "pylint",
+    "systemd": "systemd-analyze"
+  },
+  "diagnostic-languageserver.linters": {
+    "pylint": {
+      "sourceName": "pylint",
+      "command": "pylint",
+      "debounce": 100,
+      "args": [
+        "--output-format",
+        "text",
+        "--score",
+        "no",
+        "--msg-template",
+        "'{line}:{column}:{category}:{msg} ({msg_id}:{symbol})'",
+        "%file"
+      ],
+      "formatPattern": [
+        "^(\\d+?):(\\d+?):([a-z]+?):(.*)$",
+        {
+          "line": 1,
+          "column": 2,
+          "endColumn": 2,
+          "security": 3,
+          "message": 4
+        }
+      ],
+      "rootPatterns": ["pyproject.toml", "setup.py", ".git"],
+      "securities": {
+        "informational": "hint",
+        "refactor": "info",
+        "convention": "info",
+        "warning": "warning",
+        "error": "error",
+        "fatal": "error"
+      },
+      "offsetColumn": 1,
+      "offsetColumnEnd": 1,
+      "formatLines": 1
+    }
+  },
+  // Set up autopep8
+  "diagnostic-languageserver.formatters": {
+    "autopep8": {
+      "command": "autopep8",
+      "args": ["-"]
+    }
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "python": "autopep8"
+  },
+
   "suggest.autoTrigger": "trigger",
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
   "javascript.suggestionActions.enabled": true,
@@ -69,4 +141,23 @@
   // Add BibTex file for coc-bibtex autocompletion
   "list.source.bibtex.files": ["~/.wiki/references.bib", "./*.bib"],
   "bibtex.silent": true,
+
+  // Adjust floating menus
+  "hover.floatConfig": {
+    "border": true,
+    "highlight": "Normal"
+  },
+  "signature.floatConfig": {
+    "border": true,
+    "highlight": "Normal"
+  },
+  "diagnostic.floatConfig": {
+    "border": true,
+    "highlight": "Normal"
+  },
+  "suggest.pumFloatConfig": {
+    "border": true,
+    "highlight": "Normal"
+  },
+
 }
