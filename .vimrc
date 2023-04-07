@@ -62,28 +62,35 @@ augroup END
 
 " }}}
 
-" Keybindings
-"""""""""""""
+" Mappings {{{
+"
 
 " Leader keys
-nn <space> <nop>
+
+nn <space><nop>
 let mapleader = " "
 let maplocalleader = ";"
+
 " Splits & navigation
-nm ss :sp<CR><c-w>w|     " Split horizontal
-nm sv :vs<CR><c-w>w|     " Split vertical
-nn sw <c-w>w|            " Navigate splits
-nn sh <c-w>h|            " "
-nn sj <c-w>j|            " "
-nn sk <c-w>k|            " "
-nn sl <c-w>l|            " "
-nn sH <c-w>8<|           " Resize splits
-nn sJ <c-w>8-|           " "
-nn sK <c-w>8+|           " "
-nn sL <c-w>8>|           " "
-nn s= <c-w>=|            " Equalize splits
+
+nm s <c-w>           " Split horizontal
+nm ss :sp<CR><c-w>w| " Split horizontal
+nm sv :vs<CR><c-w>w| " Split vertical
+nn sw <c-w>w|        " Navigate splits
+nn sh <c-w>h|        "
+nn sj <c-w>j|        "
+nn sk <c-w>k|        "
+nn sl <c-w>l|        "
+nn sH <c-w>8<|       " Resize splits
+nn sJ <c-w>8-|       "
+nn sK <c-w>8+|       "
+nn sL <c-w>8>|       "
+nn s= <c-w>=|        " Equalize splits
+
 " Open
+
 nn sb :Lex<cr>|          " File tree
+nn <leader><leader> :noh<cr> |"
 nn <leader>t :term<cr>| " Open terminal
 nn <leader>o :!xdg-open http://localhost:8080/%:t:r.html & <cr>
 " Remaps
@@ -97,12 +104,14 @@ ino <down>  <nop>|       " "
 ino <up>    <nop>|       " "
 ino <right> <nop>|       " "
 " Search
-nn <leader>/ :noh<cr>
+nn <c-_> :noh<cr>| " map 'ctrl + /'
+" Use `the_silver_searcher` to find results (for selection if selection)
 nn <leader>f :Ag <cr>
+vm <leader>f y:Ag <C-r>"<cr>
 " Toggle line numbers
 nn <leader>n :set nu! rnu!<cr>
 " Vim configuration
-nn <leader>ec :split $MYVIMRC<cr>
+nn <leader>ec :vs $MYVIMRC<cr>
 nn <leader>so :so %<cr>
 
 " Plugins
