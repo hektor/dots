@@ -1,50 +1,17 @@
 {
-  "prettier.requireConfig": false,
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html",
-    "vue",
-    "markdown",
-    "svelte"
-  ],
-  "eslint.autoFixOnSave": true,
-  "eslint.format.enable": true,
-  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact", "typescript.tsx", "svelte"],
+  /**
+   * Linting & (Auto)formatting
+   */
+
   "prettier.semi": false,
   "prettier.tabWidth": 2,
   "prettier.singleQuote": true,
   "prettier.arrowParens": "avoid",
   "prettier.printWidth": 120,
+  "eslint.format.enable": true,
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnTypeFiletypes": [
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "typescript.tsx",
-    "html",
-    "json",
-    "Markdown",
-    "css",
-    "svelte",
-    "haskell"
-  ],
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "typescript.tsx",
-    "html",
-    "json",
-    "Markdown",
-    "css",
-    "svelte",
-    "haskell"
-  ],
+  "coc.preferences.formatOnSave": true,
+
   "languageserver": {
     // "racket": {
     //   "command": "racket",
