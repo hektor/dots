@@ -6,7 +6,7 @@
 " TMUX pane.
 
 " Send `(load <current-file>)` to tmux pane
-nmap <leader>rf  :call Scheme_send_sexp("(load \"" . expand("%:p") . "\")\n")<cr>
+nmap <leader>rf :call Scheme_send_sexp("(#%require xrepl)(load \"" . expand("%:p") . "\")\n")<cr>
 nmap <leader>re :call Scheme_eval_defun()<cr>
 
 " Send s-expression to TMUX buffer
