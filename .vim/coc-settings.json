@@ -131,13 +131,23 @@
     "python": "autopep8"
   },
 
+  /**
+   * Autocompletion, suggestions, snippets
+   */
+
   "suggest.autoTrigger": "trigger",
+  "suggest.snippetIndicator": "▸",
+  "signature.target": "float",
+  "snippets.userSnippetsDirectory": "~/.vim/snips/",
+  "coc.source.file.triggerCharacters": ["/"],
+
+  // ECMAScript, TypeScript
   "emmet.includeLanguages": { "javascript": "javascriptreact" },
   "javascript.suggestionActions.enabled": true,
   "typescript.suggestionActions.enabled": true,
   "svelte.plugin.typescript.diagnostics.enable": true,
-  "snippets.userSnippetsDirectory": "~/.vim/snips/",
-  "coc.source.file.triggerCharacters": ["/"]
+  "svelte.enable-ts-plugin": true,
+
   // Add BibTex file for coc-bibtex autocompletion
   "list.source.bibtex.files": ["~/.wiki/references.bib", "./*.bib"],
   "bibtex.silent": true,
