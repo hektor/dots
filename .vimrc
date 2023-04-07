@@ -114,8 +114,11 @@ nn <leader>n :set nu! rnu!<cr>
 nn <leader>ec :vs $MYVIMRC<cr>
 nn <leader>so :so %<cr>
 
-" Plugins
-"""""""""
+" }}}
+
+" Plugins {{{
+"
+
 " Plug setup {{{
 
 " Plugin build helpers {{{
@@ -131,13 +134,22 @@ endfunction
 " }}}
 
 call plug#begin()
+if !exists('g:vscode')
 " Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'github/copilot.vim'
+endif
 " General
 Plug 'unblevable/quick-scope'
+Plug 'Shougo/context_filetype.vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-obsession'
 Plug 'machakann/vim-sandwich'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'honza/vim-snippets'
+Plug 'chrisbra/unicode.vim'
+Plug 'ap/vim-css-color'
+" Fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " JS and TypeScript
@@ -160,12 +172,20 @@ Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " TidalCycles
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
+" GLSL
+Plug 'tikhomirov/vim-glsl'
+Plug 'timtro/glslView-nvim'
+" Git
+Plug 'airblade/vim-gitgutter'
+" Jupyter notebooks
+Plug 'goerz/jupytext.vim'
+" OpenSCAD
+Plug 'sirtaj/vim-openscad'
 call plug#end()
+" }}}
 
-" Plugin config
-"""""""""""""""
+" Plugin config {{{
 
-" Coc
 " `.../sandwich` {{{
 nmap s <Nop>
 xmap s <Nop>
@@ -191,6 +211,8 @@ let g:coc_global_extensions = [
   \'coc-clangd',
   \'coc-bibtex' 
   \]
+
+"
 " Autocomplete
 "
 
@@ -261,26 +283,37 @@ imap <c-h> <Plug>(copilot-prev)
 imap <silent><script><expr> <s-tab> copilot#Accept("\<CR>")
 " Show Copilot node v16 as it does not work with v18 yet
 
-" LaTex
+" }}}
+
+" `.../vimtex` {{{
+
 let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex'
-let g:tex_conceal='abdmg'
+let g:tex_conceal='abdmgs'
 let g:vimtex_quickfix_mode=0
 
-" Markdown
-au FileType markdown setl tw=80 fo+=t " Wrap markdown to 80 characters
+" }}}
 
-" Comments
+" 'ferrine/md-img-paste.vim' {{{
+
+" Paste clipboard images
+au FileType pandoc nmap <buffer><silent> <leader>v :call mdip#MarkdownClipboardImage()<CR>
+au FileType markdown nmap <buffer><silent> <leader>v :call mdip#MarkdownClipboardImage()<CR>
+
+" }}}
+
+" 'tpope/vim-commentary' {{{
+
 xm <leader>c <Plug>Commentary
 nm <leader>c <Plug>Commentary
 nm <leader>cc <Plug>CommentaryLine
 
-" FZF
-let g:fzf_layout = {'window': { 'width': 0.62, 'height': 0.62}}
-let g:ag_working_path_mode="r"
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' " respect gitignore
-se wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip "   " ignore these
+" }}}
 
+" `junegunn/fzf` {{{
+" `junegunn/fzf.vim`
+
+let g:fzf_layout = {'window': { 'width': 1, 'height': 0.62}}
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -288,12 +321,13 @@ let g:fzf_colors =
   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
   \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'Comment'],
+  \ 'info':    ['fg', 'PreProc'],
   \ 'border':  ['fg', 'Comment'],
   \ 'prompt':  ['fg', 'Conditional'],
   \ 'pointer': ['fg', 'Exception'],
   \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'], }
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 let g:ag_working_path_mode="r"
 
@@ -333,6 +367,7 @@ let g:wiki_filetypes=['md']
 let g:wiki_completion_case_sensitive=0
 
 " Mappings
+" FIXME: cleanup
 " Remap <leader>p
 
 " augroup filetype_pandoc
@@ -344,9 +379,11 @@ let g:wiki_completion_case_sensitive=0
 
 " If we are on a wiki link 
 
+" TODO: configure the following
 " let g:wiki_file_handlenmap r
 
 " Links
+" FIXME: figure out what '' vs '.md' does
 let g:wiki_link_extension='.md'
 " Do not automatically transform to link, use `<leader>wf` for this
 let g:wiki_link_toggle_on_follow=0
@@ -375,7 +412,8 @@ let g:taskwiki_dont_fold=1
 
 " }}}
 
-" JS and TypeScript
+" `pangloss/vim-javascript` {{{
+
 let g:javascript_plugin_jsdoc = 1 " jsdoc syntax highlighting
 let g:javascript_plugin_flow = 1 " flow syntax highlighting
 let g:javascript_conceal_function = "ƒ"
@@ -383,8 +421,7 @@ let g:javascript_conceal_return = "⇖"
 let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
 
-" JSONC (see https://github.com/neoclide/jsonc.vim/pull/9")
-autocmd BufNewFile,BufRead */.vscode/*.json setlocal filetype=jsonc
+" }}}
 
 " `.../quickscope` {{{
 
@@ -393,16 +430,23 @@ let g:qs_lazy_highlight = 1
 
 " }}}
 
+
+" Tidalcycles (sclang and vim-tidal)
+let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
+let g:tidal_no_mappings = 1
+
+au FileType tidal nm <buffer> <leader>ep <Plug>TidalParagraphSend
+au FileType tidal nm <buffer> <leader>ee <Plug>TidalLineSend
+au FileType tidal nnoremap <buffer> <leader>h :TidalHush<cr>
+au FileType tidal com! -nargs=1 S :TidalSilence <args>
+au FileType tidal com! -nargs=1 P :TidalPlay <args>
+au FileType tidal com! -nargs=0 H :TidalHush
+
 " SuperCollider
 au BufEnter,BufWinEnter,BufNewFile,BufRead *.sc,*.scd se filetype=supercollider
 au Filetype supercollider packadd scvim
 
-" Tidalcycles (sclang and vim-tidal)
-let g:tidal_default_config = {"socket_name": "default", "target_pane": "tidal:1.1"}
-
-
-" Plugin keybindings
-""""""""""""""""""""
+" }}}
 
 " FZF
 nn <c-p> :FZF<cr>
