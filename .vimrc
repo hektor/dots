@@ -1,39 +1,41 @@
 " General config {{{
 "
-" Most acronyms are unreadable, but they keep the overview
-" I have to do a quick :h lookup for most of these anyway.
+" Tip: acronyms for overview, use `:h` for a quick lookup.
 
-se nocp                  " Disable vi incompatibility
-filet plugin indent on   " Filetype recognition
-se enc=utf8              "
-se hid                   " Allow hiding unsaved buffers
-se tf                    " Fast tty
-se ut=300                " 300ms for update time
-se to tm=200 ttm=5       " Timeouts
-se shm+=c                " ...
-se ul=500 hi=500         " History and undo
-se nu rnu scl=number     " Line numbers & signs
-se nowrap
-se bs=indent,eol,start   " Indentation
-se ai ts=2 sts=2 sw=2 et " Indentation
-se is ic scs hls         " Search
-se lz                    " Only essential redraws
-se nobk nowb noswf       " No backups
-se vi='20,\"101          " Max 100 lines in registers
-se novb                  " Bell
-se cole=0 cocu=""        " Conceal
-se cb=unnamedplus        " Clipboard
-se fcs+=vert:│           " Cleaner split separator (tmux style)
+set nocp                               " Disable vi incompatibility
+filetype plugin indent on              " Filetype recognition
+set enc=utf8                           " Default to UTF-8 encoding
+set hid                                " Allow hiding unsaved buffers
+set tf                                 " Fast tty
+set ut=300                             " 300ms for update time
+set to tm=200 ttm=5                    " Timeouts
+set shm+=c                             " ...
+set ul=500 hi=500                      " History and undo
+set nu rnu scl=number                  " Line numbers & signs
+set nowrap
+set bs=indent,eol,start                " Indentation
+set ai ts=2 sts=2 sw=2 et              " Indentation
+set is ic scs hls                      " Search
+set lz                                 " Only essential redraws
+set nobk nowb noswf                    " No backups
+set vi='20,\"101                       " Max 100 lines in registers
+set novb                               " Bell
+set cole=0 cocu=""                     " Conceal
+set cb=unnamedplus                     " Clipboard
+set fcs+=vert:│                        " Cleaner split separator (tmux style)
 set list
-set lcs=trail:·,tab:→\ ,nbsp:␣ " Whitespace rendering
-set ar                   " Autoread
+set lcs=trail:·,tab:→\ ,nbsp:␣         " Whitespace rendering
+set ar                                 " Autoread
+set spellsuggest+=5                    " Limit spell suggestions
+set wildignore+=*/node_modules/*,*/tmp/*,*.so,*.swp,*.zip
+set thesaurus+=~/.vim/thesaurus/mthesaur.txt
 
-" Functions ____________________________
+" File explorer
+let g:netrw_winsize = 30
+let g:netrw_liststyle=3
+let g:netrw_banner = 0
 
-" Toggle line numbers
-fu! ToggleLineNumbers()
-  set nu! rnu! " toggle: no numbers - relative nummbers
-endfu
+" }}}
 
 " https://alok.github.io/2018/04/26/using-vim-s-conceal-to-make-languages-more-tolerable/
 fu! ToggleConceal()
