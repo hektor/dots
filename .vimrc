@@ -41,21 +41,38 @@ let g:netrw_banner = 0
 fu! ToggleConceal()
   if (&cole == 0) | se cole =2 | else | set cole =0 | endif
 endfu
+" Folds {{{
 
 " Insert date
 fu! Today()
   :put =strftime('%d %b %Y')
 endfu
+set foldmethod=marker
 
 " Add command line functions names
 com! -nargs=0 Today :call Today()
 com! -nargs=0 ToggleLineNumbers :call ToggleLineNumbers()
 com! -nargs=0 ToggleConceal :call ToggleConceal()
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
 
 " Setup Man command for reading man pages
 if exists(":Man") != 2
   source $VIMRUNTIME/ftplugin/man.vim
 endif
+augroup filetype_python
+    autocmd!
+    autocmd FileType python setlocal foldmethod=indent
+augroup END
+
+augroup filetype_sh
+    autocmd!
+    autocmd FileType sh setlocal foldmethod=marker
+augroup END
+
+" }}}
 
 " Keybindings
 """""""""""""
