@@ -37,10 +37,6 @@ let g:netrw_banner = 0
 
 " }}}
 
-" https://alok.github.io/2018/04/26/using-vim-s-conceal-to-make-languages-more-tolerable/
-fu! ToggleConceal()
-  if (&cole == 0) | se cole =2 | else | set cole =0 | endif
-endfu
 " Folds {{{
 
 " Insert date
@@ -49,19 +45,11 @@ fu! Today()
 endfu
 set foldmethod=marker
 
-" Add command line functions names
-com! -nargs=0 Today :call Today()
-com! -nargs=0 ToggleLineNumbers :call ToggleLineNumbers()
-com! -nargs=0 ToggleConceal :call ToggleConceal()
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" Setup Man command for reading man pages
-if exists(":Man") != 2
-  source $VIMRUNTIME/ftplugin/man.vim
-endif
 augroup filetype_python
     autocmd!
     autocmd FileType python setlocal foldmethod=indent
@@ -111,8 +99,8 @@ ino <right> <nop>|       " "
 " Search
 nn <leader>/ :noh<cr>
 nn <leader>f :Ag <cr>
-" Line numbers
-nn <leader>n :call ToggleRnu()<cr>
+" Toggle line numbers
+nn <leader>n :set nu! rnu!<cr>
 " Vim configuration
 nn <leader>ec :split $MYVIMRC<cr>
 nn <leader>so :so %<cr>
