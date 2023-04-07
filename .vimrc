@@ -494,8 +494,6 @@ endfu
 
 " VIM config hot reload
 
-au! bufwritepost .vimrc source $HOME/.vimrc
-
 " TODO: separate to filetype specific files
 
 " JS
@@ -543,4 +541,10 @@ augroup HiglightTODO
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
     autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'QUESTION', -1)
+augroup END
+
+augroup Vim
+  au!
+  " Reload vim config when ~/.vimrc is changed
+  au BufWritePost $HOME/.vimrc so $MYVIMRC | redraw | echo "Reloaded vimrc"
 augroup END
