@@ -78,7 +78,7 @@ nn s= <c-w>=|            " Equalize splits
 " Open
 nn sb :Lex<cr>|          " File tree
 nn <leader>t :term<cr>| " Open terminal
-nn <leader>o :!xdg-open http://localhost:8080/%:r.html & <cr>
+nn <leader>o :!xdg-open http://localhost:8080/%:t:r.html & <cr>
 " Remaps
 ino <nowait> jj <esc>|   " Normal now
 nn  <left>  <nop>|       " Hard mode
@@ -100,6 +100,19 @@ nn <leader>so :so %<cr>
 
 " Plugins
 """""""""
+" Plug setup {{{
+
+" Plugin build helpers {{{
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    if has('nvim')
+      !cargo build --release --locked
+    else
+      !cargo build --release --locked --no-default-features --features json-rpc
+    endif
+  endif
+endfunction
+" }}}
 
 call plug#begin()
 " Coc
@@ -118,7 +131,7 @@ Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript.tsx'] }
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 " JSON with comments
 Plug 'neoclide/jsonc.vim'
-" LaTeX & markdown
+" LaTeX
 Plug 'lervag/vimtex'
 " Wiki
 Plug 'lervag/wiki.vim'
@@ -126,6 +139,8 @@ Plug 'hektor/taskwiki'
 " Markdown
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'ferrine/md-img-paste.vim'
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " TidalCycles
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
@@ -283,6 +298,14 @@ let g:pandoc#modules#disabled = ["formatting", "dashes", "yaml", "metadata"]
 
 " }}}
 
+" `euclio/vim-markdown-composer` {{{
+
+let g:markdown_composer_custom_css = ['file:///home/h/.wiki/pandoc.css']
+let g:markdown_composer_external_renderer='pandoc -f markdown+latex_macros-yaml_metadata_block -t html5 --mathjax --bibliograph /home/h/.wiki/references.bib --citeproc --lua-filter=/home/h/.wiki/lua-filters/diagram-generator/diagram-generator.lua --lua-filter=/home/h/.wiki/filters/html-links.lua --lua-filter=/home/h/.wiki/filters/tikz.lua'
+let g:markdown_composer_autostart = 0
+
+" }}}
+
 " `lervag/wiki.vim` {{{
 
 " Only load wiki.vim for wiki directory
@@ -296,12 +319,12 @@ let g:wiki_completion_case_sensitive=0
 " Mappings
 " Remap <leader>p
 
-augroup filetype_pandoc
-  autocmd!
-  au BufRead,BufNewFile /home/h/.wiki/*.md nn <buffer><leader>p :WikiFzfPages<cr>
-  au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> sv empty(g:wiki#link#get()) ? ':vs<CR><c-w>w' : '<Plug>(wiki-link-follow-vsplit)'
-  au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> ss empty(g:wiki#link#get()) ? ':sp<CR><c-w>w' : '<Plug>(wiki-link-follow-split)'
-augroup END
+" augroup filetype_pandoc
+"   autocmd!
+"   au BufRead,BufNewFile /home/h/.wiki/*.md nn <buffer><leader>p :WikiFzfPages<cr>
+"   au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> sv empty(g:wiki#link#get()) ? ':vs<CR><c-w>w' : '<Plug>(wiki-link-follow-vsplit)'
+"   au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> ss empty(g:wiki#link#get()) ? ':sp<CR><c-w>w' : '<Plug>(wiki-link-follow-split)'
+" augroup END
 
 " If we are on a wiki link 
 
