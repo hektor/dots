@@ -20,8 +20,9 @@ Desktop.ini
 # Thumbnail cache
 Thumbs.db
 
-# Prerequisites
+# Prerequisites, but not directories
 *.d
+!*.d/
 
 # Object files
 *.o

@@ -1,7 +1,9 @@
 data.location=~/.task
 
+include ./taskrc.d/server
+
 # Theme
-include /usr/share/doc/task/rc/dark-gray-256.theme
+include /usr/share/doc/task/rc/light-256.theme
 
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
@@ -10,18 +12,11 @@ report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
 
-taskd.certificate=/home/h/.task/private.certificate.pem
-taskd.key=/home/h/.task/private.key.pem
-taskd.ca=/home/h/.task/ca.crt
-taskd.server=inthe.am:53589
-taskd.credentials=inthe_am/hektor.misplon/2feb9351-d86a-4ecc-9a69-72ac391e15e6
-taskd.trust=strict
-
 # Changes to `all` report:
 #
 # due->due.remaining
-report.all.columns=id,status.short,uuid.short,start.active,entry.age,end.age,depends.indicator,priority,project.parent,tags.count,recur.indicator,wait.remaining,scheduled.remaining,due.remaining,until.remaining,description
-report.all.labels=ID,St,UUID,A,Age,Done,D,P,Project,Tags,R,Wait,Sch,Due,Until,Description
+# report.all.columns=id,status.short,uuid.short,start.active,entry.age,end.age,depends.indicator,priority,project.parent,tags.count,recur.indicator,wait.remaining,scheduled.remaining,due.remaining,until.remaining,description
+# report.all.labels=ID,St,UUID,A,Age,Done,D,P,Project,Tags,R,Wait,Sch,Due,Until,Description
 
 # Description report
 report.description.columns=description
@@ -29,7 +24,23 @@ report.description.columns=description
 # Adjust defaults
 alias.burndown=burndown.daily
 
-urgency.user.project.run.coefficient=0
-urgency.user.project.side.coefficient=-1.0
+# Set urgencies for certain projects
+urgency.user.project.studies.coefficient=1.0
+urgency.user.project.admin.coefficient=1.0
+urgency.user.project.personal.coefficient=0.5
+urgency.user.project.groceries.coefficient=0.5
+urgency.user.project.home.coefficient=0.2
+urgency.user.project.creative.coefficient=0.0
+urgency.user.project.side.coefficient=0.0
 
-verbose=blank,header,footnote,label,new-id,affected,edit,special,project,unwait
+# Set urgencies for certain tags
+urgency.user.tag.money.coefficient=1.5
+
+# Adjust urgencies for priorities
+urgency.uda.priority.L.coefficient=-1.0
+
+# verbose=blank,header,footnote,label,new-id,affected,edit,special,project,unwait
+
+search.case.sensitive=no
+context.cc.read=pro:studies.cc
+context.cc.write=pro:studies.cc
