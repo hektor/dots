@@ -1,40 +1,34 @@
-entries := $(wildcard *.md)
+NOTES := $(wildcard *.md)
+AUXFILES := ./img/
 
 target=wiki
-exports= \
-  $(entries:.md=.html) \
-	# $(target).pdf  \
+exports=$(NOTES:.md=.html)
 
-VIMWIKI_DIR=/home/h/.wiki
+WIKI_DIR=/home/h/.wiki
+
+%.html : %.md
+	pandoc \
+    -f markdown+latex_macros-yaml_metadata_block+abbreviations+emoji+pipe_tables \
+    -t html5 \
+    -c pandoc.css \
+    --citeproc \
+    --metadata-file=meta.yaml \
+    --template=$(WIKI_DIR)/template \
+    --bibliography $(WIKI_DIR)/references.bib \
+    --resource-path=$(WIKI_DIR)/img/ \
+    --lua-filter=$(WIKI_DIR)/filters/html-links.lua \
+    --lua-filter=$(WIKI_DIR)/filters/tikz.lua \
+    --lua-filter=$(WIKI_DIR)/filters/zotero.lua \
+    --lua-filter=$(WIKI_DIR)/lua-filters/diagram-generator/diagram-generator.lua \
+    --lua-filter=$(WIKI_DIR)/lua-filters/lilypond/lilypond.lua \
+    --toc \
+    --markdown-headings=atx \
+    --extract-media=img \
+    --strip-comments \
+    --file-scope \
+    -s -o "$@" "$<"
+
+.PHONY: all clean
 
 all: $(exports)
-
-%.html:%.md
-	pandoc \
-	 -f markdown+latex_macros-yaml_metadata_block \
-	 -t html5 \
-	 -c pandoc.css \
-	 --pdf-engine=xelatex \
-	 --bibliography $(VIMWIKI_DIR)/references.bib \
-	 --citeproc \
-	 --resource-path=$(VIMWIKI_DIR)/img/ \
-	 --lua-filter=$(VIMWIKI_DIR)/filters/html-links.lua \
-	 --lua-filter=$(VIMWIKI_DIR)/lua-filters/diagram-generator/diagram-generator.lua \
-	 --lua-filter=$(VIMWIKI_DIR)/lua-filters/lilypond/lilypond.lua \
-	 --mathjax \
-	 --extract-media=img \
-	 --strip-comments \
-	 -s -o $@ $<
-
-$(target).pdf:$(entries)
-	pandoc \
-		-f markdown $(entries) \
-		--pdf-engine=xelatex \
-		--bibliography $(VIMWIKI_DIR)/references.bib \
-		--citeproc \
-		--table-of-contents \
-		-o $@
-
-clean:
-	rm -f *.html
-	# rm wiki.pdf
+clean: rm $(exports)
