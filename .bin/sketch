@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# Open xournal in wacom drawing area
+
+# xdotool key "Super_L+f"
+
+function start_xournal() {
+  # Prevent multiple xournalpp instances
+  if pgrep -x "xournalpp" > /dev/null
+  then
+    echo "Xournal is already running" 
+  else 
+    xournalpp &
+  fi
+}
+
+function resize_xournal() {
+  # Resize xournalpp window to draw area
+  sleep 1
+  xournal_id=$(xdotool search --onlyvisible --name xournal)
+  resize-for-wacom-horizontal
+
+  # FIXME: Automate for different resolutions
+
+  # Bottom centered
+  # xdotool windowsize "$xournal_id" 1920 1080
+  # xdotool windowmove "$xournal_id" 1920 1080
+
+  # Centered
+  xdotool windowsize "$xournal_id" 1920 1080
+  xdotool windowmove "$xournal_id" 960 540
+
+  # Vertical
+  # xournal_id=$(xdotool search --onlyvisible --name xournal)
+  # xdotool windowsize "$xournal_id" 1080 1920
+  # xdotool windowmove "$xournal_id" 130 540
+}
+
+set-wacom-draw-area
+start_xournal
+resize_xournal
