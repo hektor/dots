@@ -1,7 +1,7 @@
 data.location=~/.task
 
 # Theme
-include /usr/share/doc/task/rc/dark-gray-256.theme
+include /usr/share/doc/task/rc/light-256.theme
 
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
