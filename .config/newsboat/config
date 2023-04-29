@@ -1,13 +1,13 @@
 auto-reload yes
 reload-threads 100
 
-color background          color240  black
-color listnormal          color238  black
-color listfocus           white     black
-color listnormal_unread   color240  black  bold
-color listfocus_unread    default   black  bold
-color info                default   black
-color article             default   black
+# color background          color240  black
+# color listnormal          color238  black
+# color listfocus           white     black
+# color listnormal_unread   color240  black  bold
+# color listfocus_unread    default   black  bold
+# color info                default   black
+# color article             default   black
 
 bind-key h quit articlelist
 bind-key h quit article
