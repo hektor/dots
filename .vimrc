@@ -340,11 +340,14 @@ au FileType pandoc call pandoc#completion#Init()
 let g:pandoc#filetypes#pandoc_markdown=0
 let g:pandoc#spell#enabled=0
 let g:pandoc#spell#default_langs=['en_us', 'nl_be']
-let g:pandoc#syntax#conceal#urls=1
-let g:pandoc#syntax#conceal#blacklist=[]
 let g:pandoc#formatting#mode='a'
 let g:pandoc#formatting#textwidth=90
 let g:pandoc#modules#disabled = ["formatting", "dashes", "yaml", "metadata"]
+
+let g:pandoc#syntax#conceal#urls=1
+let g:pandoc#syntax#conceal#blacklist=[]
+let g:pandoc#syntax#style#emphases=0 " Bug workaround
+let g:pandoc#syntax#conceal#cchar_overrides = { "atx": " ", "li": "·" }
 
 " }}}
 
@@ -365,17 +368,6 @@ let g:wiki_index_name='index'
 let g:wiki_zotero_root='~/doc/Zotero'
 let g:wiki_filetypes=['md']
 let g:wiki_completion_case_sensitive=0
-
-" Mappings
-" FIXME: cleanup
-" Remap <leader>p
-
-" augroup filetype_pandoc
-"   autocmd!
-"   au BufRead,BufNewFile /home/h/.wiki/*.md nn <buffer><leader>p :WikiFzfPages<cr>
-"   au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> sv empty(g:wiki#link#get()) ? ':vs<CR><c-w>w' : '<Plug>(wiki-link-follow-vsplit)'
-"   au BufRead,BufNewFile /home/h/.wiki/*.md nnoremap <expr><buffer> ss empty(g:wiki#link#get()) ? ':sp<CR><c-w>w' : '<Plug>(wiki-link-follow-split)'
-" augroup END
 
 " If we are on a wiki link 
 
