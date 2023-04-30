@@ -18,15 +18,17 @@ env
 # Specifics
 $HOME/.android
 $HOME/.atom
+$HOME/.build
 $HOME/.cargo
+$HOME/.conda
+$HOME/.config/BraveSoftware/Brave-Browser/Default/Local Storage
+$HOME/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings
+$HOME/.config/devcert
 $HOME/.espressif
 $HOME/.local/share/torbrowser
 $HOME/.mozilla
 $HOME/.nvm
 $HOME/.npm
 $HOME/.nuget
+$HOME/.yarn
 $HOME/doc/disk-images
-$HOME/.config/BraveSoftware/Brave-Browser/Default/Local Storage
-$HOME/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings
-$HOME/.config/devcert
-$HOME/.build
