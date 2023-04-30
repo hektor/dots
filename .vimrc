@@ -175,8 +175,6 @@ Plug 'tidalcycles/vim-tidal'
 " GLSL
 Plug 'tikhomirov/vim-glsl'
 Plug 'timtro/glslView-nvim'
-" Git
-Plug 'airblade/vim-gitgutter'
 " Jupyter notebooks
 Plug 'goerz/jupytext.vim'
 " OpenSCAD
@@ -209,7 +207,8 @@ let g:coc_global_extensions = [
   \'coc-yaml',
   \'coc-snippets',
   \'coc-clangd',
-  \'coc-bibtex' 
+  \'coc-bibtex',
+  \'coc-git'
   \]
 
 "
