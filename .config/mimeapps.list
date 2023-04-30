@@ -1,10 +1,20 @@
 [Default Applications]
-application/pdf=org.pwmt.zathura.desktop
-video/mp4=mpv.desktop
-video/webm=mpv.desktop
+inode/x-empty=nvim.desktop
+inode/directory=nvim.desktop
+text/plain=nvim.desktop
+text/html=firefoxdeveloperedition.desktop
 image/gif=feh.desktop
 image/jpeg=feh.desktop
 image/png=feh.desktop
-x-scheme-handler/msteams=teams.desktop
-x-scheme-handler/obsidian=obsidian.desktop
-application/gzip=com.github.xournalpp.xournalpp.desktop
+video/mp4=mpv.desktop
+video/webm=mpv.desktop
+model/stl=com.ultimaker.cura.desktop
+application/pdf=org.pwmt.zathura.desktop
+x-scheme-handler/msteams=teams-for-linux.desktop
+x-scheme-handler/web+stremio=firefox.desktop
+x-scheme-handler/http=firefoxdeveloperedition.desktop
+x-scheme-handler/https=firefoxdeveloperedition.desktop
+x-scheme-handler/chrome=firefoxdeveloperedition.desktop
+x-scheme-handler/sidequest=SideQuest.desktop
+x-scheme-handler/mailto=firefox.desktop
+x-scheme-handler/webcal=firefox.desktop
