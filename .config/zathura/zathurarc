@@ -63,3 +63,10 @@ map <F7> focus_inputbar ":set default-bg \#111"
 map <F8> focus_inputbar ":set recolor-lightcolor \#111"
 map <F9> focus_inputbar ":set recolor-darkcolor \#aaa"
 map 3 feedkeys "<F1><Return><F7><Return><F8><Return><F9><Return>"
+
+map p toggle_presentation
+map [presentation] p toggle_presentation
+map [presentation] h navigate previous
+map [presentation] j navigate next
+map [presentation] k navigate previous
+map [presentation] l navigate next
