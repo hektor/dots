@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd "$ZK_PATH" || echo "No zettelkasten directory found"
+git a . && git commit -m "Update" && git push

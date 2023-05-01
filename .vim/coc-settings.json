@@ -149,7 +149,7 @@
   "svelte.enable-ts-plugin": true,
 
   // Add BibTex file for coc-bibtex autocompletion
-  "list.source.bibtex.files": ["~/.wiki/references.bib", "./*.bib"],
+  "list.source.bibtex.files": ["~/.zk/references.bib", "./*.bib"],
   "bibtex.silent": true,
 
   // Adjust floating menus

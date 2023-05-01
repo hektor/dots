@@ -352,17 +352,17 @@ let g:pandoc#syntax#conceal#cchar_overrides = { "atx": " ", "li": "·" }
 
 " `euclio/vim-markdown-composer` {{{
 
-let g:markdown_composer_custom_css = ['file:///home/h/.wiki/pandoc.css']
-let g:markdown_composer_external_renderer='pandoc -f markdown+latex_macros-yaml_metadata_block -t html5 --mathjax --bibliograph /home/h/.wiki/references.bib --citeproc --lua-filter=/home/h/.wiki/lua-filters/diagram-generator/diagram-generator.lua --lua-filter=/home/h/.wiki/filters/html-links.lua --lua-filter=/home/h/.wiki/filters/tikz.lua'
+let g:markdown_composer_custom_css = ['file:///home/h/.zk/pandoc.css']
+let g:markdown_composer_external_renderer='pandoc -f markdown+latex_macros-yaml_metadata_block -t html5 --mathjax --bibliograph /home/h/.zk/references.bib --citeproc --lua-filter=/home/h/.wiki/lua-filters/diagram-generator/diagram-generator.lua --lua-filter=/home/h/.wiki/filters/html-links.lua --lua-filter=/home/h/.zk/filters/tikz.lua'
 let g:markdown_composer_autostart = 0
 
 " }}}
 
 " `lervag/wiki.vim` {{{
 
-" Only load wiki.vim for wiki directory
+" Only load wiki.vim for zk directory
 let g:wiki_global_load=0
-let g:wiki_root='~/.wiki'
+let g:wiki_root='~/.zk'
 let g:wiki_index_name='index'
 let g:wiki_zotero_root='~/doc/Zotero'
 let g:wiki_filetypes=['md']
@@ -495,7 +495,7 @@ au FileType javascript set mps+==:;
 au BufNewFile,BufRead */.vscode/*.json setlocal filetype=jsonc
 
 " Hacky way to pass on active note to script for automated for HTML preview
-au BufEnter /home/h/.wiki/*.md silent exe '!echo %:t > /home/h/.local/share/nvim/plugged/bro/current-page'
+au BufEnter /home/h/.zk/*.md silent exe '!echo %:t > /home/h/.local/share/nvim/plugged/bro/current-page'
 
 " }}}
 

@@ -5,13 +5,14 @@ session="main"
 tmux attach-session -t $session || tmux new-session -s $session \; \
   rename-window todo \; \
   send-keys -t 0 "task" C-m \; \
-  new-window -n wiki \; \
-  send-keys -t 0 "vim $HOME/.wiki/index.md" C-m \; \
+  new-window -n zk \; \
+  send-keys -t 0 "nvim $ZK_PATH/index.md" C-m \; \
   new-window -n music \; \
   send-keys -t 0 "ncspot" C-m \; \
   new-window -n term \; \
   new-window -n make \; \
   split-window -h \; \
-  send-keys -t 0 'cd "$HOME/.wiki" && ./entr' C-m \; \
-  send-keys -t 1 'cd "$HOME/.wiki" && live-server . --watch *.html' C-m \; \
+  split-window -h \; \
+  send-keys -t 0 'cd "$ZK_PATH" && ./entr' C-m \; \
+  send-keys -t 1 'cd "$ZK_PATH" && live-server . --watch=*.html' C-m \; \
   select-window -t 2 \;

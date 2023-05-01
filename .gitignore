@@ -83,8 +83,8 @@ dkms.conf
 # Dotenv
 .env
 
-.wiki/*
-!.wiki/Makefile
-!.wiki/pandoc.css
-!.wiki/scripts/
-!.wiki/filters/
+.zk/*
+!.zk/Makefile
+!.zk/pandoc.css
+!.zk/scripts/
+!.zk/filters/

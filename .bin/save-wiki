@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-cd "$HOME/.wiki" || echo "No .vimwiki directory found"
-git a "$HOME/.wiki"
-git cm 'Update'
-git push
