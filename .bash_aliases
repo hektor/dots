@@ -43,7 +43,7 @@ alias srclip="clip -o | speedread -w 500"
 
 # Other
 
-alias cfg="/usr/bin/git --git-dir=/home/h/.cfg/ --work-tree=/home/h"
+alias cfg="/usr/bin/git --git-dir=/home/h/.git/ --work-tree=/home/h"
 alias df="df -kTh"
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias o="xdg-open"
