@@ -32,7 +32,7 @@ import XMonad.Util.Ungrab
 myXmobarPP :: PP
 myXmobarPP =
   def
-    { ppSep = tertiaryColor " | ",
+    { ppSep = tertiaryColor "  ",
       ppCurrent = brackitify,
       ppHidden = secondaryColor,
       ppHiddenNoWindows = tertiaryColor,
@@ -52,8 +52,8 @@ myXmobarPP =
       ppExtras = [logTitles formatFocused formatUnfocused]
     }
   where
-    brackitify = wrap "[" "]"
-    formatFocused = secondaryColor . brackitify . ppWindow
+    brackitify = wrap "〈" "〉"
+    formatFocused = secondaryColor . ppWindow
     formatUnfocused = tertiaryColor . ppWindow
 
     ppWindow = xmobarRaw . (\w -> if null w then "Untitled" else w) . shorten 16
@@ -83,16 +83,17 @@ myManageHook =
 
 -- layoutHook
 myLayoutHook =
-  smartBorders $
-    -- Column layouts
-    threeCol
-      ||| threeColMid
-      -- Tiled layouts
-      --   Note: magnifier is off by default
-      --   (controllable usingarrow keys)
-      ||| magnifiercz magnificationFactorH tiled
-      ||| magnifiercz magnificationFactorV (Mirror tiled)
+    -- smartBorders $
+    -- Tiled layouts
+          tiled
+      -- --   Note: magnifier is off by default
+      -- --   (controllable usingarrow keys)
+      -- ||| magnifiercz magnificationFactorH tiled
+      -- ||| magnifiercz magnificationFactorV (Mirror tiled)
       -- Single window / monocle layout
+    -- Column layouts
+      -- ||| threeColMid
+      -- Monocle layouts
       ||| Full
   where
     magnificationFactorV = 1.384
@@ -119,8 +120,8 @@ myConfig =
           "etc"
         ],
       -- Styling
-      focusedBorderColor = "#888",
-      normalBorderColor = "#000",
+      focusedBorderColor = "#000",
+      normalBorderColor = "#0000",
       borderWidth = 2,
       -- Hooks
       manageHook = myManageHook <+> manageHook def,
