@@ -11,6 +11,7 @@
   d = diff
   dc = diff --cached
   a = add
+  ap = add -p
   cm = commit -m
   l = log --pretty=format:"(%an)\\ \\ %h\\ \\ %ad\\ \\ %s" --date=short
   s = status -s
@@ -58,3 +59,7 @@
 
 [credential "https://github.com"]
   helper = !/usr/bin/gh auth git-credential
+
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
