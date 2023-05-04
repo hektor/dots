@@ -1,15 +1,16 @@
 Config { overrideRedirect = False
-       , font =         "xft:Iosevka Term SS08:size=12:antialias=true"
-       , bgColor =      "#cccccc"
-       , fgColor =      "#111"
-       , position = TopW L 100
+       , font = "Iosevka Term SS08 12"
+       , textOffset = 1
+       , bgColor = "#cccccc"
+       , fgColor = "#111"
+       , position = TopH 20
        , commands = [ Run Cpu
                         [ "-L", "3"
                         , "-H", "50"
                         , "--high"  , "red"
                         ] 10
                     , Run Battery [
-                        "-t", "<acstatus>: <left>% - <timeleft>",
+                        "-t", "<acstatus>〈<left>% <timeleft>〉 ",
                         "--",
                         --"-c", "charge_full",
                         "-O", "AC",
@@ -18,19 +19,20 @@ Config { overrideRedirect = False
                         "-l", "red"
                         ] 10
                     , Run Alsa "default" "Master"
-                        [ "--template", "Vol: <volumestatus>"
+                        [ "--template", "V〈<volumestatus>〉 "
                         , "--suffix"  , "True"
                         , "--"
                         , "--on", ""
                         ]
                     , Run Memory ["--template", "Mem: <usedratio>%"] 10
-                    , Run Date "%a %Y-%m-%d %H:%M" "date" 10
+                    , Run Date "%a %b %e %H:%M" "date" 10
                     , Run Com "sb-pomo" [] "pomo" 10
                     , Run Com "sb-anki" [] "anki" 10
-                    , Run Com "sb-tasks" [] "tasks" 10
+                    , Run Com "sb-tasks" [] "tasks" 300
+                    , Run Com "sb-project" [] "proj" 300
                     , Run XMonadLog
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog%%anki%%pomo%%tasks% }{ %alsa:default:Master% | %battery% | %date%"
+       , template = "%XMonadLog% %anki% }%pomo% %proj% { %alsa:default:Master% %battery% %date%"
        }
