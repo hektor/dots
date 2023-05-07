@@ -1,11 +1,11 @@
 [core]
-  editor = vim
+  editor = nvim
   excludesfile = ~/.gitignore
 
 [user]
   email = hektor.misplon@pm.me
   name = Hektor Misplon
-  username = hektormisplon
+  username = hektor
 
 [alias]
   d = diff
