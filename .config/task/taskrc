@@ -1,9 +1,21 @@
-data.location=~/.task
+data.location=$XDG_DATA_HOME/task/
+hooks.location=$XDG_CONFIG_HOME/task/hooks/
 
 include ./taskrc.d/server
-
-# Theme
 include /usr/share/doc/task/rc/light-256.theme
+
+color.active=bold white on black
+color.alternate=
+color.scheduled=
+color.until=
+color.blocking=gray0
+color.blocked=gray15
+color.uda.priority.H=
+color.uda.priority.M=
+color.uda.priority.L=
+color.due=
+color.due.today=
+color.overdue=
 
 uda.reviewed.type=date
 uda.reviewed.label=Reviewed
@@ -12,17 +24,29 @@ report._reviewed.columns=uuid
 report._reviewed.sort=reviewed+,modified+
 report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )
 
-# Changes to `all` report:
-#
-# due->due.remaining
-# report.all.columns=id,status.short,uuid.short,start.active,entry.age,end.age,depends.indicator,priority,project.parent,tags.count,recur.indicator,wait.remaining,scheduled.remaining,due.remaining,until.remaining,description
-# report.all.labels=ID,St,UUID,A,Age,Done,D,P,Project,Tags,R,Wait,Sch,Due,Until,Description
-
-# Description report
-report.description.columns=description
-
-# Adjust defaults
 alias.burndown=burndown.daily
+alias.a=add
+alias.rm=delete
+alias.e=modify
+
+#
+# Custom reports
+#
+
+# Report: inbox
+
+report.in.columns=id,description
+report.in.labels=ID,Description
+report.in.description=Inbox (tasks with no project)
+report.in.filter=status:pending and project:
+
+report.recent.columns=id,description,entry
+report.recent.labels=ID,Description,Age
+report.recent.description=Recently added
+report.recent.sort=entry+
+
+report.minimal.columns=id,description
+report.minimal.labels=,
 
 # Set urgencies for certain projects
 urgency.user.project.studies.coefficient=1.0
@@ -44,3 +68,8 @@ urgency.uda.priority.L.coefficient=-1.0
 search.case.sensitive=no
 context.cc.read=pro:studies.cc
 context.cc.write=pro:studies.cc
+context.home.read=project:home
+context.home.write=project:home
+context.rl.read=project:studies.rl
+context.rl.write=project:studies.rl
+news.version=2.6.0
