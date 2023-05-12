@@ -525,15 +525,6 @@ augroup vimStartup
 
 augroup END
 
-" Highlight todo's for every filetype
-" https://stackoverflow.com/questions/11709965/vim-highlight-the-word-todo-for-every-filetype
-augroup HiglightTODO
-    autocmd!
-    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', -1)
-    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'FIXME', -1)
-    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'QUESTION', -1)
-augroup END
-
 augroup Vim
   au!
   " Reload vim config when ~/.vimrc is changed

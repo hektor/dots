@@ -35,3 +35,5 @@ syn keyword Operator phi     conceal cchar=φ
 syn keyword Operator chi     conceal cchar=χ
 syn keyword Operator psi     conceal cchar=ψ
 syn keyword Operator omega   conceal cchar=ω
+
+:runtime! syntax/_comment_keywords.vim
