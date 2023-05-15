@@ -482,7 +482,8 @@ au FileType javascript set mps+==:;
 au BufNewFile,BufRead */.vscode/*.json setlocal filetype=jsonc
 
 " Hacky way to pass on active note to script for automated for HTML preview
-au BufEnter /home/h/.zk/*.md silent exe '!echo %:t > /home/h/.local/share/nvim/plugged/bro/current-page'
+au BufEnter /home/h/.zk/*.md silent exe '!echo % > /home/h/.zk/current-zettel.txt'
+au BufEnter /home/h/.zk/*.md silent exe '!cat %:r.html > /home/h/.zk/current-zettel-content.html'
 
 " }}}
 
