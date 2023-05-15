@@ -149,7 +149,7 @@ snippet td "TARGET DECK: <Deck name>"
 TARGET DECK: $1::$2
 endsnippet
 
-snippet cloze "Cloze"
+snippet clo "Cloze"
 START
 Cloze
 ${0:${VISUAL}}$1
@@ -157,17 +157,17 @@ END
 $2
 endsnippet
 
-snippet clozes "Cloze start"
+snippet clos "Cloze start"
 START
 Cloze
 $1
 endsnippet
 
-snippet clozee "Cloze end"
+snippet cloe "Cloze end"
 END
 endsnippet
 
-snippet clozedef
+snippet clod
 START
 Cloze
 **Definition$1**
@@ -176,7 +176,7 @@ $2
 END
 endsnippet
 
-snippet clozeprop
+snippet clop
 START
 Cloze
 **Property$1**
@@ -185,7 +185,7 @@ $2
 END
 endsnippet
 
-snippet clozetheo
+snippet clot
 START
 Cloze
 **Theorem$1**
@@ -194,7 +194,7 @@ $2
 END
 endsnippet
 
-snippet clozelemm
+snippet clol
 START
 Cloze
 **Lemma$1**
@@ -203,7 +203,7 @@ $2
 END
 endsnippet
 
-snippet "c(\d+)" "Cloze <number>" br
+snippet "c(\d+)" "Cloze <number>" r
 {{c`!p snip.rv = int(match.group(1))`::${0:${VISUAL}}$1}}$2
 endsnippet
 
