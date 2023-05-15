@@ -46,25 +46,34 @@ alias srclip="clip -o | speedread -w 500"
 alias cfg="/usr/bin/git --git-dir=/home/h/.git/ --work-tree=/home/h"
 alias df="df -kTh"
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
-alias o="xdg-open"
 alias path='echo -e ${PATH//:/\\n}' # Pretty print path variables
 
 # Programs
 
-alias feh="feh -B black --scale-down --auto-zoom"
-alias fm='pcmanfm'
+alias o="xdg-open"
 alias v="nvim"
 alias zk="nvim +WikiIndex"
 alias g='git'
+alias t=' task'
+alias tsh='tasksh'
+alias z='zathura --fork'
+alias f='fzf'
+alias fm='pcmanfm &>/dev/null &'
 alias lm='xbacklight -set'
-alias py='python'
-alias r5rs-repl='plt-r5rs --no-prim'
-alias vi='vim'
-alias xopp="xournalpp $1 &>/dev/null"
 alias xev='xev | grep -A2 ButtonPress' # Ignore mouse movements
 alias conda='micromamba'
 
-reboot_to_windows ()
+# Languages
+
+alias js="node"
+alias ts="ts-node"
+alias r5="plt-r5rs --no-prim"
+alias hs="ghci"
+alias pl="swipl"
+alias py="python"
+alias r="R"
+
+reboot_windows ()
 {
   # Check if grub is installed by checking if the command exists, if it does
   # not, then assume that the system is using systemd-boot
@@ -77,4 +86,7 @@ reboot_to_windows ()
     echo "Systemd set to reboot to Windows"
   fi
 }
-alias reboot-to-windows='reboot_to_windows'
+alias reboot-windows='reboot_windows'
+
+alias azerty="setxkbmap be"
+alias qwerty="setxkbmap us"
