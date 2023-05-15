@@ -24,6 +24,17 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
+global !p
+def math():
+  return vim.command_output('GetContext') == 'math_inline' or vim.command_output('GetContext') == 'math_block'
+
+def math_inline():
+	return vim.command_output('GetContext') == 'math_inline'
+
+def math_block():
+	return vim.command_output('GetContext') == 'math_block'
+endglobal
+
 extends html
 
 # Zettelkasten templating
