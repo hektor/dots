@@ -47,7 +47,7 @@ alias cfg="/usr/bin/git --git-dir=/home/h/.git/ --work-tree=/home/h"
 alias df="df -kTh"
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias o="xdg-open"
-alias path="echo -e ${PATH//:/\\n}" # Pretty print path variables
+alias path='echo -e ${PATH//:/\\n}' # Pretty print path variables
 
 # Programs
 
