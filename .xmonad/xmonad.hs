@@ -105,20 +105,15 @@ myLayoutHook =
     ratio = 1 / 2
     delta = 4 / 100
 
+myWorkspaces = [ "sh", "www", "dev", "pdf", "etc" ]
+
 myConfig =
   def
     { terminal = "alacritty",
       -- Use Win key instead of Alt
       modMask = mod4Mask,
       -- , workspaces = ["α", "β", "γ", "δ", "ε", "ζ", "η"]
-      workspaces =
-        [ "sh",
-          "www",
-          "dev",
-          -- "nix",
-          "pdf",
-          "etc"
-        ],
+      workspaces = myWorkspaces,
       -- Styling
       focusedBorderColor = "#000",
       normalBorderColor = "#0000",
