@@ -1,6 +1,8 @@
 # Restic ignore
 
 # General
+.trash
+Trash
 .cache
 cache
 Cache
@@ -23,6 +25,7 @@ $HOME/.cargo
 $HOME/.conda
 $HOME/.config/BraveSoftware/Brave-Browser/Default/Local Storage
 $HOME/.config/BraveSoftware/Brave-Browser/Default/Local Extension Settings
+$HOME/.config/nvm/versions
 $HOME/.config/devcert
 $HOME/.espressif
 $HOME/.local/share/torbrowser
@@ -31,4 +34,6 @@ $HOME/.nvm
 $HOME/.npm
 $HOME/.nuget
 $HOME/.yarn
+$HOME/.config/yarn
 $HOME/doc/disk-images
+$HOME/.stremio-server
