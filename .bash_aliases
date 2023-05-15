@@ -62,6 +62,7 @@ alias r5rs-repl='plt-r5rs --no-prim'
 alias vi='vim'
 alias xopp="xournalpp $1 &>/dev/null"
 alias xev='xev | grep -A2 ButtonPress' # Ignore mouse movements
+alias conda='micromamba'
 
 reboot_to_windows ()
 {
