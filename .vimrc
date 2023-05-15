@@ -121,18 +121,6 @@ nn <leader>so :so %<cr>
 
 " Plug setup {{{
 
-" Plugin build helpers {{{
-function! BuildComposer(info)
-  if a:info.status != 'unchanged' || a:info.force
-    if has('nvim')
-      !cargo build --release --locked
-    else
-      !cargo build --release --locked --no-default-features --features json-rpc
-    endif
-  endif
-endfunction
-" }}}
-
 call plug#begin()
 if !exists('g:vscode')
 " Coc
@@ -168,7 +156,6 @@ Plug 'hektor/taskwiki'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'ferrine/md-img-paste.vim'
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 " TidalCycles
 Plug 'supercollider/scvim'
 Plug 'tidalcycles/vim-tidal'
