@@ -61,6 +61,7 @@ export NVM_DIR="$HOME/.nvm"
 # X11 {{{
 export XDG_SESSION_TYPE=X11
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
 # }}}
 
 # Nix package manager {{{
