@@ -15,7 +15,9 @@
 # Wacom mappings
 "xdotool key Super_L+j"
   m:0x00 + b:13
-"xdotool key space"
-  m:0x00 + b:12
 "xdotool key Print"
   m:0x00 + b:11
+
+"feh ~/.vortex-core/l0.png"
+  m:0x0 + c:138
+  SunProps
