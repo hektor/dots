@@ -143,6 +143,183 @@ $2
 ___
 endsnippet
 
+# Greek symbols
+
+context "math()"
+snippet alpha "Alpha"
+\\alpha
+endsnippet
+
+context "math()"
+snippet beta "Beta"
+\\beta
+endsnippet
+
+context "math()"
+snippet gamma "Gamma"
+\\gamma
+endsnippet
+
+context "math()"
+snippet delta "Delta"
+\\delta
+endsnippet
+
+context "math()"
+snippet epsilon "Epsilon"
+\\epsilonilon
+endsnippet
+
+context "math()"
+snippet zeta "Zeta"
+\\zeta
+endsnippet
+
+context "math()"
+snippet eta "Eta"
+\\eta
+endsnippet
+
+context "math()"
+snippet theta "Theta"
+\\theta
+endsnippet
+
+context "math()"
+snippet iota "Iota"
+\\iota
+endsnippet
+
+context "math()"
+snippet kappa "Kappa"
+\\kappa
+endsnippet
+
+context "math()"
+snippet lambda "Lambda" i
+\\lambda
+endsnippet
+
+context "math()"
+snippet mu "Mu"
+\\mu
+endsnippet
+
+context "math()"
+snippet nu "Nu"
+\\nu
+endsnippet
+
+context "math()"
+snippet xi "Xi"
+\\xi
+endsnippet
+
+context "math()"
+snippet omicron "Omicron"
+\\omicron
+endsnippet
+
+context "math()"
+snippet pi "Pi"
+\\pi
+endsnippet
+
+context "math()"
+snippet rho "Rho"
+\\rho
+endsnippet
+
+context "math()"
+snippet sigma "Sigma"
+\\sigma
+endsnippet
+
+context "math()"
+snippet tau "Tau"
+\\tau
+endsnippet
+
+context "math()"
+snippet upsilon "Upsilon"
+\\upsilon
+endsnippet
+
+context "math()"
+snippet phi "Phi"
+\\phi
+endsnippet
+
+context "math()"
+snippet chi "Chi"
+\\chi
+endsnippet
+
+context "math()"
+snippet psi "Psi"
+\\psi
+endsnippet
+
+context "math()"
+snippet omega "Omega"
+\\omega
+endsnippet
+
+context "math()"
+snippet Gamma "Gamma"
+\\Gamma
+endsnippet
+
+context "math()"
+snippet Delta "Delta"
+\\Delta
+endsnippet
+
+context "math()"
+snippet Theta "Theta"
+\\Theta
+endsnippet
+
+context "math()"
+snippet Lambda "Lambda"
+\\Lambda
+endsnippet
+
+context "math()"
+snippet Xi "Xi"
+\\Xi
+endsnippet
+
+context "math()"
+snippet Pi "Pi"
+\\Pi
+endsnippet
+
+context "math()"
+snippet Sigma "Sigma"
+\\Sigma
+endsnippet
+
+context "math()"
+snippet Upsilon "Upsilon"
+\\Upsilon
+endsnippet
+
+context "math()"
+snippet Phi "Phi"
+\\Phi
+endsnippet
+
+context "math()"
+snippet Psi "Psi"
+\\Psi
+endsnippet
+
+context "math()"
+snippet Omega "Omega"
+\\Omega
+endsnippet
+
 # Zettelkasten to Anki
 
 snippet td "TARGET DECK: <Deck name>"
@@ -261,6 +438,20 @@ snippet (\b)M(.*) "MathJax block" irw
 $$
 `!p snip.rv = match.group(2)`
 $$
+endsnippet
+
+# Calligraphic letters
+
+context "math()"
+snippet c([A-z]) "Calligraphic A" r
+`!p snip.rv = "\\mathcal{" + match.group(1) + "}"`$1
+endsnippet
+
+# Subscripts
+
+context "math()"
+snippet '([A-z])(\d+)' "Subscript" irw
+`!p snip.rv = match.group(1) + '_' + match.group(2) if len(match.group(2)) == 1 else match.group(1) + '_{' + match.group(2) + '}'`$1
 endsnippet
 
 # MathJax
@@ -405,15 +596,21 @@ snippet kern "Kernel" i
 \operatorname{kern}($1)$2
 endsnippet
 
+context "math()"
 snippet vec "Vector" i
 \mathbf{$1}$2
 endsnippet
 
-snippet v1tovp "Vectors v indexed from 1 to p" b
+context "math()"
+snippet vec([A-z]) "Vector ..." r
+`!p snip.rv = "\\mathbf{" + match.group(1) + "}"`$1
+endsnippet
+
+snippet v1tovp "Vectors v indexed from 1 to p"
 \mathbf{v_1},...,\mathbf{v_p}$2
 endsnippet
 
-snippet a1toan "Vectors a indexed from 1 to n" b
+snippet a1toan "Vectors a indexed from 1 to n"
 \mathbf{a_1},...,\mathbf{v_n}$2
 endsnippet
 
