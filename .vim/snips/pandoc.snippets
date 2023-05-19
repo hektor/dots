@@ -251,15 +251,16 @@ $1
 \end{bmatrix}
 endsnippet
 
-snippet $
-$$1$$2
+# Insert anything after m/M in math mode
+
+snippet "(\b)m(.*)" "MathJax" r
+`!p snip.rv = match.group(1) + "$" + match.group(2) + "$"`
 endsnippet
 
-snippet $$
+snippet (\b)M(.*) "MathJax block" irw
 $$
-$1
+`!p snip.rv = match.group(2)`
 $$
-$2
 endsnippet
 
 # MathJax
