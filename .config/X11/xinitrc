@@ -24,7 +24,7 @@ xset -b            # disable bell
 xset r rate 200 30 # adjust typematic delay & rate
 
 # Shared
-xbindkeys &
+xbindkeys -f "$HOME"/.config/xbindkeys/config
 xbanish &
 redshift -o -O "$(cat /tmp/temperature)" & # Run redshift in one shot mode
 
