@@ -8,6 +8,7 @@ cache
 Cache
 CachedData
 CachedExtension
+CacheStorage
 __pycache__
 GPUCache
 ShaderCache
@@ -21,6 +22,7 @@ env
 $HOME/.android
 $HOME/.atom
 $HOME/.build
+$HOME/.cabal
 $HOME/.cargo
 $HOME/.conda
 $HOME/.config/BraveSoftware/Brave-Browser/Default/Local Storage
@@ -37,3 +39,6 @@ $HOME/.yarn
 $HOME/.config/yarn
 $HOME/doc/disk-images
 $HOME/.stremio-server
+$HOME/Games
+!$HOME/Games/*/drive_c/users/h/AppData
+!$HOME/Games/rhino
