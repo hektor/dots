@@ -118,7 +118,7 @@ myConfig =
       -- Styling
       focusedBorderColor = "#000",
       normalBorderColor = "#0000",
-      borderWidth = 2,
+      borderWidth = 4,
       -- Hooks
       manageHook = myManageHook <+> manageHook def,
       layoutHook = avoidStruts myLayoutHook,
