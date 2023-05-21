@@ -1,27 +1,24 @@
-# Config quick-open
 # Alias aliases
 alias al=alias
 alias alf="alias | fzf"
 alias al-=unalias
 
-alias bashrc="nvim ~/.bashrc"
-alias aliasrc="nvim ~/.aliasrc"
-alias vimrc="nvim ~/.vimrc"
+# Edit configuration files
+alias eba="nvim ~/.bashrc"
+alias eal="nvim ~/.bash_aliasrc"
+alias ev="nvim ~/.vimrc"
 
 # Navigation
-
 alias ..="cd .."
 alias .2="cd ../.."
 alias .3="cd ../../.."
 
 # Colorize output
-
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias ip="ip --color"
 
 # Listing
-
 alias l="ls -1p"
 alias ll="ls -lhp"
 alias lt="ls -lhtp"
@@ -30,7 +27,6 @@ alias lta="ls -lhatp"
 alias ldir="ls -dp" # list directories
 
 # Safety
-
 alias rm="rm -I --preserve-root"
 alias mv="mv -iv"
 alias cp="cp -iv"
