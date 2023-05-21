@@ -67,6 +67,11 @@ myXmobarPP =
 -- Shift to workspace and view workspace
 shiftAndView id = doF (W.view id) <> doF (W.shift id)
 
+-- startupHook
+myStartupHook =
+  do
+    spawn "albert"
+
 -- manageHook
 myManageHook =
   composeAll
@@ -120,6 +125,7 @@ myConfig =
       normalBorderColor = "#0000",
       borderWidth = 4,
       -- Hooks
+      startupHook = myStartupHook,
       manageHook = myManageHook <+> manageHook def,
       layoutHook = avoidStruts myLayoutHook,
       handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
