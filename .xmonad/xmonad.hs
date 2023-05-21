@@ -139,6 +139,7 @@ myKeysP =
     ("M-S-<Space>", withFocused $ windows . W.sink),
     -- Launchers
     ("M-S-p", spawn "alacritty --class Launcher,Launcher"),
+    ("<F8>", spawn "keepassxc"),
     ("M-p", spawn "albert toggle"),
     -- Map insert key to paste from clipboard
     ("<Insert>", pasteSelection),
