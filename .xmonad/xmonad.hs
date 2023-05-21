@@ -77,8 +77,9 @@ myManageHook =
       className =? "Launcher" --> doRectFloat (W.RationalRect 0.05 0.4 0.9 0.5),
       className =? "Calculator" --> doCenterFloat,
       className =? "feh" --> doCenterFloat,
-      className =? "albert" --> hasBorder False,
-      className =? "Xournalpp" --> doRectFloat (W.RationalRect 0.5 0.5 0.5 0.5)
+      className =? "Matplotlib" --> doCenterFloat,
+      className =? "Xournalpp" --> doRectFloat (W.RationalRect 0.5 0.5 0.5 0.5),
+      className =? "KeePassXC" --> doRectFloat (W.RationalRect 0.1 0.1 0.8 0.8)
     ]
 
 -- layoutHook
