@@ -37,19 +37,16 @@ alias chmod="chmod --preserve-root"
 alias chgrp="chgrp --preserve-root"
 
 # Clipboard
-
 alias clip="xclip -sel clip"
 alias srclip="clip -o | speedread -w 500"
 
 # Other
-
 alias cfg="/usr/bin/git --git-dir=/home/h/.git/ --work-tree=/home/h"
 alias df="df -kTh"
 alias fzfpac="pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
 alias path='echo -e ${PATH//:/\\n}' # Pretty print path variables
 
 # Programs
-
 alias o="xdg-open"
 alias v="nvim"
 alias zk="nvim +WikiIndex"
@@ -64,7 +61,6 @@ alias xev='xev | grep -A2 ButtonPress' # Ignore mouse movements
 alias conda='micromamba'
 
 # Languages
-
 alias js="node"
 alias ts="ts-node"
 alias r5="plt-r5rs --no-prim"
@@ -87,6 +83,5 @@ reboot_windows ()
   fi
 }
 alias reboot-windows='reboot_windows'
-
 alias azerty="setxkbmap be"
 alias qwerty="setxkbmap us"
