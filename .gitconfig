@@ -17,7 +17,10 @@
   s = status -s
   co = checkout
   cob = checkout -b
-  alias = "!git config -l | grep alias | cut -c 7-"
+  # Note these follow the naming convention of my `.bash_aliases`
+  al = "!git config -l | grep alias | cut -c 7-"
+  alf = "!git config -l | grep alias | cut -c 7- | fzf"
+  al- = "!git config --local --unset $(git config -l | grep alias | cut --delimiter="=" --fields=1 | fzf)"
   rs = "restore --staged"
 
 [color]

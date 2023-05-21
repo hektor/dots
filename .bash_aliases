@@ -1,4 +1,8 @@
 # Config quick-open
+# Alias aliases
+alias al=alias
+alias alf="alias | fzf"
+alias al-=unalias
 
 alias bashrc="nvim ~/.bashrc"
 alias aliasrc="nvim ~/.aliasrc"
