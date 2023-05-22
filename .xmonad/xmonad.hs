@@ -16,6 +16,7 @@ import XMonad.Layout.ToggleLayouts
   ( ToggleLayout (..),
     toggleLayouts,
   )
+import XMonad.Layout.IndependentScreens
 import XMonad.Layout.WindowNavigation
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
@@ -111,7 +112,10 @@ myLayoutHook =
     ratio = 1 / 2
     delta = 4 / 100
 
-myWorkspaces = [ "sh", "www", "dev", "pdf", "etc" ]
+myWorkspaces = [ "sh", "www", "dev", "info", "etc" ]
+myWorkspaceKeys = [ "a", "s", "d", "f", "g" ]
+mySharedWorkspaces = [ "shared" ]
+mySharedWorkspaceKeys = [ "1" ]
 
 myConfig =
   def
@@ -119,7 +123,7 @@ myConfig =
       -- Use Win key instead of Alt
       modMask = mod4Mask,
       -- , workspaces = ["α", "β", "γ", "δ", "ε", "ζ", "η"]
-      workspaces = myWorkspaces,
+      workspaces = withScreen 0 myWorkspaces ++ withScreen 1 mySharedWorkspaces,
       -- Styling
       focusedBorderColor = "#000",
       normalBorderColor = "#0000",
@@ -130,8 +134,8 @@ myConfig =
       layoutHook = avoidStruts myLayoutHook,
       handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
     }
-    `additionalKeysP` myKeysP
     `removeKeysP` myRemoveKeysP
+    `additionalKeysP` myKeysP
 
 -- Keybindings to be added/overridden
 myKeysP =
@@ -172,19 +176,12 @@ myKeysP =
     ("M-<Right>", spawn "playerctl next"),
     ("M-<Left>", spawn "playerctl previous"),
     ("M-<Up>", spawn "playerctl play"),
-    ("M-<Down>", spawn "playerctl pause"),
-    -- Use a,s,d,f,g to switch to workspaces
-    ("M-a", windows $ W.greedyView "sh"),
-    ("M-s", windows $ W.greedyView "www"),
-    ("M-d", windows $ W.greedyView "dev"),
-    ("M-f", windows $ W.greedyView "pdf"),
-    ("M-g", windows $ W.greedyView "etc"),
-    -- Use shift + a,s,d,f,g to move window to workspace
-    ("M-S-a", windows $ W.shift "sh"),
-    ("M-S-s", windows $ W.shift "www"),
-    ("M-S-d", windows $ W.shift "dev"),
-    ("M-S-f", windows $ W.shift "pdf"),
-    ("M-S-g", windows $ W.shift "etc")
+    ("M-<Down>", spawn "playerctl pause")
+  ] ++ [
+    (m ++ k, windows $ f w) |
+      (m, f) <- zip ["M-", "M-S-"]
+                    [W.greedyView, W.shift],
+                    (k, w) <- zip myWorkspaceKeys (withScreen 0 myWorkspaces) ++ zip mySharedWorkspaceKeys (withScreen 1 mySharedWorkspaces)
   ]
 
 -- Keybindings to be removed
