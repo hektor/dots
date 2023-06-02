@@ -33,9 +33,11 @@ import XMonad.Util.Ungrab
 
 -- Statusbar {{{
 
--- Statusbar
-myXmobarPP :: PP
-myXmobarPP =
+pp' :: ScreenId -> PP -> PP
+pp' s pp = (marshallPP s pp) { ppSort = ppSort pp }
+
+pp :: PP
+pp =
   def
     { ppSep = tertiaryColor "  ",
       ppCurrent = brackitify,
@@ -214,5 +216,13 @@ myRemoveKeysP =
     "M-S-5"
   ]
 
-main :: IO ()
-main = do xmonad $ docks $ ewmh $ withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey myConfig
+-- main :: IO ()
+main = do xmonad
+  $ ewmh
+  $ withEasySB
+    (sb1 <> sb2)
+    defToggleStrutsKey
+    myConfig
+  where
+    sb1 = statusBarProp "xmobar" $ pure (pp' (S 0) pp)
+    sb2 = statusBarProp "xmobar" $ pure (pp' (S 1) pp)
