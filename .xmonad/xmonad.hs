@@ -44,18 +44,10 @@ pp =
       ppHidden = secondaryColor,
       ppHiddenNoWindows = tertiaryColor,
       ppUrgent = red . wrap (yellow "!") (yellow "!"),
-      ppLayout = \l -> case l of
-        "Tall" -> "[]="
-        "Magnifier Tall" -> "[]+"
-        "Magnifier (off) Tall" -> "[]="
-        "Magnifier Mirror Tall" -> "+[]"
-        "Magnifier (off) Mirror Tall" -> "=[]"
-        "Full" -> "[ ]"
-        "ThreeCol" -> "|||"
-        _ -> l,
+      ppLayout = id,
       ppTitle = shorten 80,
       ppTitleSanitize = xmobarStrip,
-      ppOrder = \[ws, l, _, wins] -> [ws, l, wins],
+      ppOrder = \[workspaces, layout, windows, _] -> [workspaces, layout, windows],
       ppExtras = [logTitles formatFocused formatUnfocused]
     }
   where
@@ -104,24 +96,16 @@ myManageHook =
 
 -- layoutHook
 myLayoutHook =
-    -- smartBorders $
-    -- Tiled layouts
-          tiled
-      -- --   Note: magnifier is off by default
-      -- --   (controllable usingarrow keys)
-      -- ||| magnifiercz magnificationFactorH tiled
-      -- ||| magnifiercz magnificationFactorV (Mirror tiled)
-      -- Single window / monocle layout
-    -- Column layouts
-      -- ||| threeColMid
-      -- Monocle layouts
-      ||| Full
+    showWName' myShowWNameConfig $
+    t   |||   -- Tiled layouts
+    c3  |||  -- Column layouts
+    c3m ||| --
+    f       -- Monocle layouts
   where
-    magnificationFactorV = 1.384
-    magnificationFactorH = 1.621
-    tiled = Tall nmaster delta ratio
-    threeCol = ThreeCol nmaster delta ratio
-    threeColMid = ThreeColMid nmaster delta ratio
+    t   = renamed [Replace "[]+"] $ centeredIfSingle 0.8 0.9 $ Tall nmaster delta ratio
+    c3  = renamed [Replace "|||"] $ ThreeCol nmaster delta ratio
+    c3m = renamed [Replace "[|]"] $ ThreeColMid nmaster delta ratio
+    f   = renamed [Replace "[+]"] Full
     nmaster = 1
     ratio = 1 / 2
     delta = 4 / 100
@@ -200,21 +184,11 @@ myKeysP =
                     (k, w) <- zip myWorkspaceKeys (withScreen 0 myWorkspaces) ++ zip mySharedWorkspaceKeys (withScreen 1 mySharedWorkspaces)
   ]
 
+zipKeyPrefixes :: [String] -> [String] -> [String]
+zipKeyPrefixes prefixes keys = [prefix ++ key | prefix <- prefixes, key <- keys]
+
 -- Keybindings to be removed
-myRemoveKeysP =
-  [ -- Remove 1,2,3,4,5 bindings for workspaces
-    "M-1",
-    "M-2",
-    "M-3",
-    "M-4",
-    "M-5",
-    -- Remove shift + 1,2,3,4,5 bindings for workspaces
-    "M-S-1",
-    "M-S-2",
-    "M-S-3",
-    "M-S-4",
-    "M-S-5"
-  ]
+myRemoveKeysP = "M-S-q" : zipKeyPrefixes ["M-", "M-S-"] (map show [ 1..5 ])
 
 -- main :: IO ()
 main = do xmonad
