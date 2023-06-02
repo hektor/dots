@@ -1,3 +1,4 @@
+-- {{{
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
@@ -28,6 +29,9 @@ import XMonad.Util.Run
     spawnPipe,
   )
 import XMonad.Util.Ungrab
+-- }}}
+
+-- Statusbar {{{
 
 -- Statusbar
 myXmobarPP :: PP
@@ -65,6 +69,10 @@ myXmobarPP =
     yellow = xmobarColor "#ff0" ""
     red = xmobarColor "#ff5555" ""
 
+-- }}}
+
+-- Workspaces & screens {{{
+
 -- Shift to workspace and view workspace
 shiftAndView id = doF (W.view id) <> doF (W.shift id)
 
@@ -72,6 +80,10 @@ shiftAndView id = doF (W.view id) <> doF (W.shift id)
 myStartupHook =
   do
     spawn "albert"
+
+-- }}}
+
+-- Hooks {{{
 
 -- manageHook
 myManageHook =
@@ -116,6 +128,8 @@ myWorkspaces = [ "sh", "www", "dev", "info", "etc" ]
 myWorkspaceKeys = [ "a", "s", "d", "f", "g" ]
 mySharedWorkspaces = [ "shared" ]
 mySharedWorkspaceKeys = [ "1" ]
+
+-- }}}
 
 myConfig =
   def
