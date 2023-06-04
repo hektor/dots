@@ -1,34 +1,24 @@
 -- {{{
+
 import XMonad
-import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.DynamicProperty
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
-import XMonad.Layout.Magnifier
-import qualified XMonad.Layout.Magnifier as Mag (MagnifyMsg (..))
-import XMonad.Layout.NoBorders (hasBorder, smartBorders)
-import XMonad.Layout.PerScreen
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.Spacing
-import XMonad.Layout.ThreeColumns
-import XMonad.Layout.ToggleLayouts
-  ( ToggleLayout (..),
-    toggleLayouts,
-  )
+import XMonad.Layout.CenteredIfSingle
 import XMonad.Layout.IndependentScreens
-import XMonad.Layout.WindowNavigation
+import XMonad.Layout.PerScreen
+import XMonad.Layout.Renamed
+import XMonad.Layout.ShowWName
+import XMonad.Layout.ThreeColumns
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig
 import qualified XMonad.Util.Hacks as Hacks
 import XMonad.Util.Loggers
 import XMonad.Util.Paste
-import XMonad.Util.Run
-  ( spawnExternalProcess,
-    spawnPipe,
-  )
-import XMonad.Util.Ungrab
+
 -- }}}
 
 -- Statusbar {{{
@@ -146,8 +136,7 @@ myConfig =
     { terminal = "alacritty",
       -- Use Win key instead of Alt
       modMask = mod4Mask,
-      -- , workspaces = ["α", "β", "γ", "δ", "ε", "ζ", "η"]
-      workspaces = withScreen 0 myWorkspaces ++ withScreen 1 mySharedWorkspaces,
+      workspaces = withScreen 1 myWorkspaces ++ withScreen 2 mySharedWorkspaces,
       -- Styling
       focusedBorderColor = "#000",
       normalBorderColor = "#0000",
@@ -263,6 +252,7 @@ resetTemp = spawn "echo 3000 > /tmp/temperature && redshift -x"
 
 -- Main {{{
 
+main :: IO ()
 main = do xmonad
   $ ewmh
   $ withEasySB
@@ -270,7 +260,6 @@ main = do xmonad
     defToggleStrutsKey
     myConfig
   where
-    sb1 = statusBarProp "xmobar" $ pure (pp' (S 0) pp)
-    sb2 = statusBarProp "xmobar" $ pure (pp' (S 1) pp)
+    [sb1, sb2] = [statusBarProp "xmobar" $ pure (pp' (S i) pp) | i <- [0..1]]
 
 -- }}}
