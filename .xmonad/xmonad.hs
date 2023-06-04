@@ -99,6 +99,16 @@ myDynamicManageHook =
      title =? "Zettelkasten — Firefox Developer Edition" --> doShift "1_sh"
    ]
 
+-- TODO: Replace showWName by dunst notification
+myShowWNameConfig :: SWNConfig
+myShowWNameConfig =
+  def
+    { swn_font = "xft:Iosevka Term SS08:size=16",
+      swn_fade = 0.3,
+      swn_color = "#111111",
+      swn_bgcolor = "#cccccc"
+    }
+
 -- layoutHook
 myLayoutHook =
     showWName' myShowWNameConfig $
