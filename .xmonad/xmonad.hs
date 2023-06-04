@@ -105,12 +105,19 @@ myManageHook =
 -- layoutHook
 myLayoutHook =
     showWName' myShowWNameConfig $
-    t   |||   -- Tiled layouts
-    c3  |||  -- Column layouts
-    c3m ||| --
-    f       -- Monocle layouts
+    ifWider smallWidth (
+      t   |||   -- Tiled layouts
+      c3  |||  -- Column layouts
+      c3m ||| --
+      f       -- Monocle layouts
+    ) (
+      t   |||   -- Tiled layouts
+      f       -- Monocle layouts
+    )
   where
-    t   = renamed [Replace "[]+"] $ centeredIfSingle 0.8 0.9 $ Tall nmaster delta ratio
+    smallWidth = 1920
+    t   = renamed [Replace "[]+"] $ ifWider smallWidth (centeredIfSingle 0.8 0.9 $ Tall nmaster delta ratio)
+                                                 (Tall nmaster delta ratio)
     c3  = renamed [Replace "|||"] $ ThreeCol nmaster delta ratio
     c3m = renamed [Replace "[|]"] $ ThreeColMid nmaster delta ratio
     f   = renamed [Replace "[+]"] Full
