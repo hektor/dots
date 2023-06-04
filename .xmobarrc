@@ -25,7 +25,7 @@ Config { overrideRedirect = False
                         , "--on", ""
                         ]
                     , Run Memory ["--template", "Mem: <usedratio>%"] 10
-                    , Run Date "%a %b %e %H:%M" "date" 10
+                    , Run Date "W%V %a %b %d %H:%M" "date" 10
                     , Run Com "sb-pomo" [] "pomo" 10
                     , Run Com "sb-anki" [] "anki" 10
                     , Run Com "sb-tasks" [] "tasks" 300
