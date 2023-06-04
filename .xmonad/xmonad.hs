@@ -102,6 +102,13 @@ myManageHook =
       className =? "flameshot" --> doRectFloat (W.RationalRect 0.1 0.1 0.8 0.8)
     ]
 
+myDynamicManageHook :: ManageHook
+myDynamicManageHook =
+ composeAll
+   [
+     title =? "Zettelkasten — Firefox Developer Edition" --> doShift "1_sh"
+   ]
+
 -- layoutHook
 myLayoutHook =
     showWName' myShowWNameConfig $
@@ -149,7 +156,7 @@ myConfig =
       startupHook = myStartupHook,
       manageHook = myManageHook <+> manageHook def,
       layoutHook = avoidStruts myLayoutHook,
-      handleEventHook = handleEventHook def <> Hacks.windowedFullscreenFixEventHook
+      handleEventHook = dynamicPropertyChange "WM_NAME" myDynamicManageHook <> handleEventHook def <> Hacks.windowedFullscreenFixEventHook
     }
     `removeKeysP` myRemoveKeysP
     `additionalKeysP` myKeysP
