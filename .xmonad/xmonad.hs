@@ -158,65 +158,106 @@ myConfig =
       layoutHook = avoidStruts myLayoutHook,
       handleEventHook = dynamicPropertyChange "WM_NAME" myDynamicManageHook <> handleEventHook def <> Hacks.windowedFullscreenFixEventHook
     }
-    `removeKeysP` myRemoveKeysP
-    `additionalKeysP` myKeysP
+    `removeKeysP` myRemoveKeys
+    `additionalKeysP` myKeys
+    `additionalMouseBindings` myMouseBindings
 
 -- }}}
 
 -- Keybindings {{{
 
 -- Keybindings to be added/overridden
-myKeysP =
-  [ -- Fit floating windows back to layout
-    ("M-S-<Space>", withFocused $ windows . W.sink),
-    -- Launchers
-    ("M-S-p", spawn "alacritty --class Launcher,Launcher"),
-    ("<F8>", spawn "keepassxc"),
-    ("M-p", spawn "albert toggle"),
-    -- Map insert key to paste from clipboard
+myKeys :: [(String, X ())]
+myKeys =
+  [ ("M-<Space> s", unfloatFocusedW),
+    ("M-<Space> <Space>", nextLayout),          -- Cycle through layouts
+    ("M-<Space> S-<Space>", defaultLayout),     --
+    ("M-<Space> M-<Space>", nextLayout),        -- ..fat finger
+    ("M-<Space> M-S-<Space>", defaultLayout),   --
+    ("M-S-p", spawnTermLauncher),
+    ("<F8>",  spawnKeepassXC),
+    ("M-z",   spawnZettelkasten),
+    ("M-p",   spawnLauncher),
     ("<Insert>", pasteSelection),
-    -- Map print screen to take a screenshot with flameshot
-    ("<Print>", spawn "flameshot gui"),
-    -- Map audio keys to control volume
-    ("<XF86AudioRaiseVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"),
-    ("<XF86AudioLowerVolume>", spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"),
-    ("<XF86AudioMute>", spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"),
-    -- Map brightness keys to control brightness with brightnessctl
-    ("<XF86MonBrightnessUp>", spawn "brightnessctl set 20+"),
-    ("<XF86MonBrightnessDown>", spawn "brightnessctl set 20-"),
-    -- Map brightness keys + shift to adjust redshift temperature
-    ("S-<XF86MonBrightnessUp>", spawn "echo $(($(cat /tmp/temperature) + 50)) > /tmp/temperature && redshift -O $(cat /tmp/temperature) -P && notify < /tmp/temperature -h string:x-canonical-private-synchronous:anything"),
-    ("S-<XF86MonBrightnessDown>", spawn "echo $(($(cat /tmp/temperature) - 50)) > /tmp/temperature && redshift -O $(cat /tmp/temperature) -P && notify < /tmp/temperature -h string:x-canonical-private-synchronous:anything"),
-    -- Reset redshift temperature
-    ("M-S-<XF86MonBrightnessUp>", spawn "echo 3000 > /tmp/temperature && redshift -x"),
-    ("M-S-<XF86MonBrightnessDown>", spawn "echo 3000 > /tmp/temperature && redshift -x"),
-    -- Use power down key to suspend
-    ("<XF86PowerOff>", spawn "systemctl suspend"),
-    -- FIXME: Spawn firefox in fullscreen, but not in kiosk mode
-    ("M-S-b", spawn "firefox --fullscreen"),
-    -- Magnify window using arrow keys
-    ("M-=", sendMessage MagnifyMore >> sendMessage Mag.ToggleOn),
-    ("M--", sendMessage MagnifyLess >> sendMessage Mag.ToggleOn),
-    -- Reset magnification
-    ("M-S-=", sendMessage Mag.ToggleOff),
-    ("<XF86Calculator>", spawn "alacritty --class 'Calculator' -e ipython -i /home/h/.bin/calc.py"),
-    -- playerctl ncspot using arrow keys
-    ("M-<Right>", spawn "playerctl next"),
-    ("M-<Left>", spawn "playerctl previous"),
-    ("M-<Up>", spawn "playerctl play"),
-    ("M-<Down>", spawn "playerctl pause")
-  ] ++ [
-    (m ++ k, windows $ f w) |
-      (m, f) <- zip ["M-", "M-S-"]
-                    [W.greedyView, W.shift],
-                    (k, w) <- zip myWorkspaceKeys (withScreen 0 myWorkspaces) ++ zip mySharedWorkspaceKeys (withScreen 1 mySharedWorkspaces)
+    ("<Print>", printScreen),
+    ("<XF86AudioRaiseVolume>", raiseVol),       -- Audio volume & playback
+    ("<XF86AudioLowerVolume>", lowerVol),       --
+    ("<XF86AudioMute>", mute),                  --
+    ("M-<Right>", nextTrack),                   --
+    ("M-<Left>", prevTrack),                    --
+    ("M-<Up>", play),                           --
+    ("M-<Down>", pause),                        --
+    ("<XF86MonBrightnessUp>", brighten),        -- Brightness & hue controls
+    ("<XF86MonBrightnessDown>", dim),           --
+    ("S-<XF86MonBrightnessUp>", warm),          --
+    ("S-<XF86MonBrightnessDown>", cool),        --
+    ("M-S-<XF86MonBrightnessUp>", resetTemp),   --
+    ("M-S-<XF86MonBrightnessDown>", resetTemp), --
+    ("M-S-b", fullscreenBrowser),
+    ("<XF86Calculator>", spawnCalculator),
+    ("<XF86PowerOff>", spawn "systemctl suspend") --TODO: Only enable this on laptop
+  ] ++
+  [ (m ++ k, windows $ f w) |
+    (m, f) <- zip ["M-", "M-S-"]
+                  [W.greedyView, W.shift],
+                  (k, w) <- zip myWorkspaceKeys
+                                (withScreen 0 myWorkspaces)
+                         ++ zip mySharedWorkspaceKeys
+                                (withScreen 1 mySharedWorkspaces)
   ]
 
 zipKeyPrefixes :: [String] -> [String] -> [String]
 zipKeyPrefixes prefixes keys = [prefix ++ key | prefix <- prefixes, key <- keys]
 
 -- Keybindings to be removed
-myRemoveKeysP = "M-S-q" : zipKeyPrefixes ["M-", "M-S-"] (map show [ 1..5 ])
+myRemoveKeys :: [String]
+myRemoveKeys = "M-S-q" : zipKeyPrefixes ["M-", "M-S-"] (map show [ 1..5 ])
+
+myMouseBindings = []
+
+unfloatFocusedW :: X ()
+unfloatFocusedW = withFocused $ windows . W.sink
+
+myStartupHook :: X ()
+nextLayout = sendMessage NextLayout
+
+defaultLayout :: X ()
+defaultLayout = setLayout $ Layout myLayoutHook
+
+spawnZettelkasten :: X ()
+spawnZettelkasten = spawn "alacritty --class Zettelkasten,Zettelkasten -e nvim $(cat ~/.zk/current-zettel.txt)"
+
+spawnKeepassXC :: X ()
+spawnKeepassXC = spawn "keepassxc"
+
+fullscreenBrowser :: X ()
+fullscreenBrowser = spawn "firefox --fullscreen"
+
+spawnLauncher, spawnTermLauncher :: X ()
+spawnLauncher = spawn "albert toggle"
+spawnTermLauncher = spawn "alacritty --class Launcher,Launcher"
+spawnCalculator = spawn "alacritty --class 'Calculator' -e ipython -i /home/h/.bin/calc.py"
+
+printScreen :: X ()
+printScreen = spawn "flameshot gui"
+
+raiseVol, lowerVol, mute :: X ()
+raiseVol = spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+lowerVol = spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+mute = spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
+nextTrack, prevTrack, play, pause :: X ()
+nextTrack = spawn "playerctl next"
+prevTrack = spawn "playerctl previous"
+play = spawn "playerctl play"
+pause = spawn "playerctl pause"
+
+brighten, dim, warm, cool, resetTemp :: X ()
+brighten = spawn "brightnessctl set 20+"
+dim = spawn "brightnessctl set 20-"
+warm = spawn "echo $(($(cat /tmp/temperature) + 50)) > /tmp/temperature && redshift -O $(cat /tmp/temperature) -P && notify < /tmp/temperature -h string:x-canonical-private-synchronous:anything"
+cool = spawn "echo $(($(cat /tmp/temperature) - 50)) > /tmp/temperature && redshift -O $(cat /tmp/temperature) -P && notify < /tmp/temperature -h string:x-canonical-private-synchronous:anything"
+resetTemp = spawn "echo 3000 > /tmp/temperature && redshift -x"
 
 -- }}}
 
