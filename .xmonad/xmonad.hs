@@ -70,14 +70,14 @@ pp =
 -- Shift to workspace and view workspace
 shiftAndView id = doF (W.view id) <> doF (W.shift id)
 
+-- }}}
+
+-- Hooks {{{
+
 -- startupHook
 myStartupHook =
   do
     spawn "albert"
-
--- }}}
-
--- Hooks {{{
 
 -- manageHook
 myManageHook :: ManageHook
@@ -125,12 +125,14 @@ myLayoutHook =
     ratio = 1 / 2
     delta = 4 / 100
 
+-- }}}
+
+-- Main config {{{
+
 myWorkspaces = [ "sh", "www", "dev", "info", "etc" ]
 myWorkspaceKeys = [ "a", "s", "d", "f", "g" ]
 mySharedWorkspaces = [ "shared" ]
 mySharedWorkspaceKeys = [ "1" ]
-
--- }}}
 
 myConfig =
   def
@@ -151,6 +153,10 @@ myConfig =
     }
     `removeKeysP` myRemoveKeysP
     `additionalKeysP` myKeysP
+
+-- }}}
+
+-- Keybindings {{{
 
 -- Keybindings to be added/overridden
 myKeysP =
@@ -205,7 +211,10 @@ zipKeyPrefixes prefixes keys = [prefix ++ key | prefix <- prefixes, key <- keys]
 -- Keybindings to be removed
 myRemoveKeysP = "M-S-q" : zipKeyPrefixes ["M-", "M-S-"] (map show [ 1..5 ])
 
--- main :: IO ()
+-- }}}
+
+-- Main {{{
+
 main = do xmonad
   $ ewmh
   $ withEasySB
@@ -215,3 +224,5 @@ main = do xmonad
   where
     sb1 = statusBarProp "xmobar" $ pure (pp' (S 0) pp)
     sb2 = statusBarProp "xmobar" $ pure (pp' (S 1) pp)
+
+-- }}}
