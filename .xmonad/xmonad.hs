@@ -80,18 +80,26 @@ myStartupHook =
 -- Hooks {{{
 
 -- manageHook
+myManageHook :: ManageHook
 myManageHook =
   composeAll
-    [ className =? "Zathura" --> doShift "pdf",
-      className =? "firefox" --> shiftAndView "www",
-      className =? "Anki" --> shiftAndView "etc",
-      className =? "Obsidian" --> shiftAndView "etc",
+    [ isDialog --> doCenterFloat,
+      className =? "Zathura" --> doShift "1_info",
+      className =? "firefox" --> shiftAndView "1_www",
+      className =? "firefoxdeveloperedition" --> shiftAndView "1_www",
+      className =? "Anki" --> shiftAndView "1_etc",
+      className =? "Obsidian" --> shiftAndView "1_etc",
       className =? "Launcher" --> doRectFloat (W.RationalRect 0.05 0.4 0.9 0.5),
+      className =? "Zettelkasten" --> doRectFloat (W.RationalRect 0.05 0.4 0.9 0.5),
       className =? "Calculator" --> doCenterFloat,
       className =? "feh" --> doCenterFloat,
+      -- Center matplotlib and prevent focus stealing
+      -- className =? "matplotlib" --> doRectFloat (W.RationalRect 0.5 0.5 0.5 0.5),
+      className =? "matplotlib" --> doCenterFloat,
       className =? "Matplotlib" --> doCenterFloat,
       className =? "Xournalpp" --> doRectFloat (W.RationalRect 0.5 0.5 0.5 0.5),
-      className =? "KeePassXC" --> doRectFloat (W.RationalRect 0.1 0.1 0.8 0.8)
+      className =? "KeePassXC" --> doRectFloat (W.RationalRect 0.1 0.1 0.8 0.8),
+      className =? "flameshot" --> doRectFloat (W.RationalRect 0.1 0.1 0.8 0.8)
     ]
 
 -- layoutHook
