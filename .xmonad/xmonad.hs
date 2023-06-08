@@ -200,9 +200,9 @@ myKeys =
     (m, f) <- zip ["M-", "M-S-"]
                   [W.greedyView, W.shift],
                   (k, w) <- zip myWorkspaceKeys
-                                (withScreen 0 myWorkspaces)
+                                (withScreen 1 myWorkspaces)
                          ++ zip mySharedWorkspaceKeys
-                                (withScreen 1 mySharedWorkspaces)
+                                (withScreen 2 mySharedWorkspaces)
   ]
 
 zipKeyPrefixes :: [String] -> [String] -> [String]
