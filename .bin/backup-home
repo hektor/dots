@@ -8,12 +8,13 @@
 # Select directory in repo using -r rclone:<repo>:<directory>
 #
 # Runs `backup` command on $HOME and ignore what is listed in `.resticexclude`
-
-# restic \
-#   -o rclone.args="serve restic --stdio --b2-hard-delete --ignore-size --ignore-checksum --update" \
-#   -r rclone:onedrive-vub:restic \
-#   -v backup "$HOME" \
-#   --exclude-file="$HOME/.resticexclude"
+#
+# ```/etc/restic-env
+# export B2_ACCOUNT_ID=
+# export B2_ACCOUNT_KEY=
+# ```
+#
+# `restic -r b2:desktop-arch init`
 
 source /etc/restic-env
 restic -r b2:"$HOSTNAME" backup \
