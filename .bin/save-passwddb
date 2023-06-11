@@ -8,4 +8,9 @@
 # `systemctl --user enable save-passwddb.service`
 # `systemctl --user enable save-passwddb.timer`
 
-rclone copy "$HOME/doc/passwd.kdbx" google-drive:
+if [ -f "$HOME/doc/passswd.kdbx" ]; then
+  rclone copy "$HOME/doc/passwd.kdbx" google-drive:
+else
+  echo "Password database not found, use 'rclone copy google-drive:passwd.kdbx $HOME/doc/passwd.kdbx' to restore"
+  exit 1
+fi
