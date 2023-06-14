@@ -51,7 +51,7 @@ alias path='echo -e ${PATH//:/\\n}' # Pretty print path variables
 # Programs
 alias o="xdg-open"
 alias v="nvim"
-alias zk="nvim +WikiIndex"
+alias zk='cd ~/.zk && nvim "$(cat ~/.zk/current-zettel.txt)"'
 alias g='git'
 alias t=' task'
 alias tsh='tasksh'
