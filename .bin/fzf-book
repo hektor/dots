@@ -2,10 +2,23 @@
 
 # Generate menu of book filenames and save paths
 # Preview window contains metadata
-# selected="$(find /home/h/doc/books/ -regex '.*\.\(pdf\|epub\|djvu\)' -type f | sort | fzf --delimiter=/ --with-nth=-1 --preview 'pdfinfo {}' --preview-window=right:70%:wrap)"
-selected="$(find /home/h/doc/books/ -regex '.*\.\(pdf\|epub\|djvu\)' -type f | sort | fzf --delimiter=/ --with-nth=-1)"
 
-echo "Opening \"$selected\""
+function select_file {
+  echo "$(find /home/h/doc/books/ -regex '.*\.\(pdf\|epub\|djvu\)' -type f | sort | fzf --delimiter=/ --with-nth=-1)"
+}
 
-# Open when a file is selected and redirect output to /dev/null
-[[ -n "$selected" ]] && zathura "$selected" --fork &> /dev/null
+function open {
+  if [ -n "$1" ]; then
+    echo "Opening \"$1\""
+    zathura "$1" --fork
+  else
+    echo "No file selected"
+    exit 1
+  fi
+}
+
+case "$1" in
+  --open) open "$(select_file)" ;;
+  --help) printf "open \n" >&2 ;;
+  *) open "$(select_file)" ;;
+esac
