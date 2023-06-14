@@ -48,8 +48,6 @@ local user_opts = {
     seekrangeseparate = true,   -- wether the seekranges overlay on the bar-style seekbar
     seekrangealpha = 210,       -- transparency of seekranges
     seekbarkeyframes = true,    -- use keyframes when dragging the seekbar
-    title = "${media-title}",   -- string compatible with property-expansion
-                                -- to be shown as OSC title
     tooltipborder = 1,          -- border of tooltip in bottom/topbar
     tooltipfontsize = 17.5,
     tooltipseekbar = false,     -- following cursor bar over the playback seekbar
