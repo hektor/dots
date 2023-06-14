@@ -11,4 +11,5 @@
  *
  */
 
-user_pref('browser.download.dir', '/home/h/dl')
+// Set default download directory
+user_pref("browser.download.dir", "/home/h/dl");

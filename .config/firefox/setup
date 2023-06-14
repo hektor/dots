@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 for i in ~/.mozilla/firefox/*.*default*
-  do ln -s user.js "$i/user.js"
+  do ln -s "$XDG_CONFIG_HOME"/firefox/user.js "$i/user.js"
 done
