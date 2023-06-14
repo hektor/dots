@@ -2,6 +2,8 @@
 
 # Anki review percentage for statusbar
 
+num_to_review=200
+
 # Get current card count from Anki
 count=$(curl -s localhost:8765 -X POST -d '{"action": "getNumCardsReviewedToday", "version": 6}' | jq '.result')
 
