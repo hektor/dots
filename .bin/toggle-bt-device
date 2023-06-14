@@ -2,10 +2,10 @@
 
 status="$(bluetoothctl info "$1" | grep Connected | cut -f 2 -d ':' | cut -f 2 -d ' ')"
 
-if [ "$status" == "no" ]
-then
-  bluetoothctl connect "$1"
-elif [ "$status" == "yes" ]
+if [ "$status" == "yes" ]
 then
   bluetoothctl disconnect "$1"
+else
+  trust "$1"
+  bluetoothctl connect "$1"
 fi
