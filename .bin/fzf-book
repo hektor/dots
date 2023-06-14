@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Find and open pdf
-
 # Generate menu of book filenames and save paths
 # Preview window contains metadata
 # selected="$(find /home/h/doc/books/ -regex '.*\.\(pdf\|epub\|djvu\)' -type f | sort | fzf --delimiter=/ --with-nth=-1 --preview 'pdfinfo {}' --preview-window=right:70%:wrap)"

@@ -3,7 +3,7 @@
 # Script to create script
 
 if [ -z "$1" ]; then
-    echo "Script name required"
+    echo "Usage: script <scriptname>"
     exit
 fi
 

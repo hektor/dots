@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Pomodoro timer 
+# Pomodoro timer
 #
 # - Writes pomodoro timer to temporary file so dwmblocks
 #   statusbar can read it
