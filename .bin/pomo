@@ -39,21 +39,22 @@ break_duration = args.break_duration * 60
 repeats = args.repeats
 
 
-def make_countdown(color):
+def make_countdown(color="#000000"):
     def countdown(duration):
         while duration != 0:
             mins = duration // 60
             secs = duration % 60
             # os.system('echo -n "{:s} {:02d}:{:02d} \x01" > /tmp/pomo'.format(color, mins, secs))
-            os.system('echo -n "{:02d}:{:02d}" > /tmp/pomo'.format(mins, secs))
+            os.system(
+                'echo -n "<fc={:s}> {:02d}:{:02d} </fc>" > /tmp/pomo'.format(color, mins, secs))
             sleep(1)
             duration -= 1
     return countdown
 
 
-prep_countdown = make_countdown("\x01")
-work_countdown = make_countdown("\x03")
-break_countdown = make_countdown("\x02")
+prep_countdown = make_countdown("#0000aa")
+work_countdown = make_countdown("#aa0000")
+break_countdown = make_countdown("#00bb00")
 
 prep_countdown(prep_duration)
 
