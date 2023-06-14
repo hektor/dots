@@ -173,7 +173,6 @@ myKeys =
     ("M-<Space> S-<Space>", defaultLayout),     --
     ("M-<Space> M-<Space>", nextLayout),        -- ..fat finger
     ("M-<Space> M-S-<Space>", defaultLayout),   --
-    ("M-S-p", spawnTermLauncher),
     ("<F8>",  spawnKeepassXC),
     ("M-z",   spawnZettelkasten),
     ("M-p",   spawnLauncher),
@@ -232,9 +231,8 @@ spawnKeepassXC = spawn "keepassxc"
 fullscreenBrowser :: X ()
 fullscreenBrowser = spawn "firefox --fullscreen"
 
-spawnLauncher, spawnTermLauncher :: X ()
+spawnLauncher :: X ()
 spawnLauncher = spawn "albert toggle"
-spawnTermLauncher = spawn "alacritty --class Launcher,Launcher"
 spawnCalculator = spawn "alacritty --class 'Calculator' -e ipython -i /home/h/.bin/calc.py"
 
 printScreen :: X ()
