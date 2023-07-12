@@ -17,7 +17,8 @@
 # `restic -r b2:desktop-arch init`
 
 source /etc/restic-env
-restic -r b2:"$HOSTNAME" backup \
+restic -r "$RESTIC_REPOSITORY:$HOSTNAME" backup \
+  --tag "hektor" \
   --one-file-system \
   --files-from="$HOME/.resticinclude" \
   --exclude-file="$HOME/.resticexclude" \
