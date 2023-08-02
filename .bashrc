@@ -15,8 +15,6 @@ source /etc/os-release
 [ -f "$HOME/.bashrc.d/private" ] && source "$HOME/.bashrc.d/private"
 # }}}
 
-# }}}
-
 # Prompt {{{
 get_branch_name() {
   git symbolic-ref --quiet --short HEAD 2>/dev/null \
@@ -119,6 +117,10 @@ export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 
 # Conda {{{
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+# }}}
+
+# Mamba/micromamba {{{
+complete -o default -F _umamba_bash_completions mm
 # }}}
 
 # Zettelkasten {{{
