@@ -83,6 +83,7 @@ dkms.conf
 # Dotenv
 .env
 
+.bash_aliases/private
 desg/
 dev/
 dl/*

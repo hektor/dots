@@ -7,6 +7,8 @@ source /etc/os-release
 # Load aliases dynamically
 [ -f "$HOME/.bash_aliases/all" ] && source "$HOME/.bash_aliases/all"
 [ -f "$HOME/.bash_aliases/$HOSTNAME" ] && source "$HOME/.bash_aliases/$HOSTNAME"
+[ -f "$HOME/.bash_aliases/private" ] && source "$HOME/.bash_aliases/private"
+# }}}
 # }}}
 
 # Prompt {{{
