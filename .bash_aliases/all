@@ -68,6 +68,5 @@ alias pl="swipl"
 alias py="python"
 alias r="R"
 
-alias reboot-windows='reboot_windows'
 alias azerty="setxkbmap be"
 alias qwerty="setxkbmap us"

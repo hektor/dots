@@ -1,4 +1,4 @@
-reboot_windows ()
+reboot-to-windows ()
 {
   # Check if grub is installed by checking if the command exists, if it does
   # not, then assume that the system is using systemd-boot
