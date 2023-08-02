@@ -83,6 +83,12 @@ dkms.conf
 # Dotenv
 .env
 
+desg/
+dev/
+dl/*
+!dl/.gitkeep
+doc/
+!doc/clips/.gitkeep
 .zk/*
 !.zk/Makefile
 !.zk/pandoc.css
