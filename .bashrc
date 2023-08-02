@@ -51,10 +51,8 @@ export MANWIDTH=999
 # Editor {{{
 # Set vim as default editor
 export EDITOR=nvim
+export SUDO_EDITOR=nvim
 # }}}
-
-# Vim
-export EDITOR=vim
 
 # Nvm
 export PATH=~/.nvm/versions/node/v14.16.0/bin:$PATH
