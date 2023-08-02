@@ -56,7 +56,6 @@ alias tsh='tasksh'
 alias z='zathura --fork'
 alias f='fzf'
 alias fm='pcmanfm &>/dev/null &'
-alias lm='xbacklight -set'
 alias xev='xev | grep -A2 ButtonPress' # Ignore mouse movements
 alias conda='micromamba'
 
