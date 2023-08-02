@@ -9,6 +9,11 @@ source /etc/os-release
 [ -f "$HOME/.bash_aliases/$HOSTNAME" ] && source "$HOME/.bash_aliases/$HOSTNAME"
 [ -f "$HOME/.bash_aliases/private" ] && source "$HOME/.bash_aliases/private"
 # }}}
+
+# Host-specific {{{
+[ -f "$HOME/.bashrc.d/$HOSTNAME" ] && source "$HOME/.bashrc.d/$HOSTNAME"
+# }}}
+
 # }}}
 
 # Prompt {{{
