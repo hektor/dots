@@ -1,1 +1,3 @@
+source "$HOME/.bash_aliases/dualboot"
+
 alias lm='ddcutil setvcp 10'
