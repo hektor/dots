@@ -84,6 +84,7 @@ dkms.conf
 .env
 
 .bash_aliases/private
+.bashrc.d/private
 desg/
 dev/
 dl/*
