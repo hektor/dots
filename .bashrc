@@ -119,9 +119,5 @@ export JUPYTERLAB_DIR=$HOME/.local/share/jupyter/lab
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 # }}}
 
-# Mamba/micromamba {{{
-complete -o default -F _umamba_bash_completions mm
-# }}}
-
 # Zettelkasten {{{
 export ZK_PATH="$HOME/.zk"
