@@ -1,3 +1,7 @@
+# vim: set ft=bash :
+
 source "$HOME/.bash_aliases/dualboot"
 
 alias lm='ddcutil setvcp 10'
+
+alias cuda-available='python -c "import torch; print(\"CUDA enabled:\", torch.cuda.is_available());"'

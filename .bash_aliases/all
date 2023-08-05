@@ -1,3 +1,5 @@
+# vim: set ft=bash :
+
 # Alias aliases
 alias al=alias
 alias alf="alias | fzf"
@@ -57,7 +59,7 @@ alias z='zathura --fork'
 alias f='fzf'
 alias fm='pcmanfm &>/dev/null &'
 alias xev='xev | grep -A2 ButtonPress' # Ignore mouse movements
-alias conda='micromamba'
+alias mm='micromamba'
 
 # Languages
 alias js="node"
@@ -70,3 +72,4 @@ alias r="R"
 
 alias azerty="setxkbmap be"
 alias qwerty="setxkbmap us"
+alias cole="setxkbmap us -variant colemak"

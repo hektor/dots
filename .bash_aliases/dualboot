@@ -1,3 +1,5 @@
+# vim: set ft=bash :
+
 reboot-to-windows ()
 {
   # Check if grub is installed by checking if the command exists, if it does
