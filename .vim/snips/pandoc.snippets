@@ -25,17 +25,88 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 global !p
-def math():
-  return vim.command_output('GetContext') == 'math_inline' or vim.command_output('GetContext') == 'math_block'
+from datetime import datetime
+from math import factorial
+import subprocess
+import re
+import sys
+
+ZOTERO_BASE = "http://127.0.0.1:23119/better-bibtex/cayw"
+FENCES = {
+	"i": "idea",
+	"q": "question",
+	"n": "note",
+	"t": "thought",
+}
 
 def math_inline():
 	return vim.command_output('GetContext') == 'math_inline'
 
 def math_block():
 	return vim.command_output('GetContext') == 'math_block'
+
+def math():
+	return math_inline() or math_block()
+
+def code_block():
+	return vim.command_output('GetContext') == 'pandocDelimitedCodeBlock'
+
+def code_inline():
+	return vim.command_output('GetContext') == 'pandocNoFormatted'
+
+def code():
+	return code_inline() or code_block()
+
+def linkify(text, link):
+	return f"[{text}]({link})"
+
+def zot(action):
+		if action == "get_title":
+			cmd = f"curl -s '{ZOTERO_BASE}?format=json&selected=1' | jq '.[].title' -r"
+		elif action == "get_citekey":
+			cmd = f"curl -s '{ZOTERO_BASE}?format=pandoc&selected=1'"
+		elif action == "get_citekey_brackets":
+			cmd = f"curl -s '{ZOTERO_BASE}?format=pandoc&selected=1&brackets=1'"
+		elif action == "get_link":
+			link_path = re.sub("^@", "", zot("get_citekey"))
+			link_title = zot("get_title")
+			link = linkify(link_title, link_path)
+			return link
+		elif action == "get_file":
+			link_path = re.sub("^@", "", zot("get_citekey"))
+			link_title = zot("get_title")
+			link = linkify(link_title, f"file://{link_path}.pdf")
+			return link
+		else:
+			return "Zotero action not found"
+		return subprocess.check_output(cmd, shell=True).decode("utf-8").strip()
 endglobal
 
-extends html
+snippet ctx "Context" i
+`!p snip.rv = vim.command_output('GetContext')`
+endsnippet
+
+# General markdown
+
+snippet ^h "Markdown header" r
+# $1
+endsnippet
+
+snippet ^sec "Markdown section" r
+## $1
+endsnippet
+
+snippet ^ssec "Markdown subsection" r
+### $1
+endsnippet
+
+snippet ^sex "Markdown example section" r
+## Example: $1
+endsnippet
+
+snippet ^ssex "Markdown example subsection" r
+### Example: $1
+endsnippet
 
 # Zettelkasten templating
 
@@ -75,12 +146,48 @@ snippet in
 (In [$1]($2))$3
 endsnippet
 
-snippet c "Comment (html)"
+snippet liwhat "What?" A
+`!p snip.rv = "* [What?](" + snip.basename + "_what)"`$1
+endsnippet
+
+snippet liwhy "Why?" A
+`!p snip.rv = "* [Why?](" + snip.basename + "_why)"`$1
+endsnippet
+
+snippet < "Comment (html)"
 <!-- $1 -->$2
 endsnippet
 
-snippet c. "Comment (html) ..." i
+snippet <. "Comment (html) ..." i
 <!-- ... -->$1
+endsnippet
+
+snippet <t "Thought (html)" i
+<!--:::thought
+$1
+:::-->
+endsnippet
+
+snippet <q "Question (html)" i
+<!--:::question
+$1
+:::-->
+endsnippet
+
+snippet <i "Idea (html)" i
+<!--:::idea
+$1
+:::-->
+endsnippet
+
+snippet <n "Note (html)" i
+<!--:::note
+$1
+:::-->
+endsnippet
+
+snippet td "Todo"
+TODO${1:: $2}
 endsnippet
 
 snippet ref "References"
@@ -112,11 +219,6 @@ $7
 ${8/(\w+).*/**Theorem** \n\n.../}
 
 ___
-endsnippet
-
-snippet q
-Your age: ${1|<18,18~60,>60|}
-Your height: ${2|<120cm,120cm~180cm,>180cm|}
 endsnippet
 
 snippet prop "Property"
@@ -320,72 +422,6 @@ snippet Omega "Omega"
 \\Omega
 endsnippet
 
-# Zettelkasten to Anki
-
-snippet td "TARGET DECK: <Deck name>"
-TARGET DECK: $1::$2
-endsnippet
-
-snippet clo "Cloze"
-START
-Cloze
-${0:${VISUAL}}$1
-END
-$2
-endsnippet
-
-snippet clos "Cloze start"
-START
-Cloze
-$1
-endsnippet
-
-snippet cloe "Cloze end"
-END
-endsnippet
-
-snippet clod
-START
-Cloze
-**Definition$1**
-
-$2
-END
-endsnippet
-
-snippet clop
-START
-Cloze
-**Property$1**
-
-$2
-END
-endsnippet
-
-snippet clot
-START
-Cloze
-**Theorem$1**
-
-$2
-END
-endsnippet
-
-snippet clol
-START
-Cloze
-**Lemma$1**
-
-$2
-END
-endsnippet
-
-snippet "c(\d+)" "Cloze <number>" r
-{{c`!p snip.rv = int(match.group(1))`::${0:${VISUAL}}$1}}$2
-endsnippet
-
-# MathJax environments
-
 snippet asaw "Als en slechts als (woorden)" i
 als en slechts als 
 endsnippet
@@ -400,6 +436,12 @@ endsnippet
 
 snippet iffs "If and only if (shorthand)" i
 **iff**
+endsnippet
+
+snippet beg "Begin"
+\begin{$1}
+$2
+\end{$1}
 endsnippet
 
 snippet align "" i
@@ -450,7 +492,7 @@ endsnippet
 # Subscripts
 
 context "math()"
-snippet '([A-z])(\d+)' "Subscript" irw
+snippet '([A-z])(\w+)' "Subscripts" irw
 `!p snip.rv = match.group(1) + '_' + match.group(2) if len(match.group(2)) == 1 else match.group(1) + '_{' + match.group(2) + '}'`$1
 endsnippet
 
@@ -560,6 +602,11 @@ snippet Cov "Covariance" i
 \operatorname{Cov}
 endsnippet
 
+context "math()" i
+snippet ntup "Alpha"
+(x_1, \ldots, x_n)
+endsnippet
+
 snippet mxn "Matrix" i
 m \times n
 endsnippet
@@ -638,18 +685,232 @@ snippet sketch "Link a sketch" i
 [$1](file:///home/h/sketches/$2)
 endsnippet
 
-snippet ` "Inline code" i
-`$1`$2
+snippet deck "Get anki deck"
+`get-anki-decks`
 endsnippet
 
-snippet ``` "Code block" i
-```${1:sh}
+# snippet ` "Inline code" i
+# `$1`
+# endsnippet
+
+# Escape backticks
+snippet `` "Code block" bA
+\`\`\`$1
 $2
-```
+\`\`\`
 endsnippet
 
-snippet tex "Latex block (see latex filter)"
-```{.tex}
+snippet `tex "Latex block (see latex filter)" bA
+\`\`\`{.tex}
 $1
-```
+\`\`\`
+endsnippet
+
+snippet `tik "Tikz block (see tikz filter)" bA
+\`\`\`{.tex}
+\\begin{tikzpicture}
+$1
+\\end{tikzpicture}
+\`\`\`
+endsnippet
+
+snippet task "Task" i
+* [ ] $1 -- pro:$2
+endsnippet
+
+snippet "(\b)fn(\d+)" "" ir
+`!p snip.rv = snip.basename + "_" + match.group(2).zfill(2)`$1
+endsnippet
+
+snippet "ch(\d+)" "Link chapter" ir
+`!p
+num_str = match.group(1).zfill(2)
+title = 3*"."
+link = snip.basename + "_" + num_str
+snip.rv = num_str + ". " + linkify(title, link)
+`
+endsnippet
+
+snippet "ch(\d+)to(\d+)" "Link chapters ... to ..." irA
+`!p
+for i in range(int(match.group(1)), int(match.group(2)) + 1):
+	num_str = str(i).zfill(2)
+	title = 3*"."
+	link = snip.basename + "_" + num_str
+	snip.rv += num_str + ". " + linkify(title, link) + "\n"
+`
+endsnippet
+
+snippet cp(\d+) "Comment current page (and date)" r
+`!p snip.rv = "<!--" + datetime.now().strftime("%Y-%m-%d") + " p. " + match.group(1) + "-->"`
+endsnippet
+
+snippet (\d+)! "Factorial of ..." r
+`!p snip.rv = factorial(int(match.group(1)))`
+endsnippet
+
+snippet d "Date"
+`!p snip.rv = datetime.now().strftime("%Y-%m-%d")`
+endsnippet
+
+snippet :(\w*) "Fence" r
+`!p snip.rv += ":::" + FENCES.get(match.group(1) or "", "") + "\n" `$1
+`!p snip.rv += ":::"`$2
+endsnippet
+
+snippet \[(\w*) "Fence inline" ir
+`!p snip.rv += "["`$1`!p snip.rv += "]{." + FENCES.get(match.group(1) or "", "") + "}"`$2
+endsnippet
+
+snippet ^eg "Example" r
+E.g. $1
+endsnippet
+
+# E.g. after list (or list preceded by space)
+snippet (\*\s|\*)eg "Example" r
+* E.g. $1
+endsnippet
+
+# E.g. after dot (or dot preceded by space)
+snippet (\.\s|\.)eg "Example" r
+. E.g. $1
+endsnippet
+
+snippet (?<!^|\*\s|\*|\.\s|\.)eg "Example" r
+e.g. $1
+endsnippet
+
+# Zettelkasten to Anki
+
+snippet td "TARGET DECK: <Deck name>"
+TARGET DECK: $1::$2
+endsnippet
+
+snippet clo "Cloze"
+START
+Cloze
+${0:${VISUAL}}$1
+END
+$2
+endsnippet
+
+snippet clos "Cloze start"
+START
+Cloze
+$1
+endsnippet
+
+snippet cloe "Cloze end"
+END
+endsnippet
+
+snippet clod
+START
+Cloze
+**Definition$1**
+
+$2
+END
+endsnippet
+
+snippet clop
+START
+Cloze
+**Property$1**
+
+$2
+END
+endsnippet
+
+snippet clot
+START
+Cloze
+**Theorem$1**
+
+$2
+END
+endsnippet
+
+snippet clol
+START
+Cloze
+**Lemma$1**
+
+$2
+END
+endsnippet
+
+snippet "c(\d+)" "Cloze <number>" r
+{{c`!p snip.rv = int(match.group(1))`::${0:${VISUAL}}$1}}$2
+endsnippet
+
+# Match preceded by whitespace or start of line
+snippet (?<!\S)z($|t|l|z|o|\.) "Zotero" r
+`!p
+
+ACTIONS = {
+	"": "get_citekey",
+	"t": "get_title",
+	"l": "get_link",
+	"z": "get_citekey_brackets",
+	"o": "get_file",
+}
+
+snip.rv = zot(ACTIONS.get(match.group(1)))
+`
+endsnippet
+
+snippet zq "Zotero quote" r
+`!p snip.rv = '>\n> --' + zot("get_citekey_brackets")`
+endsnippet
+
+snippet acz "According to ..."
+`!p snip.rv = "According to " + zot("get_citekey")`
+endsnippet
+
+snippet azex "As ... explains"
+`!p snip.rv = "As " + zot("get_citekey") + " explains, "`
+endsnippet
+
+snippet iz "In ..."
+`!p snip.rv = "In " + zot("get_citekey")`
+endsnippet
+
+snippet izd "In ...'s definition"
+`!p snip.rv = "In " + zot("get_citekey") + "'s definition, "`
+endsnippet
+
+snippet zintends "... intends to ..." A
+`!p snip.rv = zot("get_citekey") + " intends to "`
+endsnippet
+
+snippet tfol "The following" wA
+the following
+endsnippet
+
+snippet tfolt "It follows that" wA
+it follows that
+endsnippet
+
+snippet ntfol "In the following" wA
+in the following
+endsnippet
+
+snippet algos "algorithms" wA
+algorithms
+endsnippet
+
+snippet algo "algorithm" wA
+algorithm
+endsnippet
+
+# TODO: Make only available in tikzpicture
+context "code()"
+snippet q "State" w
+\node[state] ($1) [] {$2};
+endsnippet
+
+context "code()"
+snippet q0 "Initial state" w
+\node[initial,state] ($1) {$2};
 endsnippet
